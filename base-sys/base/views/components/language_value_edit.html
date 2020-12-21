@@ -1,0 +1,23 @@
+<div class="peep_automargin">
+
+	{block_decorator name="box" type="empty"}
+	{form name="lang-values-edit"}
+		<table class="peep_table_1 peep_form peep_smallmargin">
+			<tr class="peep_center peep_tr_first">
+				<th>Language</th>
+				<th>Translation</th>
+			</tr>
+			{foreach from=$langs item='lang' name='lang'}
+				<tr class="{cycle values="peep_alt1,peep_alt2"} {if $smarty.foreach.lang.last}peep_tr_last{/if}">
+					<td class="peep_label">{$lang->getLabel()} ({$lang->getTag()})</td>
+					<td class="peep_value">{input name="lang[`$lang->id`][`$prefix`][`$key`]"}</td>
+				</tr>
+			{/foreach}
+		</table>
+			<div class="clearfix peep_smallmargin"><div class="peep_right">
+					{submit name="submit"}
+			</div></div>
+	{/form}
+	{/block_decorator}
+
+</div>

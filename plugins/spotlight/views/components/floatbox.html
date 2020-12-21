@@ -1,0 +1,17 @@
+{if !$userInList}
+    {form name='addToSpotLightForm'}
+    <div class="peep_std_margin peep_center">{$floatbox_text}</div>
+
+    <div class="clearfix peep_submit peep_stdmargin peep_center">
+        {submit name="add"}
+    </div>
+    {/form}
+{else}
+    {form name='removeFromSpotLightForm'}
+    <div class="peep_std_margin peep_center">{text key='spotlight+floatbox_text_remove_from_list'}</div>
+
+    <div class="clearfix peep_submit peep_stdmargin peep_center">
+        {submit name="remove"}
+    </div>
+    {/form}
+{/if}

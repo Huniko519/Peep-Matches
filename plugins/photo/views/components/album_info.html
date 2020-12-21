@@ -1,0 +1,11 @@
+<div id="photo-album-info" class="peep_photo_album_info_wrap clearfix">
+    <div class="peep_photo_album_info">
+        <div class="peep_photo_album_cover peep_high1" style="background-image: url({$coverUrl})">
+            <img src="{$coverUrlOrig}" class="cover_orig peep_hidden" />
+        </div>
+        <h3 class="peep_photo_album_name">{$album->name|escape}</h3>
+        <div class="peep_photo_album_description peep_stdmargin">{$album->description|escape}</div>
+
+        {add_content key='photo.view_album' album=$album}
+    </div>
+</div>

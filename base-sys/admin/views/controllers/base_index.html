@@ -1,0 +1,58 @@
+<style>
+
+.users_stat{
+width:100%;
+height:100px;
+border-radius:4px;
+background:#d76243;
+color:#fff;
+text-align:center;
+}
+.stat_title{
+font-size:18px;
+padding:20px 0;
+font-weight:bold;
+}
+.stat_total{
+font-size:13px;
+}
+</style>
+{script}
+{literal}
+
+    $("#invite_btn").click(function(){
+	    var $form_content = $("#invite_members");
+	
+	    window.invite_members_floatbox = new PEEP_FloatBox({
+	        $title: PEEP.getLanguageText('admin', 'invite_members_cap_label'),
+	        $contents: $form_content,
+	        icon_class: 'peep_ic_add',
+	        width: 550
+	    });
+    });
+    
+    $("#username-search-input").focus();
+
+{/literal}
+{/script}		
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=265570520119775";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<div class="peep_full clearfix">
+<div class="admin_custom_right peep_right peep_supernarrow">
+<div class="fb-page" style=" width:100%; position:relative;" data-href="https://www.facebook.com/peepdev" data-tabs="timeline" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/peepdev"><a href="https://www.facebook.com/peepdev">‏‎Peepdev‎‏</a></blockquote></div></div></div>
+<div class="peep_superwide peep_left">
+<div class="users_stat"><div class="stat_title">Site users</div><div class="stat_total">{text key='admin+total_users' count=$totalUsers}</div></div>
+<div style="margin-top:10px;">
+<div class="feed_tit" style="width:100%; height:30px; line-height:30px; color:#fff; background:#494949; font-size:13px; text-align:center;">Peepdev's Latest News</div>
+<iframe  height="252"  width="100%" src="http://feed.mikle.com/widget/?rssmikle_url=http%3A%2F%2Fwww.peepdev.com%2Farticles%2Frss&rssmikle_frame_width=300&rssmikle_frame_height=250&frame_height_by_article=0&rssmikle_target=_blank&rssmikle_font=Arial%2C%20Helvetica%2C%20sans-serif&rssmikle_font_size=12&rssmikle_border=on&responsive=on&text_align=left&text_align2=left&corner=off&scrollbar=on&autoscroll=off&scrolldirection=up&scrollstep=5&mcspeed=20&sort=New&rssmikle_title=off&rssmikle_title_sentence=Peepdev%20Latest%20News&rssmikle_title_bgcolor=%23494949&rssmikle_title_color=%23FFFFFF&rssmikle_item_bgcolor=%23FFFFFF&rssmikle_item_title_length=65&rssmikle_item_title_color=%2369ad70&rssmikle_item_border_bottom=on&rssmikle_item_description=on&item_link=off&rssmikle_item_description_length=500&rssmikle_item_description_color=%23666666&rssmikle_item_date=gl1&rssmikle_timezone=Etc%2FGMT&datetime_format=%25b%20%25e%2C%20%25Y%20%25l%3A%25M%20%25p&item_description_style=text%2Btn&item_thumbnail=crop&item_thumbnail_selection=auto&article_num=15&rssmikle_item_podcast=off&" scrolling="no" name="rssmikle_frame" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0"></iframe><div style="font-size:12px; text-align:center; width:100%; height:30px; line-height:30px; background:#494949; "><a href="http://www.peepdev.com/companyblog/" target="_blank" style="color:#fff;">Find More News >>></a></div>
+</div>
+  <ul class="admin_support_res peep_center" style="width:100%; margin-top:20px; margin-bottom:20px;"><a href="https://www.peepdev.com/supportcenter" target="_blank"><li>Visit support center</li></a><a href="http://partners.hostgator.com/c/326020/177309/3094" target="_blank"><li>Get Better Hosting</li></a></ul>
+</div>
+</div>
+

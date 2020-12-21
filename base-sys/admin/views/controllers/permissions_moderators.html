@@ -1,0 +1,51 @@
+<form method="post" action="{$formAction}">
+  <div class="peep_admin_permissions peep_stdmargin peep_center">
+	<div class="peep_automargin peep_stdmargin peep_wide peep_admin_permissions_overflow">
+		<table class="peep_table_2 peep_form">
+			<tr class="peep_tr_first">
+				<th></th>
+				{foreach from=$moderators item='moderator'}
+					{assign var='moderatorId' value=$moderator->id}
+					{assign var='userId' value=$moderator->userId}
+					<th width="1">
+						{decorator name='avatar_item' data=$avatars[$userId]}
+					</th>
+				{/foreach}
+			</tr>
+			{foreach from=$groups item='group'}
+				{assign var=groupName value=$group->name}
+				<tr class="{cycle values='peep_alt1,peep_alt2'}">
+					<td class="peep_txtleft">{$groupLabels[$groupName]}</td>
+					{foreach from=$moderators item='moderator'}
+						{assign var='groupId' value=$group->id}
+						{assign var='moderatorId' value=$moderator->id}
+						<td><input {if $moderator->id == $superModeratorId or ($myModeratorId != $superModeratorId and $groupId == $adminGroupId)} disabled="disabled"{/if} type="checkbox" name="perm[]" value="{$moderatorId}:{$groupId}" {if isset($perms.$moderatorId.$groupId) or $moderator->id == $superModeratorId} checked="checked"{/if} /></td>
+					{/foreach}
+				</tr>
+			{/foreach}
+			<tr class="peep_tr_last">
+				<td></td>
+				{foreach from=$moderators item='moderator'}
+					{assign var='moderatorId' value=$moderator->id}
+					{assign var='userId' value=$moderator->userId}
+					<td>
+						{if $moderator->id !== $myModeratorId and $moderator->id !== $superModeratorId}
+							<a href="{$deleteModerUrls[$userId]}" onclick="return confirm('{text key="base+are_you_sure"}');" style="width:16px; height:16px; display:block; margin:0 auto;background-repeat:no-repeat;background-position: 50% 50%;" class="peep_ic_delete"></a>
+						{/if}
+					</td>
+				{/foreach}
+			</tr>
+		</table>
+	</div>
+    <div class="clearfix peep_automargin peep_wide"><div class="peep_right">{decorator name='button' langLabel='admin+permissions_index_save' class='peep_button peep_ic_save peep_positive' onclick='this.form.submit();'}</div></div>
+  </div>
+</form>
+
+<form method="post" action="{$addFormAction}">
+<div class="peep_wide peep_automargin">
+    {block_decorator name='box' addClass='peep_stdmargin clearfix peep_center' iconClass='peep_ic_moderator' langLabel='admin+permissions_moders_add_moder'}
+        {text key='admin+permissions_moders_username'} <input type="text" name="username" style="width: 170px" />
+    	{decorator name='button' langLabel='admin+permissions_moders_make_moderator' type="submit"}
+    {/block_decorator}
+</div>
+</form>

@@ -1,0 +1,30 @@
+{style}
+{literal}
+    .peep_user_credits {
+        text-align: center;
+    }
+    .peep_credits_count {
+        font-size: 38px;
+        margin: 8px 0;
+    }
+    .peep_credits_links {
+        padding-top: 16px;
+    }
+    .peep_credits_links a {
+        font-size: 12px;
+        line-height: 22px;
+    }
+.peep_credits_links{
+width:100%;
+}
+
+{/literal}
+{/style}
+<div class="peep_user_credits">
+    {text key='usercredits+credits_balance'}
+    <h3 class="peep_credits_count">{$balance}</h3>
+</div>
+<div class="peep_center peep_credits_links clearfix">
+    {if $showCostOfActions}<a href="javascript://" id="credits-link-cost-of-actions">{text key='usercredits+cost_of_actions'}</a>{/if}
+    {if $showHistory}<a href="javascript://" id="credits-link-history">{text key='usercredits+history'}</a>{/if}
+</div>

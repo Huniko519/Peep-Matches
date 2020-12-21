@@ -1,0 +1,12 @@
+<div class="peep_narrow peep_automargin">
+{block_decorator name='box' iconClass='peep_ic_gear_wheel' langLabel='spotlight+settings'}
+{form name='settingsForm'}
+<table class="peep_table_3">
+    <tr peep_tr_last>
+        <td class="peep_label peep_supernarrow">{label name='expiration_time'}</td><td class="peep_value">{input name='expiration_time'}<br />{error name='expiration_time'}</td>
+    </tr>
+</table>
+<div class="clearfix"><div class="peep_right">{submit name='save' class='peep_ic_add peep_positive'}</div></div>
+{/form}
+{/block_decorator}
+</div>

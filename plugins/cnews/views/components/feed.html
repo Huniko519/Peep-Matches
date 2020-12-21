@@ -1,0 +1,147 @@
+{style}{literal}
+
+    ul.peep_cnews {
+        padding: 0;
+    }
+
+
+    .peep_cnews_avatar {
+        height: 45px;
+        width: 45px;
+        margin-right: -45px;
+        float: left;
+    }
+
+    .peep_cnews_avatar img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .peep_cnews_body {
+        margin-left: 0px;
+        padding-left: 0px;
+padding-top:5px;
+    }
+
+    .peep_cnews .peep_cnews_item {
+       list-style-image: none;
+        position: relative;
+background:#fff;
+width:100%;
+    }
+
+    .peep_cnews_toolbar {
+        float: none;
+    }
+
+    .peep_cnews .peep_comments_list {
+        margin-bottom: 0px;
+    }
+
+    .peep_cnews_remove {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        display: none;
+    }
+
+    .peep_cnews_body:hover .peep_cnews_remove {
+        display: block;
+    }
+
+    .peep_cnews_delimiter {
+        border-bottom-width: 0px;
+        height: 0px;
+        margin-bottom: 7px;
+    }
+
+    .peep_cnews_doublesided_stdmargin {
+        margin: 14px 0px;
+    }
+
+    .peep_cnews_likes {
+        margin-bottom: 3px;
+    }
+
+    .peep_cnews_tooltip .tail {
+        padding-left: 25px;
+    }
+
+    .peep_cnews_placeholder {
+        height: 30px;
+        background-position: center 5px;
+    }
+
+    .peep_cnews_view_more_c {
+        text-align: center;
+    }
+
+    .peep_cnews_head {
+    	max-width: 100%;
+padding-bottom:30px;
+padding-left:55px;
+border-bottom:1px solid #cdcdcd;
+    }
+.peep_cnews_string .cnews_likes_string{
+
+float:right;
+right:5px;
+margin-top:-5px;
+text-align:right;
+position:absolute;
+}
+.peep_cnews_content{
+margin-top:10px;
+left:-57px;
+}
+    .peep_cnews_item_content {
+        float: left;
+        min-width: 50px;
+        width: 95%;
+        max-width: 95%;
+    }
+
+    .peep_cnews_features {
+        max-width: 100%;
+        overflow: hidden;
+        min-height: 62px;
+    }
+
+    .peep_cnews_feedback_counter {
+        padding: 2px 5px;
+    }
+
+    .peep_cnews_activity_content {
+        border-top-style: dashed;
+        border-top-width: 1px;
+        padding-top: 3px;
+    }
+
+    .peep_cnews_comments .peep_add_comments_form
+    {
+        margin-bottom: 0px;
+    }
+{/literal}{/style}
+
+
+<div id="{$autoId}">
+    {if !empty($statusMessage)}
+        <div class="peep_smallmargin peep_center">
+            {$statusMessage}
+        </div>
+    {elseif !empty($status)}
+        <div class="peep_smallmargin">
+            {$status}
+        </div>
+    {/if}
+    
+    <ul class="peep_cnews peep_smallmargin">
+        {$list}
+    </ul>
+    
+    {if $viewMore}
+            <div class="peep_cnews_view_more_c">
+                {decorator name="button" class="peep_cnews_view_more peep_ic_down_arrow" langLabel="cnews+feed_view_more_btn"}
+            </div>
+    {/if}
+</div>

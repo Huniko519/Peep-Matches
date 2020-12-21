@@ -1,0 +1,107 @@
+ <style>
+.story_comments_area .peep_box_cap{
+display:none !important;
+}
+.story_comments_area .peep_box_cap_empty{
+display:none !important;
+}
+.rate_action .peep_box_cap{
+display:none !important;
+}
+.rate_action .peep_box_cap_empty{
+display:none !important;
+}
+.rate_action .peep_box{
+border:none;
+}
+.rate_action .peep_box_empty{
+border:none;
+}
+.peep_story_info .peep_box_cap{
+display:none !important;
+}
+.peep_story_info .peep_box_cap_empty{
+display:none !important;
+}
+</style>     
+	<div class="peep_story_view clearfix">
+         	<div class="peep_superwide" style="float:left;">
+         		{block_decorator name='box' type='empty' toolbar=$tb addClass="peep_stdmargin" style="padding-top:10px;"}
+
+					<div class="clearfix">
+						{$info.dto->post}
+<div class="rate_action clearfix">
+{$rate}
+</div>
+					</div>
+					<div class="peep_stdmargin"><center><br />{$paging}</center></div>
+				{/block_decorator}
+                {add_content key='socialsharing.get_sharing_buttons' title=$info.dto->title description=$info.dto->post entityType='stories' entityId=$info.dto->id}
+                
+                {add_content key='stories.story_view.content.after_story_post'}
+
+                {if $adjasentUrl}
+				
+	                     <div class="peep_stdmargin clearfix">
+	                        <div style="float:left;">
+	                        	{if $adjasentUrl.prev|count_characters > 0}
+	                        		<a class="peep_prev_story" href="{$adjasentUrl.prev}">{text key="stories+prev_post"}</a> 
+	                        	{/if}
+	                       	</div>
+	                        <div style="float:right;">
+	                        	{if $adjasentUrl.next|count_characters > 0}
+	                        		<a class="peep_next_story" href="{$adjasentUrl.next}">{text key="stories+next_post"}</a>
+	                        	{/if}
+	                       	</div>
+	                     </div>
+
+	                     
+<center><a class="user_stories_go_home peep_stdmargin" href="{$adjasentUrl.index}">{text key="stories+story_index"}</a></center>  
+                {/if}
+<div class="story_comments_area peep_stdmargin">
+                {$comments}
+</div>
+         	</div>
+
+            <div class="peep_supernarrow" style="float:right;">
+               {block_decorator name="box" addClass="peep_stdmargin" }
+                  <table class="peep_table_3 peep_form peep_nomargin">
+                     <tbody>
+                     	{if $isAuthorExists}
+                        <tr class="peep_tr_first">
+                           <td class="peep_label">{text key="stories+by"}</td>
+                           <td class="peep_value">
+                           	{user_link name=$displayname username=$username}
+                           </td>
+                        </tr>
+                        {/if}
+                        <tr class="{if !$isAuthorExists}peep_tr_first{/if} peep_tr_last">
+                           <td class="peep_label">{text key="stories+added"}</td>
+	                           <td class="peep_value">{format_date timestamp=$info.dto->timestamp}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               {/block_decorator}
+
+               	
+
+				
+				{if $isAuthorExists}
+					{block_decorator name="box" langLabel="stories+story_archive_lbl_archives" iconClass="peep_ic_clock"}
+					{assign var="uname" value=$author->getUsername() }
+	                  <ul class="peep_regular">
+	                  	<li><a href="{url_for_route for="user-story:[user=>`$uname`]"}">{text key="base+all"}</a> </li>
+	                  	{foreach from=$archive key='year' item='months'}
+	                  		{foreach from=$months item='month'}
+	                  			{assign var='u' value=$author->getUsername()}
+	                  			<li>
+	                  				<a href="{url_for_route for="user-story:[user=>$u]"}?month={$month}-{$year}">{text key="base+month_`$month`"} {$year}</a>
+	                  			</li>
+	                  		{/foreach}
+	                  	{/foreach}
+	                  </ul>
+					{/block_decorator}
+				{/if}
+{$tagCloud}
+            </div>
+      	</div>

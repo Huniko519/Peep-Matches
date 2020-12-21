@@ -1,0 +1,32 @@
+{style}
+{literal}
+.peep_active_plugins tr, .peep_inactive_plugins tr{
+    border-top:1px solid #ccc;
+}
+.peep_plugin_controls{
+    display:block;
+}
+{/literal}
+{/style}
+{block_decorator name='box' type='empty' addClass='peep_stdmargin' iconClass='peep_ic_trash' langLabel='admin+manage_plugins_available_box_cap_label'}
+{if empty($plugins)}
+    {text key='admin+plugins_manage_no_available_items'}
+{else}
+   <table class="peep_superwide peep_inactive_plugins" style="margin:0 auto;">
+      {foreach from=$plugins item='plugin'}
+      <tr class="peep_high2" {literal}onmouseover="$('span.peep_plugin_controls', $(this)).css({display:'block'});" onmouseout="$('span.peep_plugin_controls', $(this)).css({display:'block'});"{/literal}>
+         <td style="padding: 10px 15px;">
+            <b>{$plugin.title}</b>
+            <div class="peep_small">{$plugin.description}</div>
+         </td>
+         <td class="peep_small" style="text-align:right;width:180px;vertical-align:middle;">
+             <span class="peep_plugin_controls">
+                {if $plugin.inst_url}<a class="peep_lbutton peep_green" href="{$plugin.inst_url}">{text key='admin+manage_plugins_install_button_label'}</a>{/if}
+                {if $plugin.del_url}<a class="peep_lbutton peep_red" href="{$plugin.del_url}" onclick="return confirm('{text key='admin+manage_plugins_delete_confirm_message' pluginName=$plugin.title}');">{text key='admin+manage_plugins_delete_button_label'}</a>{/if}
+             </span>
+         </td>
+      </tr>
+      {/foreach}
+   </table>
+{/if}
+{/block_decorator}

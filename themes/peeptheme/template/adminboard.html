@@ -1,0 +1,101 @@
+{style}
+{literal}
+.admin_notification, .admin_warning{
+    text-align: center;
+	margin-bottom:10px;
+	padding: 10px 0;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+    background-color: #dfd;
+	color: #444;
+	text-shadow: #fff 1px 1px 0;
+}
+
+.admin_warning{
+    background-color: #fdd;
+}
+.peep_chat_cont{
+display:none;
+}
+{/literal}
+{/style}
+<div class="peep_header peep_admin_header clearfix" >
+	
+	<div class="admin_site_panel">
+		<div class="admin_logo_wrap ">			
+			<a href="{url_for_route for="admin_default"}" class="peep_admin_title">{$siteName} AdminBoard</a>
+<a href="{$siteUrl}" class="peep_tagline">Back to site</a>
+		</div>
+<div class="admin_menu_cont">
+			{foreach from=$menuArr key='key' item='item'}
+				<div id="{$item.id}" class="menu_item{if $item.isActive} active{/if} clearfix">
+					
+						<span class="label">{$item.label}</span>
+						<span class="menu_items peep_tooltip">
+						<div class="menu_cont">{$item.cmp}</div>
+					        </span>
+					
+
+				</div>
+			{/foreach}
+			</div>
+
+	</div>
+<div class="peepmatches_version" style="position:fixed; z-index:99; width:240px; height:80px; padding-top:10px;left:0px; bottom:0px; font-size:12px; color:#fff; background:#c1583e;"><button id="adminmenubtnmobile">☰</button>
+				{if empty($peep_plugin_xp)}<div class="peep_center">{$softVersion}</div>{/if}
+<div class"attr" style="font-size:11px; padding-top:10px; margin-top:10px; border-top:1px solid #fff; text-align:center; ">Developed By <strong><a href="https://www.peepdev.com" target="_blank" style="color:#fff;">Peepdev Company</a></strong></div>
+			</div>
+
+	<div class="canvas">
+		<div class="main_page">
+		
+		</div>
+	</div>
+</div>
+{if !empty($submenu)}<div class="peep_admin_sub_menu"><div class="admin_canvas">{$submenu}</div></div>{/if}
+<div class="admin_page_container peep_admin">
+	<div class="admin_canvas">
+		<div class="admin_main_page">
+			{if !empty($warnings)}
+			{foreach from=$warnings item='warning'}
+				<div class="admin_warning">{$warning}</div>
+			{/foreach}
+			{/if}
+			{if !empty($notifications)}
+			{foreach from=$notifications item='notification'}
+				<div class="admin_notification">{$notification}</div>
+			{/foreach}
+			<br />
+			{/if}
+			{if !empty($heading)}<h1 class="peep_stdmargin" style="padding-top:10px;">{$heading}</h1>{/if}
+			<div class="content" style=" position:relative;">
+				{$content}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="peep_admin_footer">
+	<div class="admin_canvas">
+		<div class="admin_main_page clearfix" style="padding:20px 0;">
+			
+			
+		</div>
+	</div>
+</div>    
+{decorator name='floatbox'}
+
+<script type="text/javascript">
+
+$('#adminmenubtnmobile').click(function(event) {
+    value = $('.admin_site_panel').css('left') === '-240px' ? 0 : '-240px';
+      $('.admin_site_panel').animate({
+          left: value
+      });
+});
+
+</script>
+
+
+
+

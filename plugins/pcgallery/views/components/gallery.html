@@ -1,0 +1,136 @@
+{style}
+
+{if !empty($user.avatar)}
+    .peep_profile_gallery_avatar_image {
+        background-image: url({$user.avatar});
+    }
+{/if}
+
+{if $photos}
+.pcgallery_photo1 {
+    background-image: url({$photos.0.src});
+}
+
+.pcgallery_photo2 {
+    background-image: url({$photos.1.src});
+}
+
+.pcgallery_photo3 {
+    background-image: url({$photos.2.src});
+}
+
+.pcgallery_photo4 {
+    background-image: url({$photos.3.src});
+}
+
+{/if}
+
+.peep_profile_gallery_place:hover .peep_profile_gallery_btn {
+    /*display: block;*/
+}
+
+.peep_profile_gallery_btn {
+    /*display: none;*/
+}
+
+.pcg_avatar_approve {   
+    display: none;
+}
+
+.peep_avatar_console:hover .pcg_avatar_approve {
+    display: block;
+}
+
+{/style}
+
+<div class="peep_profile_gallery_wrap peep_stdmargin" id="{$uniqId}">
+    <div class="peep_profile_gallery_place">
+        <div class="peep_profile_gallery {if $empty}peep_profile_gallery_empty{/if} clearfix">
+            {if $empty}
+                {if $permissions.selfMode}
+                    <div class="peep_profile_gallery_txt">
+                        {text key="pcgallery+not_enough_photo_tip" id="pcgallery-add-photo-btn"}
+                    </div>
+                {/if}
+            {else}
+                <div class="peep_profile_gallery_item_vert">
+                    <div class="peep_profile_gallery_item peep_border">
+                        <div class="peep_profile_gallery_item_image pcgallery_photo2 pcg-image" data-order="1" data-pid="{$photos.1.id}"></div>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                    </div>
+                    
+                </div>
+                <div class="peep_profile_gallery_item_vert ">
+                    <div class="peep_profile_gallery_item peep_border">
+                        <div class="peep_profile_gallery_item_image pcgallery_photo1 pcg-image" data-order="2" data-pid="{$photos.0.id}"></div>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                    </div>
+
+                </div>
+                <div class="peep_profile_gallery_item_vert">
+                    <div class="peep_profile_gallery_item peep_border">
+                        <div class="peep_profile_gallery_item_image pcgallery_photo3 pcg-image" data-order="3" data-pid="{$photos.2.id}"></div>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                    </div>
+                    
+                </div>
+                <div class="peep_profile_gallery_item_vert">
+                    <div class="peep_profile_gallery_item peep_border">
+                        <div class="peep_profile_gallery_item_image pcgallery_photo4 pcg-image" data-order="4" data-pid="{$photos.3.id}"></div>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                    </div>
+                    
+                </div>
+            {/if}
+        </div>
+        {if !$empty && $permissions.changeSettings}
+        <div class="peep_profile_gallery_btn">
+            <a class="peep_lbutton" id="pcgallery-settings-btn" href="javascript://">{text key='pcgallery+settings_btn_label'}</a>
+        </div>
+        {/if}
+    </div>
+    <div class="peep_profile_gallery_cont_wrap peep_border">
+        <div class="peep_profile_gallery_cont clearfix">
+           <div class="peep_profile_gallery_avatar">
+{component class='PCGALLERY_CMP_VisitorProfileWelcome'}
+                <div class="peep_avatar_console peep_border peep_profile_gallery_avatar_console peep_bg_color">
+                    
+                    
+                    <div class="peep_profile_gallery_avatar_image" data-outlet="avatar">
+                        {if $avatarApproval}
+                            <div data-outlet="approve-overlay" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-color: rgba(0,0,0,0.6); color: #fff; padding: 8px;">{text key='base+avatar_pending_approval'}</div>
+                        {/if}
+                        
+                            {if isset($user.role.label)}
+                                <span class="peep_avatar_label"{if isset($user.role.custom)} style="background-color: {$user.role.custom}"{/if}>
+                                    {$user.role.label}
+                                </span>
+                            {/if}
+                            
+                            {if $permissions.changeAvatar}
+                                <div class="peep_profile_gallery_avatar_change">
+                                    <a data-outlet="avatar-change" href="javascript://" class="peep_lbutton">{text key="base+avatar_change"}</a>
+                                </div>
+                            {/if}
+                            
+                            {if $avatarApproval && $permissions.approveAvatar}
+                                <div class="peep_avatar_button peep_avatar_change pcg_avatar_approve" data-outlet="approve-avatar-w" >
+                                    <a data-outlet="approve-avatar" class="peep_lbutton" href="javascript://">{text key='base+approve'}</a>
+                                </div>
+                            {/if}
+
+                        <div class="user_online_wrap">{if $user.isOnline}{online_now userId=$user.id}{/if}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="peep_profile_gallery_toolbox clearfix">
+                <span class="peep_profile_gallery_display_name peep_smallmargin">
+                    <a href="{$data.url}">{$user.displayName}</a>
+                </span>
+                <div class="peep_profile_gallery_action_toolbar clearfix">
+                    {$actionToolbar}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

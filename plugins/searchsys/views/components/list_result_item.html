@@ -1,0 +1,12 @@
+{capture assign='infoString'}
+    <a href="{$data.url}">{$data.text}</a></span>
+{/capture}
+
+{capture assign='content'}
+    {$data.info}
+{/capture}
+
+{decorator name='ipc' addClass='peep_smallmargin'
+    avatar=$data.avatar
+    content=$content
+    infoString=$infoString}

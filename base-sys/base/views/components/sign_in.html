@@ -1,0 +1,30 @@
+<div class="peep_sign_in_wrap">
+
+{form name='sign-in'}
+<div class="signin_title peep_stdmargin peep_center">{text key='base+base_sign_in_cap_label'}</div>
+     <div class="clearfix">
+        <div class="peep_sign_in">
+            
+
+                <div class="peep_user_name">
+                    {input name='identity'}
+                </div>
+                <div class="peep_password">
+                    {input name='password'}
+                </div>
+                <div class="peep_form_options clearfix">
+                   
+                    <p class="peep_remember_me">{input name='remember'}{label name='remember'}</p>
+                    <p class="peep_forgot_pass"><a href="{url_for_route for='base_forgot_password'}">{text key='base+forgot_password_label'}</a></p>
+                </div>
+            <div class="peep_center peep_stdmargin">
+                        {submit name='submit' class='peep_positive'}
+                    </div>
+            <div class="peep_connect_buttons">
+                {component class='BASE_CMP_SignInButtonList'}
+            </div>
+        </div>
+        
+     </div>
+{/form}
+</div>

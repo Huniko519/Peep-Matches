@@ -1,0 +1,7 @@
+<a href="javascript://" class="peep_console_item_link">{$label}</a>
+
+<span {if empty($counter.number)}style="display: none;"{/if} class="peep_count_wrap PEEP_ConsoleItemCounter" >
+    <span class="{if $counter.active}peep_count_active{/if} peep_count_bg PEEP_ConsoleItemCounterPlace">
+        <span class="peep_count PEEP_ConsoleItemCounterNumber" {if empty($counter.number)}style="visibility: visible;"{/if}>{$counter.number}</span>
+    </span>
+</span>

@@ -1,0 +1,151 @@
+{if $chatModeEnabled}
+{component class="MAILBOX_CMP_ChatUserList"}
+{/if}
+
+<div class="peep_chat_dialog_wrap" id="dialogsContainer">
+
+    <div class="peep_chat_selector peep_hidden">
+        <div class="peep_chat_block">
+            <div class="peep_selector_panel">
+                <a class="peep_btn_dialogs" href="javascript://"><span></span></a>
+                <span class="peep_dialog_count">0</span>
+                <span class="peep_count_wrap" style="display: none;">
+                    <span class="peep_count_bg peep_count_active">
+                        <span class="peep_count">0</span>
+                    </span>
+                </span>
+            </div>
+            <div class="peep_chat_selector_list peep_tooltip peep_tooltip_bottom_left peep_hidden">
+                <div class="peep_tooltip_body">
+                    <ul class="peep_chat_selector_items"></ul>
+                </div>
+                <div class="peep_tooltip_tail"><span></span></div>
+            </div>
+        </div>
+    </div>
+
+    {if $mailModeEnabled && $isAuthorizedSendMessage}
+    {component class="MAILBOX_CMP_NewMessage"}
+    {/if}
+</div>
+
+<div id="im_sound_player_audio_container" style="position: fixed; left: -1000px; top: -1000px;">
+    <audio id="im_sound_player_audio" src="{$im_sound_url}" ></audio>
+</div>
+
+<div id="mailbox_prototypes" style="display: none;">
+
+    <ul id="peep_chat_selector_items_proto">
+        <li class="peep_chat_selector_item peep_sets_button peep_hidden">
+            <a href="javascript://" id="chatSelectorContactItemDisplayName"></a>
+            <span class="peep_count_wrap">
+                <span class="peep_count_bg peep_count_active" style="display: none;" id="chatSelectorContactItemCounterBlock">
+                    <span class="peep_count" id="chatSelectorContactItemCounter">0</span>
+                </span>
+            </span>
+        </li>
+    </ul>
+
+    <div class="peep_chat_dialog" id="dialogPrototypeBlock">
+        <div class="peep_chat_block peep_center">
+<a href="javascript://" target="_blank"  class="peep_chat_in_item_author_href peep_chat_in_item_photo_wrap"  id="dialogProfileUrl">
+ <span class="peep_chat_in_item_photo"><img title="" alt="" src="{$defaultAvatarUrl}" height="35px" width="35px" id="dialogProfileAvatarUrl"></span>
+                                    </a>
+            <div class="peep_author_block peep_chat_hover clearfix">
+                <div class="peep_vertical_puller"></div>
+                <div class="peep_diagonal_puller"></div>
+                <div class="peep_horizontal_puller"></div>
+                
+
+
+                <a href="javascript://" class="peep_chat_item_author_wrap peep_center" id="dialogMinimizeMaximizeBtn">
+                    <span class="peep_chat_item_author">
+                        <span class="peep_chat_in_item_author clearfix" id="dialogProfileDisplayName"></span>
+                       <div class="peep_chat_status" id="dialogProfileStatus"></div>
+                    </span>
+                    <span class="video_audio_calls peep_left" data-type="av_btns"></span>
+                </a>
+                <a class="peep_btn_close" href="javascript://" id="dialogCloseBtn"><span></span></a>
+            </div>
+            <!--<div class="peep_chat_disabled_subject_block" id="dialogSubjectBlock">-->
+                <!--<span id="dialogSubject"></span>-->
+            <!--</div>-->
+            <div class="peep_chat_in_dialog_wrap">
+                <div style="display: none;" class="peep_dialog_date_cap sticky" id="dialogStickyDateCapBlock">
+                    <span id="dialogStickyDateCap"></span>
+                </div>
+                <div class="peep_chat_in_dialog">
+                    <div class="peep_dialog_items_wrap" id="dialogLog"></div>
+                    <div class="peep_chat_preloader" id="dialogPreloader"></div>
+                </div>
+            </div>
+            {if $isAuthorizedReplyToMessage}
+            <div class="peep_chat_message_block">
+                <div class="peep_chat_message" id="dialogMessageFormBlock">
+                    <span class="peep_attachment_icons">
+                        <div class="peep_attachments clearfix">
+                            <a class="attach" href="javascript://" id="dialogAttachmentsBtn"></a>
+                        </div>
+                    </span>
+                    <textarea id="dialogTextarea"></textarea>
+                    <a href="javascript://" class="peep_chat_attach_btn"></a>
+                </div>
+            </div>
+            <div class="peep_chat_message_block" style="display: none;" id="dialogUserIsUnreachable">
+                <span style="padding: 8px; text-align: center; display:block;"  id="dialogUserIsUnreachableText">{text key='mailbox+user_is_unreachable'}</span>
+            </div>
+            {else}
+                {if $replyToMessageActionPromotedText != ''}
+                <div class="peep_smallmargin peep_anno peep_nocontent">{$replyToMessageActionPromotedText}</div>
+                {/if}
+            {/if}
+        </div>
+    </div>
+
+
+    <div class="clearfix" id="dialogChatMessagePrototypeBlock">
+        <div class="peep_dialog_item">
+            <div class="peep_dialog_in_item " id="dialogMessageWrapper">
+                <p id="dialogMessageText">...</p>
+            </div><i></i>
+        </div>
+    </div>
+
+    <div class="clearfix" id="dialogSysMessagePrototypeBlock"></div>
+
+    <div class="clearfix peep_dialog_item_mailchat" id="dialogMailMessagePrototypeBlock">
+        <span class="peep_chat_item_photo_wrap">
+            <span class="peep_chat_item_photo">
+                <span class="peep_chat_in_item_photo"><img width="32px" height="32px" alt="" src="{$defaultAvatarUrl}" id="dialogMessageAvatarUrl"></span>
+            </span>
+        </span>
+        <div class="peep_dialog_item_mailchat_text" id="dialogMessageText"></div>
+    </div>
+
+    <div class="clearfix" id="dialogTimeBlockPrototypeBlock">
+        <div class="peep_time_block">
+            <p><span class="peep_time_text"></span><span></span></p>
+        </div>
+    </div>
+
+    <div class="peep_dialog_date_cap dialogMessageGroup" id="dialogDateCapBlock">
+        <span id="dialogDateCap"></span>
+    </div>
+
+    <div class="peep_mailbox_message_content_attach clearfix" id="conversationFileAttachmentContentBlockPrototype"></div>
+
+    <div id="dialogEmbedLinkBlockPrototype">
+        <div class="peep_dialog_item even">
+            <div class="peep_dialog_in_item" id="dialogMessageWrapper">
+                <p id="dialogMessageText"></p>
+                <div class="peep_video_attachment_preview loading_content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="conversationFileAttachmentBlockPrototype">
+        <div class="peep_file_attachment_info">
+            <a class="peep_file_attachment_name" target="_blank" href="javascript://" id="conversationFileAttachmentFileName"></a><span class="peep_file_attachment_size peep_small" style="display: inline-block;" id="conversationFileAttachmentFileSize"></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+    <name>Photos</name>
+    <key>photo</key>
+    <description>Uploading photos, users can collect their photos into albums</description>
+   <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/company</authorUrl>
+	<developerKey>1</developerKey>
+    <build>3</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+	<license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

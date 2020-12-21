@@ -1,0 +1,28 @@
+<div id="photo_edit_form" style="width: 500px">
+    {form name='photo-edit-form'}
+        <table class="peep_table_1 peep_form peep_stdmargin">
+            <tr class="peep_alt1 peep_tr_first">
+                <td class="peep_label">{label name='album'}</td>
+                <td class="peep_value">
+                    <div class="peep_suggest_field peep_smallmargin">
+                        {input name='album'} {error name='album'}
+                        {$albumNameList}
+                    </div>
+                    <div class="new-album" style="display: none">
+                        {input name="album-name"}{error name="album-name"}
+                        {input name="description"}
+                    </div>
+                </td>
+            </tr>
+            <tr class="peep_alt2">
+                <td class="peep_label">{label name='photo-desc'}</td>
+                <td class="peep_value">
+                    <div class="peep_photo_upload_description" style="border-width: 1px;">
+                        {input name='photo-desc'}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="clearfix"><div class="peep_right">{submit name='edit' class='peep_ic_save peep_positive'}</div></div>
+    {/form}
+</div>

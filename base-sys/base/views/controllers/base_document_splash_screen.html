@@ -1,0 +1,15 @@
+
+<div class="warning_page_wrap">
+<div class="adult_warning_con">
+<div class="site_logo"><a href="{$siteUrl}">{$siteName}</a></div>
+<div class="adult_warning">
+    {text key='admin+splash_intro_value'}
+    <div class="warning_buttons">
+<div class="button_enter">  {decorator name='button' langLabel='admin+splash_button_value' extraString=" onclick=\"window.location='`$submit_url`'\""}</div>
+<div class="button_back">
+        {if isset($leaveUrl)}{decorator name='button' langLabel='admin+splash_leave_button_label' extraString=" onclick=\"window.location='`$leaveUrl`'\""} {/if}</div>
+     
+    </div>
+</div>
+</div>
+</div>

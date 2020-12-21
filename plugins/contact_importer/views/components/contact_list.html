@@ -1,0 +1,85 @@
+{style}
+{literal}
+
+.avatar_select_list{
+    text-align:left;
+    padding:0 8px;
+}
+
+.avatar_select_list .peep_user_list_picture{
+    height:45px;
+}
+
+.avatar_select_list .peep_user_list_item{
+    cursor:pointer;
+}
+
+.avatar_select_list .peep_item_set3{
+    width:32%;
+}
+
+{/literal}
+{/style}
+
+{script}
+{literal}
+$('.peep_user_list_item').toggle(function()
+{
+    var contactId = CONTACTIMPORTER_ContactList[this.id], contactUniq=contactId + '_check';
+    $(this).addClass('peep_mild_green');
+    $('#CONTACTIMPORTER_InviteForm').append('<input value="' + contactId + '" type="hidden" name="users[]" id="'+ contactUniq +'" />');
+},
+function()
+{
+    var contactId = CONTACTIMPORTER_ContactList[this.id], contactUniq=contactId + '_check';
+    $('#' + contactUniq).remove();
+    $(this).removeClass('peep_mild_green');
+});
+
+{/literal}
+{/script}
+<div class="peep_lp_avatars avatar_select_list peep_smallmargin">
+    {if empty($users)}
+    <div class="peep_nocontent">{text key='base+empty_user_avatar_list_select'}</div>
+    {else}
+    <div class="asl_users">
+        {foreach from=$users item='user' name='user_list'}
+        {if $smarty.foreach.user_list.first}
+            <div class="clearfix {cycle name="rows" values="peep_alt2, peep_alt1"}">
+        {/if}
+        {decorator name="user_list_item"
+                   avatar=$user.avatar
+                   username=$user.name
+                   displayName=$user.name
+                   noUserLink=1
+                   contId=$user.uniqId
+                   set_class='peep_item_set3'}
+        {if $smarty.foreach.user_list.iteration %3 == 0 && !$smarty.foreach.user_list.last}
+            </div>
+            <div class="clearfix {cycle name="rows" values="peep_alt1,peep_alt2"}">
+        {/if}
+        {if $smarty.foreach.user_list.last}
+          </div>
+        {/if}
+        {/foreach}
+    </div>
+
+    {*<div class="peep_center" style="padding: 8px;">
+    {if !empty($langs.countLabel)}<input type="hidden" class="count_label" value="{$langs.countLabel}" />{/if}
+    <input type="hidden" class="button_label" value="{$langs.buttonLabel}" />
+    {if !empty($langs.countLabel)}<div class="count_label">{$langs.startCountLabel}</div>{/if}
+    <div class="submit_cont">{decorator name='button' label=$langs.startButtonLabel class='submit'}</div>
+    </div>*}
+
+    {/if}
+</div>
+<div class="ci-invite-form peep_superwide" style="margin: 0px auto;">
+    <form id="CONTACTIMPORTER_InviteForm">
+        <div class="ci-message peep_smallmargin">
+            <textarea class="ci-message-input" name="message"></textarea>
+        </div>
+        <div style="text-align: center">
+            {decorator name='button' label='Invite' type="submit"}
+        </div>
+    </form>
+</div>

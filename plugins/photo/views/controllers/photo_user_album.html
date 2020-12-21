@@ -1,0 +1,122 @@
+{$pageHead}
+
+{if $isOwner || $isModerator}
+<div class="peep_superwide peep_right">
+    <div id="album-edit" class="peep_photo_album_info_wrap clearfix">
+        <div class="peep_photo_album_toolbar peep_smallmargin clearfix">
+            <div class="peep_photo_album_btns peep_right clearfix edit_btn">
+                <ul class="peep_bl clearfix peep_small peep_right">
+                    <li>
+                        <a href="javascript://">
+                            {text key="photo+edit_album"}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="display: none" class="peep_photo_album_btns_edit peep_right clearfix edit_done">
+                <ul class="peep_bl clearfix peep_small peep_right">
+                    <li>
+                        <a class="done" href="javascript://">
+                            {text key="photo+done"}
+                        </a>
+                    </li>
+                    {if $album->name != {text key="photo+cnews_album"}}
+                        <li>
+                            <a class="peep_mild_red delete_album" href="javascript://">
+                                {text key="photo+delete_album"}
+                            </a>
+                        </li>
+                    {/if}
+                </ul>
+            </div>
+        </div>
+
+        <div class="peep_photo_album_info">
+            <div class="peep_photo_album_cover peep_high1" style="background-image: url({$coverUrl})">
+                {if $isOwner}
+                    <img src="{$coverUrlOrig}" class="peep_hidden cover_orig" />
+                    {if empty($noCover)}
+                        <a class="peep_lbutton" href="javascript://" style="display: none">{text key="photo+edit_cover_label"}</a>
+                    {/if}
+                {/if}
+            </div>
+            <h3 class="peep_photo_album_name">{$album->name|escape}</h3>
+            <div class="peep_photo_album_description">{$album->description|escape}</div>
+            {form name="albumEditForm" style="display: none"}
+                {input name="albumName"}{error name="albumName"}
+                {input name="desc" class='peep_smallmargin'}
+
+                {foreach $extendInputs as $input}
+                    <div id="{$input}" class="peep_smallmargin">
+                        <div class="peep_smallmargin">
+                            {input name=$input}{label name=$input}<br />{error name=$input}
+                        </div>
+                    </div>
+                {/foreach}
+
+                {add_content key="photo.onRenderEditAlbum" albumId=$album->id userId=$album->userId}
+            {/form}
+        </div>
+    </div>
+
+    <div id="photo-menu" style="display: none" class="peep_fw_menu peep_high2 clearfix peep_smallmargin">
+        <div style="padding-top: 4px; margin-right: 8px;" class="peep_left">
+            <input type="checkbox" value="1" name="selectAll" class="plan_id" />
+            <span style="vertical-align: top;">{text key="photo+check_all"}</span>
+        </div>
+        <ul class="peep_bl clearfix peep_small peep_left">
+            <li>
+                <a href="javascript://" class="peep_mild_red delete">
+                    {text key="photo+delete_selected"}
+                </a>
+            </li>
+        </ul>
+
+        {if $isOwner}
+            <div style="float: left;" class="peep_context_action_block peep_context_action_value_block clearfix">
+                <div class="peep_context_action">
+                    <a class="peep_context_action_value">{text key="photo+move_to_album"}</a><span class="peep_context_more"></span>
+                    <div style="opacity: 1; top: 18px;" class="peep_tooltip peep_small peep_tooltip_top_right">
+                        <div class="peep_tooltip_tail">
+                            <span></span>
+                        </div>
+                        <div class="peep_tooltip_body">
+                            <ul class="peep_context_action_list peep_border">
+                                <li><a href="javascript://">{text key="photo+create_album"}</a></li>
+                                {if !empty($albumNameList)}
+                                    <li><div class="peep_console_divider"></div></li>
+                                    {foreach $albumNameList as $albumName}
+                                        <li><a href="javascript://" rel="{$albumName@key|escape}">{$albumName}</a></li>
+                                    {/foreach}
+                                {/if}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="peep_bl clearfix peep_small peep_left">
+                <li class="peep_bl_disabled set_as_cover">
+                    <a href="javascript://">
+                        {text key="photo+set_as_cover_label"}
+                    </a>
+                    <div style="top: -27px; " class="peep_tip peep_tip_top">
+                        <div style="left: 16px;" class="peep_tip_arrow">
+                            <span></span>
+                        </div>
+                        <div class="peep_tip_box">
+                            <span style="white-space:nowrap; font-weight: normal; max-width: 200px;" class="peep_tip_title">
+                                {text key="photo+select_one_photo_warning"}
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        {/if}
+    </div>
+</div>
+{else}
+    {component class='PHOTO_CMP_AlbumInfo' album=$album}
+{/if}
+
+{component class="PHOTO_CMP_PhotoList" type="albumPhotos" albumId=$album->id}

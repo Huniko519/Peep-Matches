@@ -1,0 +1,29 @@
+{form name='GOOGLEAUTH_AccessForm'}
+	{block_decorator name='box' addClass='peep_stdmargin' type="empty"}
+	 {text key="googleauth+register_app_desc"}
+	 <br /><span class="peep_desc">{text key='googleauth+app_return_url_desc'}: <br /><br/><strong>{$returnUrl}</strong></span>
+
+	 {/block_decorator}
+	
+	<table class="peep_table_1 peep_form">
+    <tr>
+        <th class="peep_name peep_txtleft" colspan="3">
+            <span class="peep_section_icon peep_ic_key">{text key='googleauth+app_register_title'}</span>
+
+        </th>
+    </tr>
+
+    <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+        <td class="peep_label">{text key='googleauth+access_settings_client_id_label'}</td>
+        <td class="peep_value">{input name='clientId'} {error name='clientId'}</td>
+        <td class="peep_desc"></td>
+    </tr>
+    <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+        <td class="peep_label">{text key='googleauth+access_settings_client_secret_label'}</td>
+        <td class="peep_value">{input name='clientSecret'} {error name='clientId'}</td>
+        <td class="peep_desc"></td>
+    </tr>
+
+    <tr><td colspan="3" class="peep_submit">{submit name='save' class='peep_ic_save'}</td></tr>
+</table>
+{/form}

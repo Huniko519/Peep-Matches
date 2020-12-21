@@ -1,0 +1,115 @@
+{*script}{literal}PEEP.resizeImg($('.peep_oembed_attachment'),{width:'150'});{/literal}{/script*}
+{style}{literal}
+
+    .peep_oembed_attachment {
+        position: relative;
+        padding-right: 20px;
+        margin-bottom: 4px;
+    }
+
+    .peep_oembed_attachment .two_column  .attachment_left {
+        float: left;
+        max-width: 150px;
+		margin-right: 8px;
+    }
+
+    .peep_oembed_attachment .two_column .attachment_right {
+        display: inline-block;
+    }
+
+    .peep_oembed_attachment .video div.attachment_left {
+        position: relative;
+    }
+
+    .peep_oembed_attachment .video div.attachment_right {
+        display: inline-block;
+    }
+
+    .peep_oembed_attachment .one_column .attachment_left {
+        display: none;
+    }
+
+    .peep_oembed_attachment .attachment_left img
+    {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    .peep_oembed_attachment .attachment_left embed,
+    .peep_oembed_attachment .attachment_left object,
+    .peep_oembed_attachment .attachment_left iframe
+    {
+        width: 300px;
+        height: 220px;
+    }
+
+    .peep_oembed_attachment:hover .attachment_delete {
+        display: block;
+    }
+
+    .attachment_delete {
+        position: absolute;
+        right: 0;
+        width:12px;
+        height:12px;
+        display: none;
+    }
+    .peep_oembed_attachment .link.two_column,
+    .peep_oembed_attachment .video.two_column {
+        padding-left: 108px;
+    }
+    
+    .peep_oembed_attachment .video.two_column.peep_video_playing {
+        padding-left: 0;
+    }
+    .peep_oembed_attachment .link.two_column .attachment_left,
+    .peep_oembed_attachment .video.two_column .attachment_left {
+        max-width: 100px;
+        margin-left: -108px;
+        margin-top: 4px;
+    }
+    .peep_oembed_attachment .video.two_column.peep_video_playing .attachment_left {
+        margin: 0 0 4px 0;
+        width: 100%;
+        max-width: none;
+    }
+    .peep_oembed_attachment .link .peep_oembed_video_cover {
+        display: none;
+    }
+}
+{/literal}{/style}
+
+    <div id="{$uniqId}" class="peep_oembed_attachment clearfix {if !empty($containerClass)}{$containerClass}{/if}">
+        {if !empty($delete)}
+            <a class="attachment_delete peep_miniic_delete {if !empty($deleteClass)}{$deleteClass}{/if}" href="javascript://"></a>
+         {/if}
+
+        <div class="{$data.type} {if !empty($data.thumbnail_url) || !empty($data.url)}two_column has_thumbnail{elseif !empty($data.html)}two_column has_html{else}one_column{/if} clearfix">
+            <div class="attachment_left">
+                {if !empty($data.thumbnail_url) }
+                    {*<a href="{$data.href}" target="_blank">
+                        <div class="peep_photo_attachment_stage" style="background-image: url({$data.thumbnail_url});"></div>
+                    </a>*}
+                    
+                    <a href="{$data.href}" target="_blank">
+                        <img src="{$data.thumbnail_url}" class="attachment_thumb" /> <div class="peep_oembed_video_cover"></div>
+                    </a>
+                {elseif !empty($data.url)}
+                <a href="javascript://" onclick="PEEP.showImageInFloatBox('{$data.href}');">
+                    <div class="peep_photo_attachment_stage" style="background-image: url({$data.url});"></div>
+                </a>
+                {elseif !empty($data.html)}
+                    {$data.html}
+                {/if}
+            </div>
+            <div class="attachment_right ">
+                {if !empty($data.title)}
+                    <div class="attachment_title"><a href="{$data.href}" target="_blank">{$data.title}</a></div>
+                {/if}
+                {if !empty($data.description)}
+                    <div class="attachment_desc peep_remark">{$data.description}</div>
+                {/if}
+            </div>
+        </div>
+    </div>

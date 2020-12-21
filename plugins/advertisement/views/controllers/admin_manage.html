@@ -1,0 +1,102 @@
+{style}
+{literal}
+.fpage{
+   
+    padding: 10px;
+}
+.fcontent{
+    float:left;
+    width:100%;   
+    padding: 0px;
+    text-align:center;
+    height: 460px;
+
+}
+.fcontent h3{
+margin-bottom:5px;
+}
+.fright{
+    float:right;
+    width:21%;
+    padding:10px 0;
+    background: #ccc;
+    text-align: center;
+    height: 220px;
+margin-top:20px ;
+display:block;
+}
+.fleft{
+    float:left;
+    width:21%;
+    padding:10px 0;
+    background: #ccc;
+    text-align: center;
+    height: 220px;
+margin-top:20px ;
+}
+#top_link, #bottom_link, #left_link, #right_link{
+padding:5px 5px;
+border-radius:3px;
+background:green;
+color:#fff;
+text-decoration:none;
+
+}
+.ads_banner_list{
+}
+{/literal}
+{/style}
+
+{$menu}
+<div class=" peep_superwide peep_automargin peep_stdmargin">
+    <div style="padding: 10px; 0">{text key='ads+ads_manage_select_plugin_text'}&nbsp;&nbsp;
+        <select onchange="window.location = '?plugin='+$(this).val();">
+            {foreach from=$plugins key='pluginKey' item='plugin'}
+            <option value="{$pluginKey}"{if $pluginKey == $selected} selected="selected"{/if}>{$plugin}</option>
+            {/foreach}
+        </select>
+    </div>
+    <div class="fpage clearfix">
+
+        <div class="fcontent">
+            <div class="" style="position:relative; width:100%; height:80px; background:#ccc;"><h3 style="padding-top:10px; font-weight:normal; ">{text key='ads+ftop'}</h3><a id="top_link" href="javascript://">{$top_link_label}</a></div>
+
+            <div class="fleft"><h3 style="font-weight:normal; ">{text key='ads+fleft'}</h3><a id="left_link" href="javascript://">{$left_link_label}</a></div>
+        
+            <div style="height: 280px; width:43%; float:left; margin-left:20px;"><h3 style="text-align: center;padding-top:100px;">Site Content</h3></div>
+
+            <div class="fright"><h3 style="font-weight:normal; ">{text key='ads+fright'}</h3><a id="right_link" href="javascript://">{$right_link_label}</a></div>
+        
+            <div class="" style="position:relative; width:100%; height:80px; margin-top:280px; background:#ccc;"><h3 style="padding-top:10px; font-weight:normal; ">{text key='ads+fbottom'}</h3><a id="bottom_link" href="javascript://">{$bottom_link_label}</a></div>
+
+        </div>
+       </div>
+    
+</div>
+
+<div style="display: none;">
+    <div id="top_form" style="padding: 10px;">
+    {form name='top_form'}
+        <div class="ads_banner_list">{input name='banners'}</div>
+        <div style="text-align: center;padding: 10px;">{submit name='submit'}</div>
+    {/form}
+</div>
+<div id="left_form" style="padding: 10px;">
+    {form name='left_form'}
+        <div class="ads_banner_list">{input name='banners'}</div>
+        <div style="text-align: center;padding: 10px;">{submit name='submit'}</div>
+    {/form}
+</div>
+<div id="right_form" style="padding: 10px;">
+    {form name='right_form'}
+        <div class="ads_banner_list">{input name='banners'}</div>
+        <div style="text-align: center;padding: 10px;">{submit name='submit'}</div>
+    {/form}
+</div>
+<div id="bottom_form" style="padding: 10px;">
+    {form name='bottom_form'}
+        <div class="ads_banner_list">{input name='banners'}</div>
+        <div style="text-align: center;padding: 10px;">{submit name='submit'}</div>
+    {/form}
+</div>
+</div>

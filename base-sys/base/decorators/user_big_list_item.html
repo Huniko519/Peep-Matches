@@ -1,0 +1,28 @@
+<div class="peep_ulist_big_item">
+    <div class="peep_ulist_big_item_cont">
+        <div style="background-image: url('{$data.avatar}');" class="peep_ulist_big_avatar">
+            {if !empty($data.isMarked)}
+                <div class="peep_ic_bookmark peep_bookmark_icon"></div>
+            {/if}
+            
+            {if !empty($data.online)}
+                <div class="peep_miniic_live"><span class="peep_live_on"></span></div>
+            {/if}
+            
+            <a href="{url_for_route for="base_user_profile:[username=>`$data.username`]"}" class="peep_ulist_big_avatar_shadow"></a>
+            
+            {if !empty($data.avatarAction)}
+                <a {if !empty($data.avatarAction.userId)}data-user-id="{$data.avatarAction.userId}" {/if}class="peep_ulist_big_avatar_bookmark" href="{$data.avatarAction.href}">{$data.avatarAction.label}</a>
+            {/if}
+        </div>
+        <div class="peep_ulist_big_info">
+            <div class="clearfix">
+                <a class="peep_ulist_big_info_name peep_small" href="{url_for_route for="base_user_profile:[username=>`$data.username`]"}">{$data.displayName}</a>
+            </div>
+            {$data.fields}
+            {if !empty($data.activity)}
+                {$data.activity}
+            {/if}
+        </div> 
+    </div>
+</div>

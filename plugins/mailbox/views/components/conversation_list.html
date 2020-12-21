@@ -1,0 +1,64 @@
+<div class="peep_mailbox_left {if $singleMode}peep_mailbox_single_mode{/if} peep_mailbox_left_loading" id="conversationListControl">
+    {form name='conversationSearchForm'}
+    <div class="peep_mailbox_search">
+        {input name='conversation_search' id="conversation_search"}
+    </div>
+    {/form}
+    <div class="peep_mailbox_conv_options active peep_small peep_alt2 clearfix" id="openBulkOptionsBtn">
+        <div class="peep_mailbox_conv_options_inner">
+            <span class="peep_mailbox_conv_options_label" >{text key='mailbox+bulk_options'}</span>
+            <input type="checkbox" id="mailboxConvOptionSelectAll"> <span class="peep_mailbox_conv_options_checklab">{text key='mailbox+check_all'}</span>
+            <div class="peep_context_action_block clearfix peep_context_action_value_block peep_profile_toolbar_group">
+                <div class="peep_context_action">
+                    <a href="javascript://" class="peep_context_action_value" id="mailboxConvOpenActions">{text key='mailbox+actions'}</a>
+                    <span class="peep_context_more"></span>
+                    <div style="opacity: 1; top: 18px;" class="peep_tooltip peep_small peep_tooltip_top_right peep_hidden" id="mailboxConvOpenActionsContainer">
+                        <div class="peep_tooltip_tail">
+                            <span></span>
+                        </div>
+                        <div class="peep_tooltip_body">
+                            <ul class="peep_context_action_list peep_border">
+                                <li><a href="javascript://" id="mailboxConvActionMarkUnread">{text key='mailbox+bulk_mark_unread_btn'}</a></li>
+                                <li><a href="javascript://" id="mailboxConvActionMarkRead">{text key='mailbox+bulk_mark_as_read_btn'}</a></li>
+                                <li><a href="javascript://"  id="mailboxConvActionDelete" class="peep_mild_red">{text key='mailbox+delete_conversation_title'}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript://" id="closeBulkOptionsBtn" class="peep_miniic_delete">
+            </a>
+        </div>
+    </div>
+    <div id="conversationItemListWrapper">
+        <div class="peep_mailbox_left_body" id="conversationItemListContainer">
+            <div id="conversationItemListSub"><!-- list of conversations will be loaded here --></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/template" id="conversationListNoContentPrototypeBlock">
+    <div class="peep_mailbox_no_content">{text key="mailbox+conversation_item_list_empty"}</div>
+</script>
+
+<script type="text/template" id="conversationItemPrototypeBlock">
+    <div class="peep_mailbox_convers_info clearfix">
+        <input type="checkbox" class="peep_mailbox_conv_option" id="conversation_<%= conversationId %>">
+        <div class="peep_mailbox_avatar">
+            <div class="peep_avatar">
+                <a id="conversationItemAvatarProfileUrl"><img src="<%= avatarUrl %>" alt="" title="<%= shortUserData %>" style="max-width: 100%;" id="conversationItemAvatarUrl"></a>
+            </div>
+        </div>
+        <div class="peep_mailbox_convers_info_body">
+            <div class="peep_mailbox_convers_info_string peep_small">
+                <a id="conversationItemProfileUrl"><b><%= displayName %></b></a><div class="peep_mailbox_convers_info_date peep_small" id="conversationItemDateTime"><%= dateLabel %></div>
+            </div>
+            <div class="peep_mailbox_convers_info_content peep_small clearfix">
+                <div class="peep_left"> <span class="ic_reply" id="conversationItemHasReply" style="display: <% if (reply){ %> none<% } else { %> inline-block <% } %>;"></span> <span class="peep_mailbox_convers_preview" id="conversationItemPreviewText"><%= previewText %></span></div>
+                <div class="peep_mailbox_convers_count_new"></div>
+                <div class="peep_mailbox_convers_info_attach"></div>
+            </div>
+        </div>
+    </div>
+</script>

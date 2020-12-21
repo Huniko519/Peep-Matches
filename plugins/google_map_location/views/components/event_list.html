@@ -1,0 +1,23 @@
+{style}
+{literal}
+    .peep_googlemap_loaction_event_list
+    {
+        width:90%;
+    }
+{/literal}
+{/style}
+{if empty($noButton)}<div class="peep_right">{decorator name='button' onclick="window.location='$add_new_url'" class='peep_ic_add' langLabel='event+add_new_button_label'}</div>{/if}
+{if !empty($contentMenu)}{$contentMenu}{/if}
+<div class="peep_event_list clearfix">
+    <div class="peep_automargin peep_googlemap_loaction_event_list">
+      {if !empty($no_events) }
+        <div class="peep_nocontent">{text key="event+no_events_label"}</div>
+      {else}
+          {foreach from=$events key='key' item='event'}
+                {decorator name='ipc' addClass='peep_smallmargin' data=$event infoString="<a href=\"`$event.eventUrl`\">`$event.title`</a>"}
+          {/foreach}
+          <br />
+          {$paging}
+      {/if}
+    </div>
+</div>

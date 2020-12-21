@@ -1,0 +1,26 @@
+{style}
+{literal}
+.peep_cnews_video_embed embed, .peep_cnews_video_embed object, .peep_cnews_video_embed iframe {
+    height: 220px;
+    width: 300px;
+}
+{/literal}
+{/style}
+
+{if !empty($vars.status)}<div class="peep_cnews_body_status peep_smallmargin">{$vars.status|more:300}</div>{/if}
+
+{if !empty($vars.image)}
+<div class="clearfix peep_cnews_oembed_atch" id="{$uniqId}">
+    <div class="peep_cnews_item_picture">
+        <a href="{if !empty($vars.url)}{$vars.url}{else}javascript://{/if}"><img src="{$vars.image}" /><div class="peep_oembed_video_cover"></div></a>
+    </div>
+    <div class="peep_cnews_item_content">
+        <a class="peep_cnews_item_title" href="{if !empty($vars.url)}{$vars.url}{else}javascript://{/if}">{$vars.title}</a>
+        <div class="peep_remark peep_smallmargin">{$vars.description}</div>
+        <div class="peep_cnews_action_activity event_cnews_activity">[ph:activity]</div>
+    </div>
+</div>
+{elseif !empty($vars.embed)}
+    <div class="peep_cnews_video_embed" id="{$uniqId}">{$vars.embed}</div>
+    <div class="peep_cnews_action_activity event_cnews_activity">[ph:activity]</div>
+{/if}

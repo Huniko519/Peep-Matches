@@ -1,0 +1,114 @@
+<style>
+.peep_content_menu{
+	font-size: 0px;
+	font-family: 'UbuntuBold', "Trebuchet MS", "Helvetica CY", sans-serif;
+	text-transform: none;
+	font-weight: normal;
+}
+
+.peep_content_menu_wrap{
+	margin-bottom:20px;
+}
+
+.peep_content_menu li{
+    float: left;
+	padding-left: 10px;
+	border-bottom: 1px solid #e8e8e8;
+border-left: 0px solid #e8e8e8;
+width:100%;
+}
+.peep_content_menu li:first-child {
+	border-color: #e8e8e8;
+}
+.peep_content_menu li a{
+    display: block;
+	padding: 8px 8px 8px 8px;
+	font-size: 13px;
+	color: #626060;
+width:100%;
+}
+
+
+.peep_content_menu li.active {
+    background: none;
+}
+.peep_content_menu li.active, .peep_content_menu li.active +li {
+	border-color: #e8e8e8;
+}
+.peep_content_menu li.active a {
+    background: none;
+    color: #9f9f9f; 
+    text-decoration: none;
+}
+
+.peep_content_menu li a:hover {
+    color: #9f9f9f; 
+    text-decoration: none;
+}
+</style>
+
+<div class="clearfix">{add_content key='stories.add_content.list.top' listType=$listType}</div>
+
+{style}{literal}
+.peep_wrap_normal{
+    white-space: normal;
+}
+{/literal}{/style}
+
+	
+      <div class="peep_stories_list clearfix">
+
+         <div class="peep_superwide clearfix" style="float:left; ">
+{$tagSearch}
+			{if $isBrowseByTagCase}       
+				{if $tag}
+	         	<div class="peep_anno peep_stdmargin peep_center ">
+					{text key="stories+results_by_tag" tag=$tag}
+				</div>
+				{else}
+					{$tagCloud}				
+				{/if}
+         	{/if}
+                
+            {if $showList}
+            {foreach from=$list item='post'}
+            
+				{assign var=dto value=$post.dto}
+
+				{*-- decorator data*}
+
+				{assign var=userId value=$dto->getAuthorId()}
+				{capture assign='info_string'}
+					<a href="{$post.url}">{$dto->getTitle()}</a>
+				{/capture}
+
+				{capture assign='content'}
+					{$post.text}{if $post.showMore}... <a class="peep_lbutton" href="{$post.url}">{text key='stories+more'}</a>{/if}
+				{/capture}
+				{assign var='id' value=$dto->getId()}
+				{*~~ decorator data*}
+
+            	{decorator name='ipc' infoString=$info_string addClass="peep_stdmargin" content=$content toolbar=$toolbars[$id] avatar=$avatars[$userId]}
+            {foreachelse}
+            	{text key='base+empty_list'}
+            {/foreach}
+
+            {if $paging}<center>{$paging}</center>{/if}
+            {/if}
+        </div>    
+
+         <div class="peep_supernarrow" style="float:right; width:25%;">
+{if $addNew_isAuthorized}
+    {if $addNew_promoted}
+       <center> <div class="peep_stdmargin">{decorator name='button' id='btn-add-new-post' langLabel='stories+add_new'}</div></center>
+    {else}
+       <center> <div class="peep_stdmargin">{decorator name='button' id='btn-add-new-post' langLabel='stories+add_new' onclick="location.href='`$url_new_post`'"}</div></center>
+    {/if}
+{/if}
+ 	{$menu}
+         	{if $list|@count > 0}
+	         	{$tagCloud}
+         	{/if}
+         </div>
+
+      </div>

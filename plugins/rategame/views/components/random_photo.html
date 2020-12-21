@@ -1,0 +1,79 @@
+{script}
+{literal}
+$(document).ready(function(){
+
+$('#rategame_sex_select').change(function(){
+
+    window.location.href='{/literal}{$rategame_url}{literal}'+this.value;
+
+});
+
+});
+{/literal}
+{/script}
+{style}
+{literal}
+h1{
+display:none;
+}
+    .photo_preview_image
+    {
+        padding: 0px ; 
+        width: 100%;
+background:#262b37;
+text-align:center;
+ -webkit-box-shadow: 0 3px 10px 3px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 3px 10px 3px rgba(0,0,0,0.5);
+  box-shadow: 0 3px 10px 3px rgba(0,0,0,0.5);
+    }
+    .photo_preview_image img
+    {
+        height: 500px;
+        width: 80%;
+z-index:6;
+-webkit-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.7);
+  box-shadow: 0 5px 10px 5px rgba(0,0,0,0.7);
+    }
+
+{/literal}
+{/style}
+<div class="peep_full clearfix">
+ <div class="sex_choose_panel peep_center" style="text-align: center">
+        {text key='rategame+select_sex'}
+        <select name="rategame_sex_select" id="rategame_sex_select">
+            <option value='0'>{text key="rategame+sex_all"}</option>
+            {foreach from=$allSex item='sex'}
+            <option value='{$sex.value}' {if $selectedSex==$sex.value}selected="selected"{/if}>{$sex.name}</option>
+            {/foreach}
+        </select>
+    </div>
+
+      
+</div>
+<div class="peep_full"> 
+    
+    <div class="peep_std_margin nophotos" style="{if $no_photos}display: block;{else}display: none;{/if}">
+        {text key='rategame+no_photos'}
+    </div>
+    
+    {if !$no_photos}
+    <div class="peep_full peep_center rategame_preview">
+<div class="rate_action">
+        {$rate}                      
+</div>   
+<div class="skip_button">
+            {decorator name="button" langLabel='rategame+next' buttonName='refresh' id='rategame_refresh' }
+        </div>   
+        <div class="peep_full  photo_preview_image">
+
+
+            <img src="{$url}"></img>
+        </div>
+    </div>
+    
+    {/if}
+</div>    
+ 
+
+

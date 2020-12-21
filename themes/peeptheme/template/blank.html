@@ -1,0 +1,55 @@
+{style}
+	{literal}
+		body,html {background:#fff;min-width:0; height: 100%;}
+		.peep_page_wrap {
+			background: none;
+		}
+		.peep_footer {
+			background: none;
+			border: none;
+		    clear: both;
+		    height: 96px;
+		    margin-top: -99px;
+		    padding: 1px 0;
+		    position: relative;		
+    	}
+		.peep_footer .peep_canvas {
+		    margin: 0 auto;
+		    width: 996px;
+		    word-wrap: break-word;
+		    background: none;
+		}
+		.peep_footer .peep_page {
+		    margin: 0 0 0 auto;
+		    padding: 0 18px;
+		    background: none;
+		}
+		.peep_sign_in_cont {
+			position: relative;
+		}
+		body > .peep_page_wrap {
+		     min-height: 100%;
+		     position: relative;
+		}
+		.peep_page_padding {
+		     padding-bottom: 99px;
+		     background: none;
+		}
+	{/literal}
+{/style}
+<div class="peep_page_wrap">
+	<div class="peep_page_padding">
+		{$content}
+	</div>
+</div>
+<div class="footer" style="margin-top:-50px;">
+	
+		<div class="peep_center clearfix">
+			{$bottom_menu}
+			<div class="site_copyright">
+				{text key='base+copyright'}
+			</div>
+			
+		
+	</div>
+</div>  

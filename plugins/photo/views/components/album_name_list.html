@@ -1,0 +1,12 @@
+<div class="peep_dropdown_list_wrap">
+    <ul class="peep_dropdown_list" style="z-index: 10;">
+        <li>{text key="photo+create_album"}<span class="peep_add_item"></span></li>
+        {if !empty($albumNameList)}
+            <li class="peep_dropdown_delimeter"><div></div></li>
+            {foreach $albumNameList as $album}
+                <li data-name="{$album|escape}">{$album|escape}</li>
+            {/foreach}
+        {/if}
+    </ul>
+</div>
+<div class="peep_dropdown_arrow_down upload_photo_spinner"></div>

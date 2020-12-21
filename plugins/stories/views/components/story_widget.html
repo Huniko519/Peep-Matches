@@ -1,0 +1,41 @@
+{style}{literal}
+.peep_ipc .peep_ipc_info .clearfix .peep_ipc_toolbar{
+    white-space: normal;
+}
+
+{/literal}{/style}
+
+{if !empty($list)}
+
+	{foreach from=$list item='post'}
+		{*-- decorator data*}
+		{assign var="dto" value=$post.dto}
+		{assign var=userId value=$dto->getAuthorId()}
+		{capture assign='info_string'}
+			<a href="{$post.url}">{$post.dto->getTitle()|strip_tags}</a>
+		{/capture}
+
+		{capture assign="moreLink"}<a class="peep_lbutton" href="{$post.url}">{text key='stories+more'}</a>{/capture}
+
+		{capture assign='content'}
+			{if $commentInfo[$dto->id] > 0}
+				<div class="peep_small peep_smallmargin">
+					<span class="peep_txt_value">
+						{$commentInfo[$dto->id]}
+					</span>
+					<a href="{$post.url}">
+						{text key='stories+toolbar_comments'}
+					</a>
+				</div>
+			{/if}
+			<div class="peep_smallmargin">{if $post.truncated}{$post.text|strip_tags}... {$moreLink}{else}{$post.text|strip_tags}{/if}</div>
+		{/capture}
+{decorator name='ipc' addClass='peep_smallmargin' infoString=$info_string content=$content avatar=$avatars[$userId] toolbar=$tbars[$dto->id]}
+		
+	{/foreach}
+{else}
+	<div class="peep_nocontent">
+		{capture assign ='addnewurl'}{url_for_route for='post-save-new'}{/capture}
+		{text key="stories+index_widget_empty"} <a href="{$addnewurl}">{text key='stories+add_new'}</a>
+	</div>
+{/if}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<name>Clean Cache</name>
+	<key>cachecleaner</key>
+	<description>
+		clean site cache after design theme, theme upgrade, devloping plugins and plugin upgrade
+	</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/</authorUrl>
+	<developerKey>1</developerKey>
+    <build>1</build>
+    <copyright>(c)peepdev co. All rights reserved.</copyright>
+	<license>The Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

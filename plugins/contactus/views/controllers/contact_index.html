@@ -1,0 +1,35 @@
+{style}
+{literal}
+table.peep_table_1 td.peep_label
+{
+    width: 35%;
+}
+{/literal}
+{/style}
+{form name='contact_form'}
+<table class="contact_form peep_table_1 peep_form peep_automargin" style="width: 95%;">
+    <tr class="peep_alt1 peep_tr_first">
+		<td class="peep_label">{label name='to'}</td>
+		<td class="peep_value">{input name='to'}{error name='to'}</td>
+	</tr>
+    <tr class="peep_alt2">
+		<td class="peep_label">{label name='from'}</td>
+		<td class="peep_value">{input name='from'}{error name='from'}</td>
+	</tr>
+    <tr class="peep_alt1">
+		<td class="peep_label">{label name='subject'}</td>
+		<td class="peep_value">{input name='subject'}{error name='subject'}</td>
+	</tr>
+    <tr class="peep_alt2">
+		<td class="peep_label">{label name='message'}</td>
+		<td class="peep_value">{input name='message'}{error name='message'}</td>
+	</tr>
+    <tr class="peep_alt1 peep_tr_last">
+		<td class="peep_label">{label name='captcha'}</td>
+		<td class="peep_value peep_center">{input name='captcha'}{error name='captcha'}</td>
+	</tr>
+</table>
+<div class="clearfix peep_stdmargin peep_automargin" style="width: 100%;"><div class="peep_center">
+{submit name='send' class='peep_button peep_ic_mail'}
+</div></div>
+{/form}

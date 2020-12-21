@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+    <name>Contacts News</name>
+    <key>cnews</key>
+    <description>Newsfeed for user and his contacts show at homepage with likes and comments</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/company</authorUrl>
+	<developerKey>1</developerKey>
+    <build>2</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+	<license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

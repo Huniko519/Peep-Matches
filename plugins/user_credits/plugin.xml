@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+	<name>Credits System</name>
+	<key>usercredits</key>
+	<description>Allow users to earn, purchase and spend credits for site activities</description>
+    <author>Peepdev Co.</author> 
+<authorEmail>addons@peepdev.com</authorEmail> 
+<authorUrl>http://www.peepdev.com/company</authorUrl>
+ <developerKey>1</developerKey> 
+<build>2302</build> 
+<copyright>(C) 2015 Peepdev Co. All rights reserved.</copyright> 
+<license>Peepdev License</license> 
+<licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

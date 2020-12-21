@@ -1,0 +1,26 @@
+<div class="peep_automargin peep_wide">
+{form name="form"}
+	<table class="peep_table_1 peep_form">
+	    <tr class="peep_tr_first">
+	        <th class="peep_name peep_txtleft" colspan="2">
+	            <span class="peep_section_icon peep_ic_gear_wheel">{text key="stories+settings"}</span>
+	        </th>
+	    </tr>
+	    
+	    <tr class="{cycle values='peep_alt1, peep_alt2'} peep_tr_last">
+	    	<td style="width: 50%">
+	    		{text key="stories+admin_settings_results_per_page"}
+	    	</td>
+	    	<td>
+	    		{input name='results_per_page' style="width: 50px;"}<br />
+	    		{error name='results_per_page'}
+	    	</td>
+	    </tr>
+	</table>
+    <div class="clearfix peep_submit peep_stdmargin">
+    	<div class="peep_right">
+    	{submit name="submit"}
+    	</div>
+    </div>
+{/form}
+</div>

@@ -1,0 +1,114 @@
+ {style}
+.peep_content_menu li{
+width:100%;
+border-bottom:1px solid #cdcdcd !important;
+}
+.peep_content_menu li:last-child{
+border-bottom:none !important;
+}
+.peep_content_menu li a{
+padding:15px 10px 15px 10px;
+width:100%;
+font-size:13px;
+margin-left:-5px;
+}
+.peep_content_menu li a:hover{
+border-bottom:none;
+color: #d76243;
+}
+
+.peep_content_menu{
+
+margin-top:20px;
+width:100%;
+background:#f0f0f0;
+border-radius:8px;
+-webkit-border-radius:8px;
+-moz-border-radius:8px;
+-o-border-radius:8px;
+-ms-border-radius:8px;
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_content_menu li.active a {
+border-bottom:none;
+border-left:3px solid #111;
+}
+
+{/style}
+
+
+<div class="peep_supernarrow peep_left">
+
+<div class="peep_btn_delimiter peep_stdmargin peep_center">
+    {if $isAuthorized}
+        
+
+        {decorator name="button" class="peep_ic_add" id="add-new-photo-album" langLabel="photo+upload_photos" onclick="{$url}();"}
+    {elseif !empty($isPromo)}
+        {decorator name="button" class="peep_ic_add" id="add-new-photo-album" langLabel="photo+create_album"}
+        {decorator name="button" class="peep_ic_add" id="btn-add-new-photo" langLabel="photo+upload_photos"}
+
+        {script}
+            $("#add-new-photo-album,#btn-add-new-photo").on("click", function()
+            {
+                PEEP.authorizationLimitedFloatbox({$promoMsg});
+            });
+        {/script}
+    {/if}
+
+
+    <div class="peep_hidden">
+        <div id="add-new-photo-album-content">
+            <div style="margin-bottom: 16px;">
+                <div class="peep_smallmargin">
+                    <input id="add-new-photo-album-name" type="text" value="{text key="photo+album_name"}" class="invitation">
+                    <span class="peep_error" style="color: #FF0000; display: none">{text key='base+form_validator_required_error_message'}</span>
+                </div>
+                <textarea id="add-new-photo-album-desc" class="invitation">{text key='photo+album_desc'}</textarea>
+            </div>
+            <div style="margin-bottom: 8px;" class="clearfix">
+                <div class="peep_right">
+                    <span class="peep_button">
+                        <span class=" peep_ic_submit peep_positive">
+                            <input type="button" class="peep_ic_submit peep_positive" value="{text key='photo+add_photos'}">
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{if !empty($user)}
+    <div class="clearfix" style="margin-bottom: 12px;">
+        <div class="peep_user_list_picture">
+            {decorator name='avatar_item' data=$avatar}
+        </div>
+        <div class="peep_user_list_data">
+            <a href="{$avatar.url}">{$avatar.title}</a>
+            <div class="peep_small">
+                {if !empty($onlineStatus)}
+                    {online_now userId=$user->id}
+                {elseif $user->activityStamp}
+                    {text key="base+user_list_activity"}:
+                    <span class="peep_remark">{format_date timestamp=$user->activityStamp}</span>
+                {/if}
+            </div>
+        </div>
+    </div>
+{/if}
+
+
+
+{$subMenu}
+
+{if !empty($photoMenu)}
+    {$photoMenu}
+{/if}
+
+</div>
+
+

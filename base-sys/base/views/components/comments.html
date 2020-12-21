@@ -1,0 +1,53 @@
+<div id="{$cmpContext}" class="{if $mini}peep_comments_mipc{else}peep_comments_ipc{/if}{if $bottomList} peep_comments_form_top{/if}{if empty($formCmp)} peep_comments_no_form{/if}">
+   {capture name='comments'}
+   {if $topList}
+   <div class="comments_list_cont">
+	   {$commentList}
+   </div>
+   {/if}
+   {if isset($formCmp)}
+      <div class="peep_comments_form_wrap_pre" style="display:block;"></div>
+      <div class="peep_comments_form_wrap">
+      <div class="peep_comments_input_wrap clearfix">
+            <div class="peep_comments_item_picture">{decorator name='avatar_item' data=$currentUserInfo}</div>
+            <div class="peep_comments_item_info clearfix" style="padding:bottom:40px;"><span class="comment_add_arr"></span>
+                <div class="peep_comments_input">
+                    
+                    <textarea id="{$taId}" class="comments_fake_autoclick invitation">{text key='base+comment_form_element_invitation_text'}</textarea>
+
+                </div>
+<div class"comment_att">
+<span class="peep_attachment_icons">
+                        <div class="peep_attachments clearfix">
+                            {if !empty($attch)}<a href="javascript://" class="image" id="{$buttonContId}">{/if}
+                                
+                            </a>
+                        </div>
+                    </span>
+</div>
+            </div>
+
+        </div>
+        {if !empty($attch)}{$attch}{/if}
+        <div id="{$attchId}"></div>
+        
+        
+        
+        </div>
+    {else}
+      <div class="peep_smallmargin peep_center peep_comments_msg">{$authErrorMessage}</div>
+   {/if}
+   {if $bottomList}
+   <div class="comments_list_cont">
+	   {$commentList}
+   </div>
+   {/if}
+   {/capture}
+   {if $wrapInBox}
+   {block_decorator name='box' type='empty' addClass='peep_add_comments_form peep_stdmargin' langLabel='base+comment_box_cap_label' iconClass='peep_ic_comment'}
+   {$smarty.capture.comments}
+   {/block_decorator}
+   {else}
+   {$smarty.capture.comments}
+   {/if}
+</div>

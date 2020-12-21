@@ -1,0 +1,66 @@
+{script}
+{literal}
+$(document).ready(
+	function(){
+		$('tr.item-row', '#list-table').hover(
+				function(){
+					$('div.management-controls', $(this)).show();
+				},
+				function(){
+					$('div.management-controls', $(this)).hide();
+				}
+		)
+	}
+);
+{/literal}
+{/script}
+{style}
+{literal}
+#list-table tr.item-row{
+	height: 30px;
+}
+{/literal}
+{/style}
+{$menu}
+<table id="list-table" class="ow_stdmargin ow_full ow_table_2">
+	<tr class="ow_tr_first">
+		<th>
+			{text key="blogs+manage_page_post_title"}
+		</th>
+		<th width="130">
+			{text key="blogs+manage_page_last_updated"}
+		</th>
+		<th width="80">
+			{text key="blogs+manage_page_status"}
+		</th>
+		<th width="70">
+		</th>
+	</tr>
+	{foreach from=$list item='post' name='post'}
+		<tr class=" item-row {cycle values="ow_alt1, ow_alt2"} {if $smarty.foreach.post.last}ow_tr_last{/if}">
+			<td class="ow_left">
+				<a style="display: block; min-height: 20px;" href="{url_for_route for="post:[id=>`$post->id`]"}">
+					{$post->title}
+				</a>
+			</td>
+			<td class="ow_small">
+				{format_date timestamp=$post->timestamp}
+			</td>
+			<td class="ow_small">
+				{$status}
+			</td>
+			<td style="min-width: 100px;">
+				<div class="management-controls" style="display: none;">
+					<a href="{url_for_route for="post-save-edit:[id=>`$post->id`]"}?back-to={$thisUrl}" class="ow_lbutton">{text key="base+edit"}</a>
+					<a href="{url_for for="BLOGS_CTRL_Save:delete:[id=>`$post->id`]"}?back-to={$thisUrl}" onclick="return confirm('{text key='blogs+are_you_sure'}');" class="ow_lbutton ow_red">{text key="base+delete"}</a>
+				</div>
+			</td>
+		</tr>
+	{foreachelse}
+		<tr class="ow_tr_last">
+			<td class="ow_center" colspan="10">{text key='blogs+no_posts'}</td>
+		</tr>
+	{/foreach}
+</table>
+<br />
+{$paging}

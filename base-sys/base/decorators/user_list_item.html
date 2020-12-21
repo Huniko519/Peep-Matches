@@ -1,0 +1,37 @@
+<div class="peep_user_list_item {if isset($data.set_class)} {$data.set_class}{/if}"{if !empty($data.contId)} id="{$data.contId}"{/if}>
+
+    {if !empty($data.contextMenu)}
+        <div class="peep_uli_context_menu">
+            {$data.contextMenu}
+	</div>
+    {/if}
+    <div class="peep_ulist_big_item_cont">
+<div class="ulist_activity">
+{if !empty($data.activity)}{$data.activity}{/if}
+</div>
+        {decorator name='avatar_item' class='peep_user_list_picture' data=$data.avatar }
+
+<div class="peep_ulist_big_info">
+
+        
+        <div class="peep_ulist_big_info_name ">
+            {if !empty($data.content)}<div class="peep_remark peep_user_list_content" >{$data.content}</div>{/if}
+                    
+        {if !empty($data.userUrl)}
+        <a href="{$data.userUrl}">{$data.displayName}</a>
+        {else}
+            {if !empty($data.noUserLink)}{$data.displayName}{else}{user_link username=$data.username name=$data.displayName}{/if}
+        {/if}
+            
+        </div>
+</br></br>
+{if !empty($data.fields)}{$data.fields}{/if}
+    </div>
+{if !empty($data.toolbar)}
+			{$data.toolbar}
+        {/if}
+    </div>
+
+    
+        
+</div>

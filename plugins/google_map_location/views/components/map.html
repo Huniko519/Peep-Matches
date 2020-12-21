@@ -1,0 +1,7 @@
+{if $boxLabel}
+    {block_decorator name='box' iconClass=$boxIcon label=$boxLabel addClass=$boxClass}
+        {$map}
+    {/block_decorator}
+{else}
+    {$map}
+{/if}

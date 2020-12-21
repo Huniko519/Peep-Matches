@@ -1,0 +1,747 @@
+.peep_mailbox_table {
+    margin-top:50px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    position: relative;
+    
+}
+.peep_mailbox_table.peep_mailbox_table_empty .peep_mailbox_no_content {
+    text-align: center;
+    padding-top: 240px;
+    display: block;
+}
+body .peep_mailbox_table_empty .peep_mailbox_left div.peep_mailbox_no_content {
+    text-align: center;
+    padding-top: 178px;
+    display: block;
+}
+.peep_mailbox_left div.peep_mailbox_no_content {
+    display: none;
+}
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_cap,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_cap div,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_subject_block,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_date_cap.sticky,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_log,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_mailbox_form,
+.peep_mailbox_table_empty .peep_mailbox_left .peep_mailbox_left_body div,
+.peep_mailbox_table_empty .peep_mailbox_right .peep_chat_message_block,
+.peep_mailbox_table_empty .peep_mailbox_left .peep_mailbox_conv_options  {
+    display: none;
+}
+.peep_mailbox_left {
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 36%;
+    
+}
+body .peep_mailbox_left_loading .peep_mailbox_left_body div.peep_mailbox_convers_info,
+body .peep_mailbox_left_loading .peep_mailbox_left_body div.peep_mailbox_no_content,
+body .peep_mailbox_left_loading .peep_mailbox_conv_options{
+    display: none;
+}
+.peep_mailbox_left .peep_mailbox_left_body {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 36% !important;
+    bottom: 0;
+    overflow-y: auto;
+    padding-top:
+}
+.peep_mailbox_left.peep_mailbox_bulk_options .peep_mailbox_left_body {
+    top: 99px;
+}
+.peep_mailbox_table_empty .peep_mailbox_left .peep_mailbox_left_body,
+body .peep_mailbox_left_loading .peep_mailbox_left_body {
+    top: 62px;
+}
+.peep_mailbox_left .peep_mailbox_left_body .jspPane,
+.peep_mailbox_left .peep_mailbox_left_body .jspContainer {
+    width: 100% !important;
+}
+.peep_mailbox_right {
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 60%;
+    margin-left:10px;
+
+}
+.peep_mailbox_right_preloading {
+    width: 100%;
+    height: 595px;
+    display: none;
+}
+.peep_mailbox_right_preloading div.peep_mailbox_no_content {
+    display: none;
+}
+.peep_mailbox_table_empty .peep_mailbox_right_preloading,
+.peep_mailbox_table_empty .peep_mailbox_right_preloading div.peep_mailbox_no_content {
+    display: block;
+    background: none;
+}
+.peep_mailbox_right_loading div.peep_mailbox_right_preloading {
+    display: block;
+}
+.peep_mailbox_right_loading div.peep_mailbox_right_preloading div.peep_mailbox_no_content {
+    display: none;
+}
+.peep_mailbox_table .peep_mailbox_right_loading .peep_mailbox_cap,
+.peep_mailbox_right_loading .peep_mailbox_subject_block,
+.peep_mailbox_right_loading .peep_mailbox_date_cap.sticky,
+.peep_mailbox_right_loading .peep_mailbox_log,
+.peep_mailbox_right_loading .peep_mailbox_form,
+.peep_mailbox_right_loading.peep_mailbox_right .peep_chat_message_block {
+    display: none;
+}
+.peep_mailbox_table  .peep_mailbox_cap {
+    height: 95px;
+    width: 100%;
+    border-width: 0 0 0px 0;
+    border-style: solid;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.peep_mailbox_table .peep_mailbox_right .peep_mailbox_cap {
+    padding-right: 48px;
+    padding-left: 66px;
+
+}
+.peep_mailbox_table .peep_mailbox_left .peep_mailbox_cap {
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+}
+.peep_mailbox_table .peep_mailbox_left  .peep_mailbox_left_body {
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_mailbox_table .peep_mailbox_search {
+    height: 62px;
+    width: 100%;
+    overflow: hidden;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 16px;
+}
+.peep_mailbox_table  .peep_mailbox_search input {
+    height: 28px;
+    padding: 6px 26px 6px 6px;
+    font-size: 11px;
+    line-height: 14px;
+}
+.peep_mailbox_search .peep_btn_close_search {
+    right: 20px;
+    top: 20px;
+}
+.peep_mailbox_username {
+    height: 50px;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+    padding: 4px 0 16px 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: absolute;
+margin-top:50px;
+margin-left:-50px;
+    min-width: 380px;
+}
+.userisonline .peep_mailbox_username {
+    padding: 4px 0 16px 8px;
+}
+.peep_mailbox_right_chat.peep_mailbox_right .peep_mailbox_username {
+    padding: 16px 0 16px 8px;
+
+}
+.peep_mailbox_right_chat.peep_mailbox_right.userisonline .peep_mailbox_username {
+    padding: 4px 0 16px 8px;
+}
+.peep_mailbox_right_chat.peep_mailbox_right .peep_mailbox_subject_block {
+    display: none;
+}
+.peep_mailbox_username .peep_mailbox_username_text {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+
+.userisonline .peep_mailbox_username .peep_mailbox_username_text {
+    margin-left: 110px;
+}
+.userisonline .peep_mailbox_username .peep_mailbox_subject_block{
+    margin-left: 0px;
+padding-top:20px;
+}
+.peep_mailbox_right .peep_mailbox_avatar .peep_chat_status {
+    display: none;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    background-image:none;
+border:2px solid #fff;
+        border-radius:100%;
+        -webkit-border-radius:100%;
+        -moz-border-radius:100%;
+	background:#93d63b;
+    margin-left:15px;
+margin-top:15px;
+z-index:99;
+position:absolute;
+}
+.peep_mailbox_switch_to_chat {
+    bottom: 12px;
+    left: 20px;
+    margin-top: 0;
+    display: none;
+    position: absolute;
+}
+.peep_mailbox_right_chat.userisonline .peep_mailbox_switch_to_chat {
+    display: block;
+}
+.peep_mailbox_right.userisonline  .peep_mailbox_avatar .peep_chat_status {
+    display: inline-block;
+}
+.peep_mailbox_table .peep_mailbox_cap .peep_mailbox_convers_actions {
+    display: inline-block;
+    float: right;
+    margin-right: -52px;
+    margin-top: 5px;
+    position: relative;
+}
+.peep_mailbox_convers_actions .peep_miniic_control span{
+height:20px;
+}
+.peep_mailbox_convers_actions .peep_tooltip {
+    z-index: 3;
+}
+.peep_mailbox_right .peep_mailbox_convers_actions .peep_tooltip_body {
+    padding: 4px 0;
+}
+.peep_mailbox_convers_actions .peep_tooltip_body .peep_context_action_list li a {
+    padding: 4px 12px;
+}
+.peep_mailbox_table .peep_mailbox_cap a.peep_mailbox_convers_actions_btn {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.peep_mailbox_convers_actions_btn:last-child {
+    margin-left: 8px;
+}
+.peep_mailbox_convers_info {
+    padding: 6px 10px 6px 26px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    cursor: pointer;
+    background-position: 8px 50%;
+    background-repeat: no-repeat;
+    transition: 0.3s padding;
+    -moz-transition: 0.3s padding;
+    -webkit-transition: 0.3s padding;
+}
+.peep_mailbox_single_mode .peep_mailbox_convers_info.chats,
+.peep_mailbox_single_mode .peep_mailbox_convers_info.mails {
+    padding: 6px 10px 6px 6px;
+    background-image: none;
+}
+body .peep_mailbox_bulk_options .peep_mailbox_convers_info.chats,
+body .peep_mailbox_bulk_options .peep_mailbox_convers_info.mails {
+    padding: 6px 10px 6px 26px;
+    background-image: none;
+    position: relative;
+}
+.peep_mailbox_convers_info input[type=checkbox] {
+    display: none;
+}
+.peep_mailbox_bulk_options .peep_mailbox_convers_info input[type=checkbox] {
+    position: absolute;
+    left: 8px;
+    top: 23px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.peep_mailbox_convers_info_new.mails .peep_mailbox_convers_info_string a,
+.peep_mailbox_convers_info_new.mails .peep_mailbox_convers_info_content .peep_mailbox_convers_preview,
+.peep_mailbox_convers_info_new.chats .peep_mailbox_convers_info_content .peep_mailbox_convers_preview,
+.peep_mailbox_convers_info_new.chats .peep_mailbox_convers_info_string a {
+    font-weight: bold;
+}
+.peep_mailbox_avatar {
+    float:left;
+    width: 50px;
+}
+.peep_mailbox_cap .peep_mailbox_avatar {
+   position:absolute;
+    margin-top: -60px;
+width:80px;
+height:80px;
+}
+.peep_mailbox_cap .peep_mailbox_avatar .peep_avatar{
+   background-image:none;
+background:#fff;
+padding:15px;
+border:1px solid #ececec;
+
+border-radius:100%;
+-webkit-border-radius:100%;
+-moz-border-radius:100%;
+width:80px;
+height:80px;
+}
+.peep_mailbox_cap .peep_mailbox_avatar .peep_avatar img{
+border-radius:100%;
+-webkit-border-radius:100%;
+-moz-border-radius:100%;
+width:80px;
+height:80px;
+}
+.peep_mailbox_convers_info_body {
+    margin-left: 57px;
+}
+.peep_mailbox_convers_info_string {
+    width: 100%;
+    margin-top: 6px;
+    padding-right: 44px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: hidden;
+}
+.peep_mailbox_convers_info_string a:hover {
+    text-decoration: none;
+}
+.peep_mailbox_convers_info_content {
+    margin-top: 6px;
+    padding-right: 44px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: hidden;
+}
+.peep_mailbox_convers_count_new {
+    float: right;
+    margin-right: -44px;
+    font-size: 10px;
+    line-height: 14px;
+    display: none;
+}
+.peep_mailbox_convers_info_attach {
+    margin-right: -44px;
+    float: right;
+    width: 11px;
+    height: 16px;
+    display: none;
+}
+.peep_mailbox_convers_info.attach .peep_mailbox_convers_info_attach {
+    display: block;
+}
+body .peep_mailbox_convers_info_new.attach .peep_mailbox_convers_info_attach {
+    display: none;
+}
+.peep_mailbox_convers_info_new .peep_mailbox_convers_count_new {
+    display: inline-block;
+}
+.peep_mailbox_convers_info_date {
+    line-height: 14px;
+    margin-right: -44px;
+    display: inline-block;
+    float: right;
+    font-size: 10px;
+    text-align: right;
+}
+.peep_mailbox_message_date {
+    float: right;
+    font-size: 10px;
+}
+.peep_mailbox_message_header {
+    margin-bottom: 2px;
+}
+.peep_mailbox_message_header a {
+    font-size: 11px;
+    font-weight: bold;
+}
+.peep_mailbox_convers_info .peep_mailbox_convers_preview {
+    line-height: 16px;
+    vertical-align: top;
+}
+.peep_console_mailbox_txt {
+    padding-right: 19px;
+}
+.peep_mailbox_convers_preview .peep_chat_wink,
+.peep_console_mailbox_txt .peep_chat_wink {
+    padding: 0;
+    margin: 0;
+}
+.peep_mailbox_items_list.peep_mailbox_single_mode .console_list_ipc_item {
+    background-image: none;
+    padding-left: 0;
+}
+.peep_mailbox_convers_info .peep_mailbox_convers_info_string a {
+    vertical-align: middle;
+    font-size: 12px;
+    float: left;
+}
+.peep_mailbox_convers_info span.ic_reply {
+    vertical-align: top;
+    margin-right: 4px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.peep_mailbox_right.userisonline .peep_mailbox_subject_block .peep_mailbox_switch_to_chat {
+    display: inline-block;
+}
+.peep_mailbox_subject_text {
+    font-size: 16px;
+    line-height: 20px;
+    height: 20px;
+    display: inline-block;
+    overflow: hidden;
+}
+.peep_mailbox_date_cap {
+    height: 28px;
+    padding: 6px 16px;
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_mailbox_conv_options {
+    height: 28px;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    padding: 6px 8px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_mailbox_bulk_options .peep_mailbox_conv_options {
+    text-align: left;
+    cursor: auto;
+    height: auto;
+    padding: 6px 20px 6px 8px;
+    height: 37px;
+    transition: 0.3s height;
+    -moz-transition: 0.3s height;
+    -webkit-transition: 0.3s height;
+}
+.peep_mailbox_conv_options_label {
+    padding-right: 12px;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+.peep_mailbox_bulk_options .peep_mailbox_conv_options .peep_mailbox_conv_options_label {
+    display: none;
+}
+.peep_mailbox_bulk_options .peep_mailbox_conv_options .peep_mailbox_conv_options_inner {
+    position: relative;
+}
+.peep_mailbox_conv_options input[type=checkbox] {
+    margin: 0 8px 0 0;
+    padding: 0;
+    vertical-align: middle;
+    display: none;
+}
+.peep_mailbox_conv_options_checklab {
+    vertical-align: middle;
+    font-weight: bold;
+    margin-right: 4px;
+    display: none;
+}
+.peep_mailbox_conv_options .peep_context_action_block.peep_context_action_value_block {
+    float: none;
+    display: none;
+    vertical-align: middle;
+}
+.peep_mailbox_conv_options .peep_miniic_delete {
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    margin-top: -5px;
+    width: 10px;
+    height: 10px;
+    display: none;
+}
+.peep_mailbox_bulk_options .peep_mailbox_conv_options input[type=checkbox],
+.peep_mailbox_bulk_options .peep_mailbox_conv_options .peep_mailbox_conv_options_checklab,
+.peep_mailbox_bulk_options .peep_mailbox_conv_options .peep_context_action_block.peep_context_action_value_block,
+.peep_mailbox_bulk_options .peep_mailbox_conv_options .peep_miniic_delete {
+    display: inline-block;
+}
+.peep_mailbox_left_body.peep_scrollable .peep_mailbox_conv_options {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+}
+.peep_mailbox_date_cap.sticky {
+    padding: 6px 16px;
+    border-width: 0 0 1px 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    z-index: 2;
+}
+.peep_mailbox_date_cap .peep_mailbox_converstion_date {
+    line-height: 13px;
+    vertical-align: middle;
+}
+.peep_mailbox_switch_to_chat a {
+    vertical-align: middle;
+    margin-left: 4px;
+}
+.peep_mailbox_log_wrap {
+    position: relative;
+}
+.peep_mailbox_log {
+    width: 100%;
+    height: 474px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 16px;
+    overflow-y: auto;
+}
+.peep_mailbox_log.textarea_active {
+    height: 284px;
+}
+.peep_mailbox_right_chat .peep_mailbox_log {
+    height: 475px;
+
+}
+.peep_mailbox_log,
+.peep_mailbox_log .jspContainer,
+.peep_mailbox_log .jspPane {
+    width: 100% !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0px !important;
+}
+.peep_mailbox_log .jspTrack {
+    z-index: 2;
+}
+body .peep_mailbox_log .peep_dialog_item {
+    max-width: 90%;
+}
+.peep_mailbox_log .peep_time_block p {
+    margin: 0;
+    padding: 0;
+}
+.peep_mailbox_log .peep_time_block p span.peep_time_text {
+    font-size: 10px;
+    line-height: 1px;
+    margin: -5px 0 0;
+}
+.peep_mailbox_message_content {
+    font-size: 12px;
+}
+.peep_mailbox_grouped_messages {
+    padding: 10px 16px 0px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_mailbox_log .peep_mailbox_grouped_messages:first-child {
+    padding-top: 20px;
+}
+.peep_mailbox_log_message {
+    margin-bottom: 10px;
+}
+.peep_mailbox_log_action {
+    margin-bottom: 10px;
+}
+.peep_mailbox_form {
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px;
+}
+.peep_mailbox_right .peep_chat_message_block.peep_hidden {
+    display: none;
+}
+.peep_mailbox_right .peep_chat_message_block {
+    display: block;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+}
+.peep_mailbox_message_input {
+    position: relative;
+}
+body .peep_mailbox_message_input .toolbar {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    right: 1px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 1px 1px 0;
+    display: none;
+    border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 0;
+    -webkit-border-radius: 3px 0;
+}
+body .peep_mailbox_form .peep_mailbox_message_input textarea {
+    resize: none;
+    height: 28px;
+    line-height: 17px;
+}
+.peep_mailbox_form .peep_attachment_btn,
+.peep_mailbox_form .peep_attachment_icons {
+    display: none;
+}
+body .peep_mailbox_form.active .peep_mailbox_message_input .toolbar {
+    display: block;
+}
+body .peep_mailbox_form.active .peep_mailbox_message_input textarea {
+    padding-top: 32px;
+    height: 76px;
+}
+.peep_mailbox_form.active .peep_attachment_btn,
+.peep_mailbox_form.continue .peep_attachment_btn,
+.peep_mailbox_form.active .peep_attachment_icons,
+.peep_mailbox_form.continue .peep_attachment_icons {
+    display: block;
+}
+.peep_mailbox_log_action .peep_comments_item_header .peep_lbutton {
+    margin-top: 6px;
+}
+.peep_mailbox_log_date {
+    position: relative;
+    padding-top: 22px;
+    margin-bottom: 15px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
+.peep_mailbox_log_date span {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    padding: 0 4px;
+}
+.peep_mailbox_log .peep_mailbox_grouped_messages:last-child .peep_mailbox_log_date {
+    margin-bottom: 22px;
+}
+.peep_mailbox_message_content_attach {
+    padding-top: 8px;
+}
+.peep_mailbox_message_content .peep_file_attachment_info,
+.peep_dialog_items_wrap .peep_file_attachment_info,
+.peep_mailbox_log .peep_file_attachment_info {
+    padding-left: 17px;
+    background-position: 8px 50%;
+    background-repeat: no-repeat;
+}
+.peep_dialog_in_item.fileattach .peep_file_attachment_info {
+    padding-left: 13px;
+    background-position: 4px 50%;
+}
+.peep_mailbox_convers_info.mails {
+    background-position: 8px 27px;
+    background-repeat: no-repeat;
+}
+.peep_mailbox_convers_info.chats {
+    background-position: 8px 27px;
+    background-repeat: no-repeat;
+}
+/*Sent file attachment*/
+
+.peep_mailbox_message_content .peep_file_attachment_info {
+    padding-right: 8px;
+}
+.peep_mailbox_message_content .peep_file_attachment_name {
+    padding-right: 4px;
+}
+.peep_mailbox_message_content .peep_file_attachment_name {
+    font-weight: normal;
+}
+/**
+**/
+
+.showOnlineOnly .offline, .showOnlineOnly .offline.peep_hidden, .showAllUsers .offline.peep_hidden{
+    display: none;
+}
+
+.showAllUsers .offline{
+    display: list-item;
+}
+/**
+**/
+
+.peep_mailbox_message_input .jhtmlarea,
+.peep_mailbox_form.continue .peep_mailbox_message_input .jhtmlarea {
+    display: none;
+}
+.peep_mailbox_form.active textarea {
+    display: none;
+}
+.peep_mailbox_form.continue textarea {
+    display: block;
+}
+.peep_mailbox_form.active .peep_mailbox_message_input .jhtmlarea {
+    display: block;
+    position: relative;
+    width: 100% !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.peep_mailbox_form.active .peep_mailbox_message_input .input_ws_cont {
+    padding: 28px 4px 4px 4px;
+}
+.peep_mailchat_new_message .peep_chat_mailchat_inputarea div.jhtmlarea {
+    border: none;
+}
+.peep_mailchat_new_message .peep_chat_mailchat_inputarea .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2px 2px 0;
+}
+.peep_mailchat_new_message .peep_chat_mailchat_inputarea .input_ws_cont {
+    padding: 28px 4px 4px 4px;
+}
+#peep_chat_now{
+display:none;
+}

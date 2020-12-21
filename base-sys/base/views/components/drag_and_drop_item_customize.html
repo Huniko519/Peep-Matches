@@ -1,0 +1,42 @@
+<div {if !empty($box.avaliable_sections)}peep_avaliable_sections="{$box.avaliable_sections}"{/if} class="{if $box.clone}clone{/if}{if $box.freeze} peep_dnd_freezed{/if} access_{$box.access} clearfix component" id="{$box.uniqName}">
+    <div class="schem_component dd_handle" {if $render} style="display: none" {/if}>
+        <div class="peep_dnd_schem_item schem_component {$box.icon}" >
+            <span class="peep_label dd_title">
+                {$box.title}
+            </span>
+            <span class="action" style="display: none">
+                
+                <a class="peep_ic_gear_wheel dd_edit" href="javascript://;" title="{text key="base+widgets_action_edit"}">&nbsp;</a>
+                <a class="peep_ic_delete close dd_delete" href="javascript://;" title="{text key="base+widgets_action_delete"}">&nbsp;</a>
+                
+            </span>
+        </div>
+    </div>
+
+    {if $render}
+        <div class="view_component peep_dnd_widget peep_dnd_widget_customize {$box.uniqName}">
+            {capture name="boxCap"}
+                {if !$box.freeze}
+                    <div class="peep_box_icons actions">
+                        <a href="javascript://;" class="peep_ic_gear_wheel control dd_edit">&nbsp;</a>
+                        <a href="javascript://;" class="peep_ic_delete control dd_delete">&nbsp;</a>
+                    </div>
+                {/if}
+            {/capture}
+
+            {block_decorator name='box'
+                iconClass=$box.icon
+                label=$box.title
+                capAddClass="peep_dnd_configurable_component dd_handle clearfix"
+                capContent=$smarty.capture.boxCap
+                type=$box.type
+                addClass="peep_stdmargin clearfix"
+                toolbar=$box.toolbar}
+
+                {$content}
+
+            {/block_decorator}
+        </div>
+    {/if}
+
+</div>

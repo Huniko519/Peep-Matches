@@ -1,0 +1,26 @@
+{$input}
+<input name="mailbox_new_message_user" id="mailbox_new_message_user" type="text" class="invitation userFieldInputControl" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="{text key='mailbox+to'}" />
+<div style="display: block;" class="peep_mailchat_autocomplete" id="userFieldAutocompleteControl">
+    <div class="peep_mailchat_autocomplete_inner">
+        <ul style="display: block;" id="userFieldUserList">
+            <li class="clearfix" style="display: none;" id="userFieldUserListItem-notfound">
+                <span class="peep_chat_user_not_found">{text key="mailbox+user_not_found"}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul style="display: none;" id="userFieldUserListPrototype">
+    <li style="display: none;" id="userFieldUserListItemPrototype" class="userFieldUserListItem">
+        <a class="clearfix peep_chat_item" href="javascript://">
+            <span class="peep_chat_item_photo_wrap">
+                <span class="peep_chat_item_photo">
+                    <span class="peep_chat_in_item_photo"><img width="32px" height="32px" alt="" src="{$defaultAvatarUrl}" id="userFieldUserListItemAvatarUrl"></span>
+                </span>
+            </span>
+            <span class="peep_chat_item_author">
+                <span class="peep_chat_in_item_author" id="userFieldUserListItemUsername"></span>
+            </span>
+        </a>
+    </li>
+</ul>

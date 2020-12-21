@@ -1,0 +1,13 @@
+{$menu}
+
+{block_decorator name='box' capEnabled=0 type='empty' addClass='peep_stdmargin peep_automargin'}
+    {form name="save-config-form"}
+        <table class="peep_table_1 peep_form">
+            <tr class="peep_alt2 peep_tr_first peep_tr_last">
+                <td class="peep_label">{label name="allow_grant_credits"}</td>
+                <td >{input name="allow_grant_credits"}</td>
+            </tr>
+        </table>
+        <div class="clearfix peep_submit peep_smallmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div></div>
+    {/form}
+{/block_decorator}

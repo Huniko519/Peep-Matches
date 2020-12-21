@@ -1,0 +1,58 @@
+{* component Spotlight *}
+{script}
+        {literal}
+        (function(){
+            $("#add_to_list").hover(
+              function(){
+                $("#spot_add_info").fadeIn("fast");
+               
+              },
+              function(){
+                $("#spot_add_info").fadeOut("fast");
+               
+              }
+          );            
+       }());
+       {/literal}
+    {/script}
+{script}
+{if $authorized || $userInList}
+    {literal}
+
+    $("#spot_add_info").click(function(){
+        spotLightFloatBox = PEEP.ajaxFloatBox("SPOTLIGHT_CMP_Floatbox", {} , {width:380, iconClass: "peep_ic_heart", title: "{/literal}{if $userInList}{text key="spotlight+floatbox_header_remove_from_list"}{else}{text key="spotlight+floatbox_header"}{/if}{literal}"});
+    });
+
+    {/literal}
+
+{else}
+    {literal}
+
+    $("#add_to_list").click(function(){
+    PEEP.authorizationLimitedFloatbox({/literal}{$authMsg}{literal});
+    });
+
+    {/literal}
+{/if}
+{/script}
+
+
+<div class="spotlight peep_center clearfix" style="height: 100%;">
+<div class="spot_add_button" style="float:left;" {if $userInList}{/if}><a href="javascript://" id="add_to_list"></a><div class="spot_add_avatar">{decorator name='avatar_item' data=$avatar}</div><a href="javascript://" id="spot_add_info">{if $userInList}<div class="spot_info_remove" title="{text key="spotlight+remove_from_spot_light"}"></div>{else}<div class="spot_info_add" title="{text key="spotlight+add_yourself_here"}"></div>{/if}</a><div class="spot_arrow"></div></div>  
+{if $userList}
+	<div class="users_slideshow clearfix">
+	{foreach from=$userList item='user' name='userList'}
+		{if $smarty.foreach.userList.first}<div class=" spot_light_normal_item peep_lp_avatars"  style="display: {if $count > $number_of_users}none{else}block{/if};">{/if}
+			<div class="peep_avatar">
+                {if !empty($user.isMarked)}<div class="peep_ic_bookmark peep_bookmark_icon"></div>{/if}
+                <a class="peep_item_set{$number_of_users}"  href="{$user.url}"><img title="{$user.displayName}<br/>{$user.sex}<br/> {$user.age}{$user.googlemap_location}" src="{$user.avatarUrl}" alt="{$user.displayName}" style="max-width: 100%"/></a>
+            </div>
+		{if $smarty.foreach.userList.iteration % ( $number_of_users * $number_of_rows ) == 0 && !$smarty.foreach.userList.last}</div><div class="spot_light_normal_item peep_lp_avatars" style="display: none; background:none;">{/if}
+		{if $smarty.foreach.userList.last}</div>{/if}
+	{/foreach}
+	</div>
+{else}
+    <div class="peep_nocontent">{text key="spotlight+label_no_users"}</div>
+{/if}
+ 
+</div>

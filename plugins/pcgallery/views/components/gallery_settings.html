@@ -1,0 +1,28 @@
+{form name="pcGallerySettings"}
+<table class="peep_table_1 peep_form peep_smallmargin">
+    <tbody>
+            <tr class="peep_alt1 peep_tr_first">
+                <td style="width: 60px; text-align: center;" class="peep_label">
+                    <input type="radio" name="source" value="all" {if $source=="all"}checked="checked"{/if} />
+                </td>
+                <td class="peep_value">
+                    {text key='pcgallery+source_all_label'}
+                </td>
+            </tr>
+            <tr class="peep_alt1 peep_tr_last">
+                <td style="width: 60px; text-align: center;" class="peep_label">
+                    <input type="radio" name="source" id="ugallery-source-album" value="album" {if $source=="album"}checked="checked"{/if} />
+                </td>
+                <td class="peep_value">
+                    {label name="album"}
+                    {input name="album"}
+                </td>
+            </tr>
+    </tbody>
+</table>
+<div class="clearfix peep_submit">
+    <div class="peep_right">
+        {submit name='save' class='peep_ic_save'}
+    </div>
+</div>
+{/form}

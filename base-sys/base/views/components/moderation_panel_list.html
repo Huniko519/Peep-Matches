@@ -1,0 +1,7 @@
+<ul class="peep_report_con">
+    {foreach from=$items item="item"}
+        <li>
+            <a href="{$item.url}">{$item.label}</a> <span class="peep_report_count">{$item.count}</span>
+        </li>
+    {/foreach}
+</ul>

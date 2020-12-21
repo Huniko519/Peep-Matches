@@ -1,0 +1,29 @@
+
+<form id="{$formId}" action="{$fields.formActionUrl}" method="post">
+	<input type="hidden" name="return" value="{$fields.return_url}" />
+	<input type="hidden" name="cancel_return" value="{$fields.cancel_return_url}" />
+	<input type="hidden" name="notify_url" value="{$fields.notify_url}" />
+	<input type="hidden" name="rm" value="2" />
+	<input type="hidden" name="business" value="{$fields.business}" />
+	<input type="hidden" name="item_name" value="{$sale->entityDescription}" />
+	<input type="hidden" name="no_note" value="1" />
+	<input type="hidden" name="currency_code" value="{$sale->currency}" />
+	<input type="hidden" name="custom" value="{$sale->hash}" />
+	<input type="hidden" name="charset" value="utf-8" />
+{if $sale->recurring}
+	<input type="hidden" name="cmd" value="_xclick-subscriptions" />
+	<input type="hidden" name="a3" value="{$sale->totalAmount}" />
+	{if $sale->period > 90}
+	<input type="hidden" name="p3" value="{$monthPeriod}" />
+    <input type="hidden" name="t3" value="M" />
+	{else}
+	<input type="hidden" name="p3" value="{$sale->period}" />
+	<input type="hidden" name="t3" value="D" />
+	{/if}
+	<input type="hidden" name="src" value="1" />
+{else}
+	<input type="hidden" name="cmd" value="_xclick" />
+	<input type="hidden" name="bn" value="PP-BuyNowBF" />
+	<input type="hidden" name="amount" value="{$sale->totalAmount}" />
+{/if}
+</form>

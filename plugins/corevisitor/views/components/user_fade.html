@@ -1,0 +1,53 @@
+{foreach $userList as $user}
+    {if $user@iteration <= 1}
+        {capture append='even'}
+    {else}
+        {capture append='odd'}
+    {/if}
+
+    <div class="ul_themevisitor_item">
+<div class="ul_themevisitor_item_header">{text key='corevisitor+themevisitor_item_title'}</div>
+       <div class="ul_themevisitor_avatar peep_center" style="background-image: url('{$user.src}');">
+            
+<div class="ul_themevisitor_info">
+
+            <div class="ul_themevisitor_info_row ul_themevisitor_info_name"><a href="{$user.url}">{$user.displayName}</a></div>
+            <div class="ul_themevisitor_info_line"></div>
+            <div class="ul_themevisitor_info_row info_sex_age">
+                {if !empty($user.data.sex)}
+                    {$user.data.sex}{if !empty($user.data.age)},
+                        {$user.data.age}
+                    {/if}
+                {else}
+                    {if !empty($user.data.age)}
+                        {$user.data.age}
+                    {/if}
+                {/if}
+            </div>
+            <div class="ul_themevisitor_info_row info_address">
+                {if !empty($user.data.address)}
+                    {$user.data.address}
+                {/if}
+            </div>
+<a class="themevisitor_link" href="{$user.url}"></a>
+        </div>
+       </div> 
+    </div>
+        
+    {/capture}
+{/foreach}
+
+<div id="fade-user-list" class="ul_themevisitor">
+    <div class="ul_themevisitor_row clearfix">
+        {foreach $even as $item}
+            {$item}
+        {/foreach}
+    </div>
+    <div class="ul_themevisitor_row peep_center clearfix ul_themevisitor_ralign">
+        {if !empty($odd)}
+            {foreach $odd as $item}
+                {$item}
+            {/foreach}
+        {/if}
+    </div>
+</div>

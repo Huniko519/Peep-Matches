@@ -1,0 +1,49 @@
+<div style="font-size:13px;font-family:Lucida Grande,Verdana;">
+    <p>
+       {text key="notifications+email_html_head" userName=$userName}
+    </p>
+    <p>
+      {text key="notifications+email_html_description"}
+    </p>
+    {foreach from=$items item=section key=time}
+        <div style="font-weight: bold">{$time|simple_date:$time:true}</div>
+        <ul>
+            {foreach from=$section item=item}
+                <li style="padding: 3px; list-style-type: none; margin-left: 5px; list-style-position: outside; width: 490px;">
+                    <div style="display: inline-block; width: 40px; vertical-align: top;">
+                        <a href="{$item.avatar.url}" style="text-decoration: none;" {if !empty($item.avatar.title)}title="{$item.avatar.title}"{/if}>
+                            <img width="40" height="40" src="{$item.avatar.src}">
+                        </a>
+                    </div>
+                    <div style="display: inline-block; word-wrap: break-word; vertical-align: top; width: 400px;">
+                        <div>{$item.string}</div>
+                        {if $item.content}
+                            <div style="font-size:11px;color:#666;">{$item.content}</div>
+                        {/if}
+                    </div>
+
+                    <div style="display: inline-block; width: 40px; word-wrap: break-word; vertical-align: top;">
+                        {if !empty($item.contentImage.src)}
+                            {if !empty($item.contentImage.url)}
+                                <a href="{$item.contentImage.url}">
+                            {/if}
+                            <img src="{$item.contentImage.src}" width="40" {if !empty($item.contentImage.title)}title="{$item.contentImage.title}"{/if}>
+                            {if !empty($item.contentImage.url)}
+                                </a>
+                            {/if}
+                        {/if}
+                    </div>
+                </li>
+            {/foreach}
+        </ul>
+    {/foreach}
+
+<p>
+{text key="notifications+email_html_bottom"}
+</p>
+{if $single}
+    <a href="{$unsubscribeUrl}">{text key="notifications+unsubscribe_one_label"}</a>
+{/if}
+<a href="{$settingsUrl}">{text key="notifications+settings_edit_label"}</a> |
+<a href="{$unsubscribeAllUrl}">{text key="notifications+unsubscribe_all_label"}</a>
+</div>

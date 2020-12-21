@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin>
+    <name>Google Location</name>
+    <key>googlelocation</key>
+    <description>Enable locations in registration and view users location on google map at profile .</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+    <authorUrl>http://www.peepdev.com/company</authorUrl>
+    <developerKey>1</developerKey>
+    <build>2</build>
+    <copyright>(c) 2016 Peepdev Co. All rights reserved.</copyright>
+    <license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

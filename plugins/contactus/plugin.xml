@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<name>Contact Us</name>
+	<key>contactus</key>
+	<description>Let users contact site admin via contact us form ( admin can set departments from plugin settings, and users can choose right department to contact )</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/company</authorUrl>
+	<developerKey>1</developerKey>
+    <build>1</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+	<license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

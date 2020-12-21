@@ -1,0 +1,12 @@
+<div id="{$item.uniqId}" class="peep_console_item {$item.class}" {if $item.hidden}style="display: none;"{/if}>
+    {$item.html}
+    {if !empty($item.content)}
+        <div id="{$item.content.uniqId}" class="PEEP_ConsoleItemContent" style="display: none;">
+
+            {block_decorator name="tooltip" addClass="console_tooltip peep_tooltip_top_right"}
+                {$item.content.html}
+            {/block_decorator}
+
+        </div>
+    {/if}
+</div>

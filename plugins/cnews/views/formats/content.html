@@ -1,0 +1,29 @@
+{if !empty($vars.status)}<div class="peep_cnews_body_status">{$vars.status|more:300}</div>{/if}
+<div class="clearfix">
+    <div class="peep_cnews_item_content">
+        <a class="peep_cnews_item_title" href="{if !empty($vars.url)}{$vars.url}{else}javascript://{/if}">{$vars.title}</a>
+        <div class="peep_remark peep_smallmargin">{$vars.description}</div>
+
+        {if !empty($vars.activity)}
+        <div class="peep_cnews_action_activity forum_cnews_activity">
+        <div class="peep_small peep_cnews_activity">
+            <div class="peep_cnews_activity_title">
+                {if isset($vars.activity.url)}
+                    <a href="{$vars.activity.url}">{$vars.activity.title}</a>
+                {else}
+                    {$vars.activity.title}
+                {/if}
+            </div>
+            <div class="peep_border peep_cnews_activity_content">
+                {decorator name='mini_ipc'
+                    avatar=$vars.activity.avatarData
+                    content=$vars.activity.description
+                    profileUrl=$vars.activity.avatarData.url
+                    displayName=$vars.activity.avatarData.title
+                }
+            </div>
+        </div>
+        </div>
+        {/if}
+    </div>
+</div>

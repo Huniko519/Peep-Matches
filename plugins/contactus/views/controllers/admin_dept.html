@@ -1,0 +1,26 @@
+<table class="peep_table_1 peep_automargin" style="width: 400px;">
+    {foreach from=$contacts item=contact name=contact}
+    <tr class="{cycle values='peep_alt1,peep_alt2'} {if $smarty.foreach.contact.last}peep_tr_last{/if} {if $smarty.foreach.contact.first}peep_tr_first{/if}">
+        <td width="1"><a href="{$deleteUrls[$contact.name]}" onclick="return confirm('{text key="base+are_you_sure"}');" style="width:16px; height:16px; display:block; margin:0 auto;background-repeat:no-repeat;background-position: 50% 50%;" class="peep_ic_delete"></a></td>
+        <td>{$contact.email}</td>
+        <td>{$contact.label}</td>
+    </tr>
+    {/foreach}
+</table>
+
+{form name='add_dept'}
+<div style="width: 400px; margin:0 auto"><table class="peep_table_1 peep_form peep_automargin">
+    <tr class="peep_alt1 peep_tr_first peep_tr_last">
+		<td class="peep_value">{input name='email'}</td>
+		<td class="peep_value">{input name='label'}</td>
+	</tr>
+</table>
+    <div class="clearfix peep_submit peep_stdmargin">
+    	<div class="peep_right">
+        {submit name='add' class='peep_button peep_ic_save'}
+	</div></div>
+</div>	
+
+{/form}
+
+{*<a href="{$deleteCatUrls[$id]}" onclick="return confirm('{text key="base+are_you_sure"}');" style="width:16px; height:16px; display:block; margin:0 auto;background-repeat:no-repeat;background-position: 50% 50%;" class="peep_ic_delete"></a>*}

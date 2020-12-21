@@ -1,0 +1,77 @@
+<div id="{$uniqId}">
+{if !empty($data.text)}
+    <div class="peep_cnews_body_status peep_smallmargin">{$data.text|more:150}</div>
+{/if}
+
+{if $displayFormat=="video"}
+
+
+<div class="clearfix peep_cnews_oembed_atch">
+    <div class="peep_cnews_item_picture">
+        <a href="{$data.url}" data-action="play">
+            <img src="{$data.image.thumbnail}" style="max-width: 100%;">
+            <div class="peep_oembed_video_cover"></div>
+        </a>
+    </div>
+    <div class="peep_cnews_item_content">
+        <a href="{$data.url}" class="peep_cnews_item_title">
+            {$data.title}
+        </a>
+        
+        <div class="peep_remark peep_smallmargin">
+            {$data.description|more:150}
+        </div>
+    </div>
+</div>
+
+
+{elseif $displayFormat=="image_content"}
+
+
+<div class="peep_cnews_oembed_atch clearfix">
+    <div class="peep_cnews_item_picture">
+        <a href="{$data.url}">
+            <img src="{$data.image.thumbnail}" style="max-width: 100%;" />
+        </a>
+    </div>
+    <div class="peep_cnews_item_content">
+        
+        <a href="{$data.url}" class="peep_cnews_item_title">
+            {$data.title}
+        </a>
+        
+        <div class="peep_remark peep_smallmargin">
+            {$data.description|more:150}
+        </div>
+    </div>
+</div>
+
+
+{elseif $displayFormat=="image"}
+
+
+<div class="peep_cnews_large_image clearfix">
+    <div class="peep_cnews_item_picture">
+        <a href="{$data.image.preview}" data-src="{$data.image.view}" onclick="PEEP.showImageInFloatBox($(this).data('src')); return false;">
+            <img style="max-width: 100%;" src="{$data.image.preview}" />
+        </a>
+    </div>
+</div>
+
+
+{elseif $displayFormat=="content"}
+
+
+<div class="peep_cnews_item_content">
+    <a href="{$data.url}" class="peep_cnews_item_title">
+        {$data.title}
+    </a>
+    <div class="peep_remark peep_smallmargin">
+        {$data.description|more:150}
+    </div>
+</div>
+
+
+
+{/if}
+</div>

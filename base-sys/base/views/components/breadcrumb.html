@@ -1,0 +1,16 @@
+{block_decorator name='box' type='empty' addClass='peep_breadcrumb peep_stdmargin clearfix'}
+	
+	{if $title != ''}<span class="peep_breadcrumb_title">{$title}</span>{/if}
+	
+	{foreach from=$items item='crumb' name='c'}
+        <span class="peep_breadcrumb_item{if !empty($crumb.class)} {$crumb.class}{/if}">
+        {if !empty($crumb.href)}
+            <a href="{$crumb.href}">{$crumb.label}</a>
+        {else}
+            {$crumb.label}
+        {/if}
+        </span>
+        {if !$smarty.foreach.c.last}&raquo;{/if}
+	{/foreach}
+	
+{/block_decorator}

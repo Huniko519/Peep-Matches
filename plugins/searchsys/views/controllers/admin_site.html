@@ -1,0 +1,40 @@
+{$menu}
+
+<div class="clearfix">
+    <div class="peep_left peep_wide">
+        {block_decorator name='box' langLabel='searchsys+search_for' iconClass='peep_ic_info'}
+        <form method="post">
+            <input type="hidden" name="action" value="update_groups" />
+            <table class="peep_table_2 peep_smallmargin">
+                {foreach from=$groups item='group'}
+                <tr class="peep_alt1">
+                    <td width="1">
+                        <input type="checkbox" name="groups[{$group.key}]"{if  in_array($group.key, $active)} checked="checked" {/if} value="1" />
+                    </td>
+                    <td class="peep_txtleft">
+                        {$group.label}
+                        {if $group.key == 'forum'} <span class="peep_small peep_right peep_txtright" style="width: 200px;">{text key='searchsys+forum_search_warning'}</span>{/if}
+                    </td>
+                </tr>
+                {/foreach}
+                <tr class="peep_alt{cycle values='1,2'}"><td colspan="3">{decorator name='button' type='submit' langLabel='searchsys+update'}</td></tr>
+            </table>
+        </form>
+        {/block_decorator}
+    </div>
+
+    <div class="peep_right peep_narrow">
+        {block_decorator name='box' langLabel='searchsys+settings' iconClass='peep_ic_gear_wheel'}
+        <form method="post">
+            <input type="hidden" name="action" value="update_settings" />
+            <table class="peep_table_2" style="margin: 0px;">
+                <tr class="peep_alt1">
+                    <td class="peep_label" width="10%"><input id="site_search" type="checkbox" name="site_search" value="1" {if $searchEnabled} checked="checked"{/if} /></td>
+                    <td class="peep_value peep_txtleft"><label for="site_search">{text key="searchsys+enable_site_search"}</label></td>
+                </tr>
+                <tr class="peep_alt1"><td colspan="2">{decorator name='button' type='submit' langLabel='searchsys+update'}</td></tr>
+            </table>
+        </form>
+        {/block_decorator}
+    </div>
+</div>

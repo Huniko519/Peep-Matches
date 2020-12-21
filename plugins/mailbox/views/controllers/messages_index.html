@@ -1,0 +1,11 @@
+{if $mailModeEnabled && $isAuthorizedSendMessage}
+<div class="peep_content_menu_wrap clearfix">
+    <div class="peep_right">
+        {decorator name="button" type="button" class="peep_ic_add" id="newMessageBtn" langLabel='mailbox+label_btn_new_message'}
+    </div>
+</div>
+{/if}
+<div class="peep_mailbox_table peep_alt1 clearfix {if !$mailModeEnabled || !$chatModeEnabled}peep_mailbox_table_single{/if}" id="messagesContainerControl">
+    {$conversationList}
+    {$conversationContainer}
+</div>

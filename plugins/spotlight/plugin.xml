@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+	<name>Spot Light</name>
+	<key>spotlight</key>
+	<description>Users can put their profiles under spot light, it working with credits plugin too.</description>
+   <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/company</authorUrl>
+	<developerKey>1</developerKey>
+    <build>8100</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+	<license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

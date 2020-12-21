@@ -1,0 +1,12 @@
+  <div class="list_header">  
+    {if $mailModeEnabled && $isAuthorizedSendMessage}<div class="console_list_title">{text key='mailbox+page_heading_messages'}</div><div class="peep_console_messages_send"><a href="javascript://" id="mailboxConsoleListSendMessageBtn" >{text key="mailbox+send_message"}</a></div>{/if}
+</div>
+
+<div class="peep_console_list_wrapper PEEP_ConsoleListContainer">
+    <div class="peep_nocontent PEEP_ConsoleListNoContent">{text key='base+empty_list'}</div>
+    <ul class="peep_console_list PEEP_ConsoleList"></ul>
+    <div class="peep_preloader_content peep_console_list_preloader PEEP_ConsoleListPreloader" style="top:150px; visibility: hidden"></div>
+<div class="{if $mailModeEnabled && $isAuthorizedSendMessage}peep_console_messages_btn{/if}">
+    <div class="peep_console_messages_viewall"><a href="{$viewAllUrl}">{text key="mailbox+view_all"}</a></div>
+</div>
+</div>

@@ -1,0 +1,35 @@
+{style}
+{literal}
+.peep_active_plugins tr, .peep_inactive_plugins tr{
+    border-top:1px solid #ccc;
+}
+.peep_plugin_controls{
+    display:none;
+}
+{/literal}
+{/style}
+<div class="peep_narrow peep_automargin" >
+{block_decorator name='box' type='empty' addClass='peep_stdmargin' iconClass='peep_ic_trash' langLabel='admin+manage_plugins_ftp_box_cap_label'}
+{form name='ftp'}
+<table class="peep_form peep_smallmargin">
+       <tr>
+           <td class="peep_label">{label name='host'}</td>
+           <td class="peep_input">{input name='host'}</td>
+       </tr>
+       <tr>
+           <td class="peep_label">{label name='login'}</td>
+           <td class="peep_input">{input name='login'}</td>
+       </tr>
+       <tr>
+           <td class="peep_label">{label name='password'}</td>
+           <td class="peep_input">{input name='password'}</td>
+       </tr>
+       <tr>
+           <td class="peep_label">{label name='port'}</td>
+           <td class="peep_input">{input name='port'}</td>
+       </tr>
+   </table>
+   <div class="clearfix"><div class="peep_right">{submit name='submit' class='peep_positive'}</div></div>
+{/form}
+{/block_decorator}
+</div>

@@ -1,0 +1,23 @@
+{style}
+{literal}
+    .peep_visitor_user {
+        display: inline-block;
+        margin: 0px 4px 0px 4px;
+        text-align: center;
+        
+        line-height: 11px;
+
+    }
+    .peep_visitor_time { height: 25px; padding: 5px; margin-top:10px; overflow: hidden; }
+{/literal}
+{/style}
+
+<div class="peep_left">
+{foreach from=$visitors item='g'}
+    {capture assign='visitorId'}{$g->visitorId}{/capture} 
+    <div class="peep_visitor_user clearfix">
+        {decorator name=avatar_item data=$avatars[$visitorId] isMarked=!empty($avatars[$visitorId].isMarked) }
+        <div class="peep_visitor_time peep_right">{text key='pvisitors+visited'}&nbsp;{$g->visitTimestamp}<br /><br /></div>
+    </div>
+{/foreach}
+</div>

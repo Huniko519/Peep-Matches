@@ -1,0 +1,45 @@
+<div class="index_page">
+<div class="page_full">
+	<div class="page_fill">
+	<div class="index_visitor_top">
+<div class="visitor_top_cover">
+<div class="visitor_site_logo peep_stdmargin"><a href="{$siteUrl}">{$siteName}</a></div>
+<ul class=" welcome-slideshow">
+            <li><div><h3>{text key='corevisitor+welcome_text_1'}</h3></div></li>
+            <li><div><h3>{text key='corevisitor+welcome_text_2'}</h3></div></li>
+            <li><div><h3>{text key='corevisitor+welcome_text_3'}</h3></div></li>
+            <li><div><h3>{text key='corevisitor+welcome_text_4'}</h3></div></li>
+            <li><div><h3>{text key='corevisitor+welcome_text_5'}</h3></div></li>                  
+        </ul>
+<div class="index_visitor_join" style="margin-top:100px; z-index:99;">
+{component class='COREVISITOR_CMP_Registration'}
+</div>
+</div>
+</div>
+<div class="visitor_users_block">
+{component class='COREVISITOR_CMP_UserFade'}
+		</div>
+			<div class="canvas">
+				<div class="main_page bg_color clearfix">
+					<div class="content">
+						{add_content key='base.add_page_top_content'}
+						{$content}
+						{add_content key='base.add_page_bottom_content'}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="footer" style="margin-top:-50px;">
+	<div class="canvas">
+		<div class="main_page clearfix">
+			{$bottom_menu}
+			<div class="site_copyright">
+				{text key='base+copyright'}
+			</div>
+			
+		</div>
+	</div>
+</div>  
+</div>  
+{decorator name='floatbox'}

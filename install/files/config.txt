@@ -1,0 +1,47 @@
+<?php
+
+define('PEEP_URL_HOME', '{$site_url}');
+
+define('PEEP_DB_HOST', '{$db_host}');
+define('PEEP_DB_PORT', {$db_port});
+define('PEEP_DB_USER', '{$db_user}');
+define('PEEP_DB_PASSWORD', '{$db_password}');
+define('PEEP_DB_NAME', '{$db_name}');
+
+define('PEEP_DB_PREFIX', '{$db_prefix}');
+
+define('PEEP_DIR_USERFILES', PEEP_DIR_ROOT.'storage-2'.DS);
+define('PEEP_DIR_STATIC', PEEP_DIR_ROOT.'static'.DS);
+define('PEEP_URL_STATIC', PEEP_URL_HOME.'static/');
+define('PEEP_URL_USERFILES', PEEP_URL_HOME.'storage-2/');
+define('PEEP_DIR_PLUGINFILES', PEEP_DIR_ROOT.'storage-1/');
+
+define('PEEP_PASSWORD_SALT', '{$password_salt}');
+
+define('PEEP_DIR_CORE', PEEP_DIR_ROOT.'core'.DS);
+define('PEEP_DIR_INC', PEEP_DIR_ROOT.'includes'.DS);
+define('PEEP_DIR_LIB', PEEP_DIR_ROOT.'outs'.DS);
+define('PEEP_DIR_UTIL', PEEP_DIR_ROOT.'tools'.DS);
+define('PEEP_DIR_PLUGIN', PEEP_DIR_ROOT.'plugins'.DS);
+define('PEEP_DIR_THEME', PEEP_DIR_ROOT.'themes'.DS);
+define('PEEP_DIR_SYSTEM_PLUGIN', PEEP_DIR_ROOT.'base-sys'.DS);
+define('PEEP_DIR_SMARTY', PEEP_DIR_ROOT.'cachy'.DS);
+
+define('PEEP_USE_CLOUDFILES', false);
+
+if ( defined('PEEP_CRON') )
+{
+    define('PEEP_DEBUG_MODE', false);
+    define('PEEP_DEV_MODE', false);
+    define('PEEP_PROFILER_ENABLE', false);
+}
+else
+{
+    /**
+    * Make changes in this block if you want to enable DEV mode and DEBUG mode
+    */
+
+    define('PEEP_DEBUG_MODE', false);
+    define('PEEP_DEV_MODE', false);
+    define('PEEP_PROFILER_ENABLE', false);
+}

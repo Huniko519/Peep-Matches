@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+	<name>Friends and Contacts</name>
+	<key>friends</key>
+	<description>Users can add others to their contacts for chat, following activities/updates, and more</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+	<authorUrl>http://www.peepdev.com/company</authorUrl>
+	<developerKey>1</developerKey>
+    <build>8100</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+	<license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

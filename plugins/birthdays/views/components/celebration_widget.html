@@ -1,0 +1,104 @@
+<style>
+.celebration_happy_avatar .peep_avatar{
+background-image:none !important;
+background:#fff;
+width:60px;
+height:60px;
+border:1px solid #cdcdcd;
+padding: 5px 5px 5px 5px;
+border-radius:100%;
+-webkit-border-radius:100%;
+-moz-border-radius:100%;
+-webkit-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.2);
+	 box-shadow:2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+}
+.celebration_happy_avatar .peep_avatar img{
+background:#fff;
+width:60px;
+height:60px;
+border-radius:100%;
+-webkit-border-radius:100%;
+-moz-border-radius:100%;
+}
+.celebration_text{
+color:#3595d6;
+animation: beat .25s infinite alternate;
+	transform-origin: center;
+
+-webkit-animation: beat .25s infinite alternate;
+	-moz-animation: beat .25s infinite alternate;
+	-ms-animation: beat .25s infinite alternate;
+	-o-animation: beat .25s infinite alternate;
+	animation: beat .25s infinite alternate;
+
+	-webkit-transform-origin: center;
+	-moz-transform-origin: center;
+	-o-transform-origin: center;
+	-ms-transform-origin: center;
+	transform-origin: center;
+}
+
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+@keyframes "beat" {
+ to {
+    -webkit-transform: scale(1.4);
+   	-moz-transform: scale(1.4);
+   	-o-transform: scale(1.4);
+   	-ms-transform: scale(1.4);
+   	transform: scale(1.4);
+ }
+
+}
+
+@-moz-keyframes beat {
+ to {
+   -moz-transform: scale(1.4);
+   transform: scale(1.4);
+ }
+
+}
+
+@-webkit-keyframes "beat" {
+ to {
+   -webkit-transform: scale(1.4);
+   transform: scale(1.4);
+ }
+
+}
+
+@-ms-keyframes "beat" {
+ to {
+   -ms-transform: scale(1.4);
+   transform: scale(1.4);
+ }
+
+}
+
+@-o-keyframes "beat" {
+ to {
+   -o-transform: scale(1.4);
+   transform: scale(1.4);
+ }
+
+} 
+.avatar_wrap{
+position:absolute; top:0px; width:100%; text-align:center; 
+}
+.celebration_happy_avatar{
+position:relative; 
+top:20px;
+}
+.celebration_name{
+padding:5px 0 5px 0;
+}
+</style>
+<center>
+<img src="{$celebrationSrc} " style="margin-top:-40px;"/>
+<div class="avatar_wrap"><div class="celebration_happy_avatar">{decorator name='avatar_item' data=$avatar}</div></div>
+<div class="celebration_text">{text key='birthdays+widget_celebration'}</div><div class="celebration_name"><span>{$avatar.title}</span></div>
+
+{$label}
+</center>

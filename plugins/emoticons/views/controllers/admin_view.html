@@ -1,0 +1,86 @@
+
+{$menu}
+
+<div class="peep_std_margin clearfix">
+    {form name='emoticons-settings'}
+        <table class="peep_table_1 peep_form" style="margin: 0">
+            <tbody>
+                <tr class="peep_alt1'">
+                    <td width="1" class="peep_label">
+                        {label name='width'}
+                    </td>
+                    <td class="peep_value">
+                        {input name='width'}
+                        {error name='width'}
+                    </td>
+                </tr>
+
+                <tr class="peep_tr_last peep_center">
+                    <td colspan="2">
+                        {submit name='save'}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {/form}
+</div>
+
+<div id="emoticons-panel-admin" class="emoticons_tooltip_top_right" style="width: {$width}px">
+    {if !$isSingle}
+        <div class="emoticons_tooltip_body clearfix" style="padding: 0">
+            <div class="smile_tab_container_top">
+                {foreach $captions as $id => $caption}
+                    <a href="javascript://" class="emoticons_tab emoticons" data-category-id="{$id}">
+                        <img src="{$url}{$caption}" data-title="{$caption}" class="emoticons" />
+                    </a>
+                {/foreach}
+            </div>
+            {foreach $emoticons as $id => $smile}
+                <div class="clearfix smilyes_category" id="admin-smilyes-category-{$id}" data-category-id="{$id}" style="display: none">
+                    {foreach $smile as $s}
+                        <img src="{$url}{$s->name}" data-title="{$s->code}" data-code="{$s->code}" />
+                    {/foreach}
+                </div>
+            {/foreach}
+        </div>
+    {else}
+        <div class="emoticons_tooltip_body" style="padding: 0">
+            <div class="clearfix smilyes_category">
+                {foreach $emoticons as $smile}
+                    <img src="{$url}{$smile->name}" data-title="{$smile->code}" data-code="{$smile->code}" />
+                {/foreach}
+            </div>
+        </div>
+    {/if}
+</div>
+
+{script}{literal}
+
+;(function( $ )
+{
+    $(document.forms['emoticons-settings']['width']).on("input", function()
+    {
+        var width = +this.value || 40;
+        $(document.getElementById("emoticons-panel-admin")).css("width", width + "px");
+    });
+    
+    tabs = $('.emoticons_tab', document.getElementById('emoticons-panel-admin'));
+    
+    tabs.on('click', function()
+    {
+        tabs.removeClass('active');
+        $(this).addClass('active');
+        showCategory(this.getAttribute('data-category-id'));
+    });
+    tabs.eq(0).trigger('click');
+    
+    function showCategory( id )
+    {
+        if ( !id ) return;
+        
+        $('.smilyes_category', document.getElementById('emoticons-panel-admin')).hide();
+        $('#admin-smilyes-category-' + id).show();
+    }
+})(jQuery);
+
+{/literal}{/script}

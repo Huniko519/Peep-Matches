@@ -1,0 +1,72 @@
+{literal}
+    <style>
+        input.display_name_input {
+            width:65%;
+        }
+    </style>
+{/literal}
+{script}
+    {literal}
+      $(function(){
+            $("form[name='MainSearchForm'] select[name='accountType']").change(
+               function(){ this.form.submit(); }
+            );
+       });
+   {/literal}
+{/script}
+
+
+
+{if isset($authMessage)}
+    <div class="peep_anno peep_std_margin peep_nocontent">{$authMessage}</div>
+{else}
+<div class="clearfix">
+    <div class="peep_full">
+                {form name=MainSearchForm}
+                        <table class="peep_table_1 peep_form">
+                            {if $displayAccountType==true}
+                            {cycle assign='alt' values='peep_alt1,peep_alt2'}
+                            <tr class=" peep_tr_first peep_tr_last">
+                                <td class="{$alt} peep_label">
+                                    {label name='accountType'}
+                                </td>
+                                <td class="{$alt} peep_value peep_center">
+                                    {input name='accountType'}
+                                    <div style="height:1px;"></div>
+                                    {error name='accountType'}
+                                </td>
+                            </tr>
+                            <tr class="peep_tr_delimiter"><td></td></tr>
+                            {/if}
+                            {if !empty($questionList)}
+                                {foreach from=$questionList key='section' item='questions'}
+                                {if !empty($section) }
+                                    <tr class="peep_tr_first"><th colspan="3">{text key="base+questions_section_`$section`_label"}</th></tr>
+                                {/if}
+                                    {foreach from=$questions item='question' name='question'}
+                                        {cycle assign='alt' values='peep_alt1,peep_alt2'}
+                                        <tr class=" {if $smarty.foreach.question.last}peep_tr_last{/if}">
+                                            <td class="{$alt} peep_label">
+                                                {label name=$question.name}
+                                            </td>
+                                            <td class="{$alt} peep_value">
+                                                {input name=$question.name}
+                                                <div style="height:1px;"></div>
+                                                {error name=$question.name}
+                                            </td>
+                                        </tr>
+                                    {/foreach}
+                                    <tr class="peep_tr_delimiter"><td></td></tr>
+                                {/foreach}
+                           {/if}
+                        </table>
+                       <div class="clearfix">
+                  		<div class="peep_right">
+							{submit name='MainSearchFormSubmit'}
+                        </div>
+                       </div> 
+                {/form}
+    </div>
+    
+</div>
+{/if}

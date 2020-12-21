@@ -1,0 +1,40 @@
+{if empty($list)}
+    <div class="peep_center uc-no-items">{text key="base+user_no_users"}</div>
+{else}
+<div id="{$uniqId}" class="uc-carousel-out">
+    <div class="uc-carousel-in">
+      <div class="uc-prev-btn"></div>
+      <div class="uc-next-btn"></div>
+      <div class="uc-carousel">
+            <ul class="uc-list clearfix">
+                {foreach from=$list item="user"}
+                    <li class="uc-list-item">
+                        <a href="{$user.url}" data-uid="{$uniqId}_{$user.id}" class="uc-item-image" style="background-image: url({$user.avatar});"></a>
+                    </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    
+    <div id="{$uniqId}_tooltips" class="uc-tooltips">
+        {foreach from=$list item="user"}
+            <div class="uc-tooltip peep_border" data-uid="{$uniqId}_{$user.id}" style="display: none;">
+                <div class="uc-item-name uc-item-field-color">
+                    {$user.displayName}
+                </div>
+                {if !empty($user.location)}
+                    <div class="uc-item-location uc-item-field-color">{$user.location}</div>
+                {/if}
+
+                {if !empty($user.fields.sex)}
+                    <div class="uc-item-sex">{$user.fields.sex}</div>
+                {/if}
+                
+                {if !empty($user.fields.age)}
+                    <div class="uc-item-age">{$user.fields.age} {text key='base+questions_age_year_old'}</div>
+                {/if}
+            </div>
+        {/foreach}
+    </div>
+</div>
+{/if}

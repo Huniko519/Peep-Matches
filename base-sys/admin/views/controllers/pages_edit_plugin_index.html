@@ -1,0 +1,29 @@
+{capture assign="back_url"}{url_for_route for="admin_pages_main"}{/capture}
+
+<div class="peep_stdmargin">{decorator name="button" class="peep_ic_left_arrow" onclick="location.href='`$back_url`';" langLabel="base+pages_back"}</div>
+{form name="edit-form"}
+<div class="peep_superwide peep_automargin">
+<table class="peep_table_1 peep_form">
+
+    <tr id="title-tr" class="{cycle values="peep_alt2, peep_alt1"} peep_tr_first">
+        <td class="peep_label">
+        	{label name="name"}
+       	</td>
+        <td class="peep_value">
+        	{input name="name"}
+        	<br />{error name="name"}
+        </td>        
+    </tr>
+
+    <tr class="{cycle values="peep_alt2, peep_alt1"} peep_tr_last" >
+        <td class="peep_label">{label name="visible-for"}</td>
+        <td class="peep_value">
+        	{input name="visible-for"}
+        	<br />{error name="visible-for"}
+       </td>
+    </tr>
+
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_right">{submit name="save" class="peep_positive"}</div></div>
+</div>
+{/form}

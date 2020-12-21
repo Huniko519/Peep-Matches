@@ -1,0 +1,62 @@
+{style}{literal}
+
+.comments_count input {
+    width: 50px;
+}
+
+{/literal}{/style}
+
+{script}{literal}
+
+$('#allow_comments_btn').click(function() {
+    if ( this.checked )
+    {
+        $('#comments_count_c').show();
+    }
+    else
+    {
+        $('#comments_count_c').hide();
+    }
+});
+
+{/literal}{/script}
+
+{$menu}
+
+{form name='CNEWS_ConfigSaveForm'}
+<table class="peep_table_1 peep_form">
+    <tr class="peep_tr_first">
+        <th class="peep_name peep_txtleft" colspan="3">
+            <span class="peep_section_icon peep_ic_gear_wheel">{text key='cnews+admin_settings_title'}</span>
+        </th>
+    </tr>
+
+    
+
+    <tr class="peep_alt2">
+        <td class="peep_label">{label name='allow_likes'}</td>
+        <td class="peep_value">{input name='allow_likes'}</td>
+        <td class="peep_desc peep_small"></td>
+    </tr>
+
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='features_expanded'}</td>
+        <td class="peep_value ">{input name='features_expanded'}</td>
+        <td class="peep_desc peep_small"></td>
+    </tr>
+
+    <tr class="peep_alt2">
+        <td class="peep_label">{label name='allow_comments'}</td>
+        <td class="peep_value">{input name='allow_comments' id="allow_comments_btn"}</td>
+        <td class="peep_desc peep_small"></td>
+    </tr>
+    <tr class="peep_alt1 peep_tr_last" id="comments_count_c" {if !$configs.allow_comments}style="display: none;"{/if}>
+        <td class="peep_label">{label name='comments_count'}</td>
+        <td class="peep_value comments_count">{input name='comments_count'}</td>
+        <td class="peep_desc peep_small">{text key='cnews+admin_comments_count_desc'}</td>
+    </tr>
+
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div><div class="peep_right"></div></div>
+
+{/form}

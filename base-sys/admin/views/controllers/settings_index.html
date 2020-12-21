@@ -1,0 +1,76 @@
+{$menu}
+
+{form name='configSaveForm'}
+    <table class="peep_table_1 peep_form">
+        
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{text key='admin+site_title'}</td>
+            <td class="peep_value" style="width:45%; ">{input name='siteTitle'} {error name='siteTitle'}</td>
+            
+        </tr>
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{text key='admin+site_email'}</br>{text key='admin+site_email_desc'}</td>
+            {if $showVerifyButton}
+                <td class="peep_value">{input style="width:55%;" name='siteEmail'} {decorator name="button" class='peep_ic_mail' id="verify_site_email_button" langLabel='admin+verify_site_email'} {error name='siteEmail'}</td>
+            {else}
+                <td class="peep_value">{input name='siteEmail'} {error name='siteEmail'}</td>
+            {/if}
+            
+        </tr>
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{text key='admin+site_tagline'}</td>
+            <td class="peep_value">{input name='tagline'} {error name='tagline'}</td>
+            
+        </tr>
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"} peep_tr_last">
+            <td class="peep_label">{text key='admin+site_description'}</br>{text key='admin+site_description_desc'}</td>
+            <td class="peep_value">{input name='description'} {error name='description'}</td>
+            
+        </tr>
+ 
+        <tr class="peep_tr_delimiter"><td></td></tr>
+        
+        <tr class="{cycle name="time" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{label name='dateFieldFormat'}</td>
+            <td class="peep_value">{input name='dateFieldFormat'} {error name='dateFieldFormat'}</td>
+           
+        </tr>
+        <tr class="{cycle name="time" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{text key='admin+timezone'}</td>
+            <td class="peep_value">{input name='timezone'} {error name='timezone'}</td>
+            
+        </tr>
+        <tr class="{cycle name="time" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{text key='admin+use_relative_time'}</td>
+            <td class="peep_value">{input name='relativeTime'} {error name='relativeTime'}</td>
+            
+        </tr>
+        <tr class="{cycle name="time" values="peep_alt1,peep_alt2"} peep_tr_last">
+            <td class="peep_label">{text key='admin+use_military_time'}</td>
+            <td class="peep_value">{input name='militaryTime'}</td>
+           
+        </tr>
+        <tr class="peep_tr_delimiter"><td></td></tr>
+        
+        <tr class="{cycle name="time" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{label name='currency'}</td>
+            <td class="peep_value">{input name='currency'} <br />{error name='currency'}</td>
+           
+        </tr>
+
+    </table>
+    <div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div></div>
+{/form}
+{if $showVerifyButton}
+    <div style="display:none;">
+        <div id="site-email-verify">
+            {block_decorator name="box" type="empty" addClass="peep_automargin" style="width:325px;padding-bottom:10px;"}
+                {text key="admin+site_email_verify_promo"}
+            {/block_decorator}
+            {block_decorator name="box" type="normal" addClass="peep_stdmargin peep_wide peep_automargin peep_center"}
+                {decorator name="button" class='peep_ic_mail' id="sendVerifyMail" langLabel='admin+send_verification_email'}
+            {/block_decorator}
+        </div>
+    </div>
+{/if}
+

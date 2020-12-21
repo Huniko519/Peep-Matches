@@ -1,0 +1,157 @@
+
+
+{script}
+{literal}
+
+addInvitation = function( nodes )
+{
+    var $nodes, start, complete;
+
+    $nodes = $(nodes);
+
+    start = function()
+    {
+        var $self = $(this);
+        if ( $self.val() == $self.attr('inv') )
+        {
+            $self.val('');
+        }
+
+        $self.removeClass('invitation');
+    };
+
+    complete = function()
+    {
+        var $self = $(this);
+        if ( !$self.val() )
+        {
+            $self.val($self.attr('inv'));
+            $self.addClass('invitation');
+        }
+    };
+
+    $nodes.focus(start);
+    $nodes.blur(complete);
+};
+
+addInvitation($('#ci-message'));
+
+{/literal}
+{/script}
+
+{style}
+{literal}
+
+.peep_user_list_picture img {
+    margin-top:5px;
+    margin-left:30%;
+    height: 40px !important;
+    min-width: 40px !important;
+    position:relative;
+}
+
+.avatar_select_list{
+    height:auto;
+    width: auto;
+    text-align:left;
+    padding:0 8px;
+}
+
+.peep_ulist_big_info {
+    height: 80px;
+    position: absolute;
+    top: 60px;
+    color: #111;
+    margin-left: 5px;
+    padding-top: 10px;
+}
+
+.peep_ulist_big_info_name {
+    float: left;
+    max-width: 100%;
+    padding-bottom: 5px;
+    max-height: 3.5em;
+    overflow: hidden;
+    border-bottom: 0px solid #cdcdcd;
+    color: #111 !important;
+    font-size: 13px !important;
+}
+
+.peep_user_list_picture {
+    
+    height: 0px !important;
+   
+}
+
+.avatar_select_list .peep_user_list_picture{
+    height:45px;
+}
+
+.avatar_select_list .peep_user_list_data
+{
+margin-left:50px;
+    width: 190px;
+    overflow: hidden;
+}
+
+.avatar_select_list .peep_user_list_item{
+    cursor:pointer;
+}
+
+.avatar_select_list .peep_item_set2{
+    width:42%;
+margin:4px;
+border:1px solid rgba(0,0,0,0.12);
+}
+
+.avatar_select_list .asl_users{
+    height: 430px;
+    overflow-y:scroll;
+}
+
+html .footer {
+    display: none;
+}
+
+{/literal}
+{/style}
+
+<div class="peep_lp_avatars avatar_select_list" id="{$contexId}">
+    {if empty($users)}
+    <div class="peep_nocontent">{text key='base+empty_user_avatar_list_select'}</div>
+    {else}
+    <div class="asl_users">
+        {foreach from=$users item='user' name='user_list'}
+        {if $smarty.foreach.user_list.first}
+            <div class="clearfix {cycle name="rows" values="peep_alt2, peep_alt1"}">
+        {/if}
+        {decorator name="user_list_item"
+                   avatar=$user.avatar
+                   username=$user.title
+                   displayName=$user.title
+                   noUserLink=1
+                   content=$user.fields
+                   contId=$user.uniqId
+                   set_class='peep_item_set2'}
+        {if $smarty.foreach.user_list.iteration % 2 == 0 && !$smarty.foreach.user_list.last}
+            </div>
+            <div class="clearfix {cycle name="rows" values="peep_alt1,peep_alt2"}">
+        {/if}
+        {if $smarty.foreach.user_list.last}
+          </div>
+        {/if}
+        {/foreach}
+    </div>
+    <div class="peep_center" style="padding: 8px;">
+    {if !empty($langs.countLabel)}<input type="hidden" class="count_label" value="{$langs.countLabel}" />{/if}
+    <input type="hidden" class="button_label" value="{$langs.buttonLabel}" />
+    {if !empty($langs.countLabel)}<div class="count_label">{$langs.startCountLabel}</div>{/if}
+
+    <div class="text-message peep_smallmargin">
+        <textarea inv="{text key="contactimporter+google_message_custom_inv"}" id="ci-message" class="invitation">{text key="contactimporter+google_message_custom_inv"}</textarea>
+    </div>
+
+    <div class="submit_cont peep_txtleft" style="padding-left: 10px;">{decorator name='button' label=$langs.startButtonLabel class='submit'}</div>
+    </div>
+    {/if}
+</div>

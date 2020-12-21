@@ -1,0 +1,75 @@
+{style}{literal}
+.peep_photo_item_widget {
+    width: 72px;
+    height: 72px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+{/literal}{/style}
+{capture assign='cmp'}
+    <div id="photo_list_cmp{$uniqId}">
+        {if $latest || $featured || $toprated}
+            {if isset($menu)}{$menu}{/if}
+        {/if}
+
+        {capture assign='nocontent'}
+            <div class="peep_nocontent">{text key='photo+no_photo'}, <a href="javascript:{$url}()">{text key='photo+add_new'}</a></div>
+        {/capture}
+
+        <div class="peep_lp_photos peep_center" id="{$items.latest.contId}">
+            {foreach from=$latest item='p'}
+                <a class="peep_lp_wrapper" rel="{$p.id}" href="{url_for_route for="view_photo:[id=>`$p.id`]"}" list-type="latest">
+                   <div class="peep_photo_item_widget{if !empty($p.class)} {$p.class}{/if}" style="background-image: url({$p.url});" data-url="{$p.url}"></div>
+                </a>
+            {foreachelse}
+                {$nocontent}
+            {/foreach}
+        </div>
+
+        {if $featured}
+            <div class="peep_lp_photos peep_center" id="{$items.featured.contId}" style="display: none">
+                {foreach from=$featured item='p'}
+                    <a class="peep_lp_wrapper" rel="{$p.id}" href="{url_for_route for="view_photo:[id=>`$p.id`]"}" list-type="featured">
+                       <div class="peep_photo_item_widget{if !empty($p.class)} {$p.class}{/if}" style="background-image: url({$p.url});" data-url="{$p.url}"></div>
+                    </a>
+                {foreachelse}
+                    {$nocontent}
+                {/foreach}
+            </div>
+        {/if}
+
+        <div class="peep_lp_photos peep_center" id="{$items.toprated.contId}" style="display: none">
+            {foreach from=$toprated item='p'}
+                <a class="peep_lp_wrapper" rel="{$p.id}" href="{url_for_route for="view_photo:[id=>`$p.id`]"}" list-type="toprated">
+                   <div class="peep_photo_item_widget{if !empty($p.class)} {$p.class}{/if}" style="background-image: url({$p.url});" data-url="{$p.url}"></div>
+                </a>
+            {foreachelse}
+                {$nocontent}
+            {/foreach}
+        </div>
+
+        {if $showToolbar}
+            {if $latest}<div id="photo-cmp-toolbar-latest-{$uniqId}" style="display: none">{decorator name='box_toolbar' itemList=$toolbars.latest}</div>{/if}
+            {if $featured}<div id="photo-cmp-toolbar-featured-{$uniqId}" style="display: none">{decorator name='box_toolbar' itemList=$toolbars.featured}</div>{/if}
+            {if $toprated}<div id="photo-cmp-toolbar-top-rated-{$uniqId}" style="display: none">{decorator name='box_toolbar' itemList=$toolbars.toprated}</div>{/if}
+        {/if}
+
+    </div>
+{/capture}
+
+{if $wrapBox}
+{block_decorator name='box'
+    capEnabled=$showTitle
+    langLabel='photo+photo_list_widget'
+    iconClass='peep_ic_picture'
+    type=$boxType
+    addClass="peep_stdmargin clearfix"
+    toolbar=$toolbars.latest}
+
+    {$cmp}
+
+{/block_decorator}
+{else}
+    {$cmp}
+    {if $latest}<div class="peep_box_toolbar_cont clearfix">{decorator name='box_toolbar' itemList=$toolbars.latest}</div>{/if}
+{/if}

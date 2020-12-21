@@ -1,0 +1,21 @@
+<div class="peep_regular clearfix">
+	{foreach from=$people item='p'}
+	<div class="peep_lp_avatars peep_stdmargin">
+		
+		<div class="peep_lp_avatars clearfix" style="float:left;">
+			{decorator name=avatar_item data=$avatars[$p->userId]}
+		</div>
+		
+	</div>
+	{/foreach}
+	<div class="peep_box_toolbar_cont clearfix">
+		<div class="peep_box_toolbar peep_remark peep_bl">
+				<a href="{$url}profilelike/peoplewhoprofilelike">{text key='profilelike+view_all'}</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+

@@ -1,0 +1,22 @@
+{if !empty($vars.status)}<div class="peep_cnews_body_status peep_smallmargin">{$vars.status|more:300}</div>{/if}
+
+<div class="peep_cnews_oembed_atch clearfix">
+    <div class="peep_cnews_item_picture">
+    <a href="{if !empty($vars.url)}{$vars.url}{else}javascript://{/if}"><img src="{$vars.thumbnail}" /></a>
+    </div>
+    <div class="peep_cnews_item_content">
+        <a class="peep_cnews_item_title" href="{if !empty($vars.url)}{$vars.url}{else}javascript://{/if}">{$vars.title}</a>
+        <div class="peep_remark peep_smallmargin">{$vars.description}</div>
+        
+        {if $vars.userList}
+            <div class="peepm_cnews_ulist">
+                <div class="peepm_cnews_item_padding peepm_cnews_item_box clearfix">
+                    <div class="peepm_cnews_ulist_count" style="display:inline-block">
+                        {$vars.userList.label}
+                    </div>
+                    {$vars.userList.list}
+                </div>
+            </div>
+        {/if}
+    </div>
+</div>

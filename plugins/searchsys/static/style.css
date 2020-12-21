@@ -1,0 +1,43 @@
+.console_search_form .esel2-container-multi .esel2-choices {
+    border: none;
+    background: none;
+    padding: 0;
+    min-height: inherit;
+    line-height: 22px;
+}
+
+.console_search_form div.jhtmlarea {
+    border: none;
+}
+
+.console_search_form .esel2-container-multi.esel2-container-active .esel2-choices {
+    box-shadow: none;
+}
+
+.console_search_form input[type="text"] {
+    background: none;
+    border: none;
+}
+
+.us_dropdown {
+    border: none;
+}
+
+.us_dropdown .esel2-results ul.esel2-result-sub > li .esel2-result-label {
+    padding :0;
+}
+
+.us_dropdown .esel2-results {
+    max-height: inherit;
+    margin: 0px;
+    padding: 5px;
+}
+
+.us-ddi-avatar {
+    float: left;
+    margin-right: -42px;
+}
+
+.us-ddi-content {
+    margin-left: 45px;
+}

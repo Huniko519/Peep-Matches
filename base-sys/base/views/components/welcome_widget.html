@@ -1,0 +1,8 @@
+   {* Add new content cmp template *}
+<div class="peep_add_content_wrap clearfix">
+{foreach from=$items item='item'}
+<a class="add_content_ico {$item.iconClass}"></a>
+<a class=" peep_add_content" {if !empty($item.id)} id="{$item.id}"{/if} href="{$item.url}">{$item.label}</a>
+{/foreach}
+
+</div>

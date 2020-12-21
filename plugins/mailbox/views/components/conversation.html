@@ -1,0 +1,136 @@
+<div class="peep_mailbox_right peep_mailbox_right_loading" id="conversationContainer">
+
+    <div class="peep_mailbox_right_preloading"><div class="peep_mailbox_no_content">{text key="mailbox+conversation_empty"}</div></div>
+
+    <!--<div class="peep_mailbox_no_content">{text key="mailbox+conversation_not_found"}</div>-->
+
+    <div class="peep_mailbox_cap clearfix" id="conversationCapBlock">
+        
+<div class="peep_mailbox_avatar  peep_center" id="conversationAvatarBlock"><div class="peep_chat_status" id="conversationOpponentProfileStatus"></div>
+            <div class="peep_avatar peep_center">
+                <a href="javascript://" id="conversationOpponentProfileUrl"><img style="max-width: 100%;" alt="" src="{$defaultAvatarUrl}" id="conversationOpponentAvatar"/></a>
+            </div>
+        </div>
+
+        <div class="peep_mailbox_username">
+            <span class="peep_mailbox_username_text"><span id="conversationOpponentDisplayname"></span></span>
+            <span class="peep_mailbox_switch_to_chat peep_small" id="conversationSwitchToChatBlock"><a class="peep_lbutton" href="javascript://" id="conversationSwitchToChatBtn">{text key="mailbox+switch_to_chat_mode"}</a></span>
+            <div class="peep_mailbox_subject_block" id="conversationSubjectBlock">
+                <span class="peep_mailbox_subject_text" id="conversationSubject"></span>
+            </div>
+        </div>
+        <div class="peep_mailbox_convers_actions clearfix">
+            <a href="javascript://" class="peep_miniic_control" id="conversationSettingsBtn">
+                <span></span>
+            </a>
+            <div class="peep_tooltip  peep_cnews_context_tooltip peep_small peep_tooltip_top_right peep_hidden" style="opacity: 1; top: 25px;" id="conversationSettingsBlock">
+                <div class="peep_tooltip_tail">
+                    <span></span>
+                </div>
+                <div class="peep_tooltip_body">
+                    <ul class="peep_context_action_list peep_border">
+                        <li><a href="javascript://" id="conversationMarkUnreadBtn">{text key='mailbox+mark_unread_conversation_title'}</a></li>
+                        <li><a href="javascript://" id="conversationDeleteBtn">{text key='mailbox+delete_conversation_title'}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="peep_mailbox_log_wrap">
+        <div class="peep_mailbox_date_cap sticky peep_alt2 clearfix" id="conversationMessageGroupStickyBlock" style="display: none;">
+            <span class="peep_mailbox_converstion_date peep_remark peep_small peep_left" id="conversationStickyDateCap"></span>
+        </div>
+        <div class="peep_mailbox_log" id="conversationLog"></div>
+    </div>
+    {if $isAuthorizedReplyToMessage}
+    <!-- Mail mode -->
+    <div class="peep_mailbox_form peep_alt2 peep_hidden" id="conversationMessageFormBlock">
+        <div class="form_auto_click">
+            <div class="peep_mailbox_message_input peep_smallmargin">
+                <textarea name="fake_mailbox_message" id="fake_conversationTextarea" placeholder="{text key='mailbox+write_reply'}"></textarea>
+                {$mailbox_message}
+            </div>
+            {if $enableAttachments}
+            {*$attachments*}
+            <div class="mailboxConversationAttachmentsPreviewContainer">
+                <div class="peep_file_attachment_preview clearfix"></div>
+            </div>
+            {/if}
+            <div class="clearfix">
+                <span class="peep_attachment_btn"> {decorator name="button" type="submit" id="conversationSendMessageBtn" langLabel="mailbox+add_button"} </span>
+                {if $enableAttachments}
+                <span class="peep_attachment_icons">
+                    <div id="nfa-feed1" class="peep_attachments">
+                        <span class="buttons clearfix">
+                            <a class="attach" href="javascript://" id="conversationAttachmentsBtn"></a>
+                        </span>
+                    </div>
+                </span>
+                {/if}
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    {if $isAuthorizedReplyToChatMessage}
+    <!-- Chat mode -->
+    <div class="peep_chat_message_block peep_hidden" id="conversationChatFormBlock">
+        <div class="peep_chat_message" id="dialogMessageFormBlock">
+            <span class="peep_attachment_icons">
+                <div class="peep_attachments clearfix">
+                    <a class="attach" href="javascript://" id="dialogAttachmentsBtn"></a>
+                </div>
+            </span>
+            <textarea id="dialogTextarea" class="invitation"></textarea>
+            <a href="javascript://" class="peep_chat_attach_btn"></a>
+        </div>
+    </div>
+    {/if}
+
+        {if $replyToMessageActionPromotedText != ''}
+            <div class="peep_smallmargin peep_anno peep_nocontent">{$replyToMessageActionPromotedText}</div>
+        {/if}
+
+    <div class="peep_mailbox_form peep_alt2" id="conversationUserIsUnreachable" style="display:none;">
+        <span style="padding: 8px; text-align: center; display: block;" id="conversationUserIsUnreachableText">{text key='mailbox+user_is_unreachable'}</span>
+    </div>
+</div>
+
+<div id="mailbox_conversation_prototypes" style="display: none;">
+    <div class="peep_mailbox_grouped_messages conversationMessageGroup" id="conversationMessageGroupPrototypeBlock">
+        <div class="peep_mailbox_date_cap peep_alt2 clearfix">
+            <span class="peep_mailbox_converstion_date peep_remark peep_small peep_left" id="conversationMessageGroupDate">#</span>
+        </div>
+    </div>
+
+    <div class="peep_mailbox_log_message clearfix" id="conversationMessagePrototypeBlock">
+        <div class="peep_mailbox_avatar">
+            <div class="peep_avatar">
+                <a href="javascript://" id="conversationMessageAvatarProfileUrl"><img src="{$defaultAvatarUrl}" alt="" style="max-width: 100%;" id="conversationMessageAvatarUrl"></a>
+            </div>
+        </div>
+        <div class="peep_mailbox_convers_info_body">
+            <span class="peep_mailbox_message_date peep_remark" id="conversationMessageDateTime">#</span>
+            <div class="peep_mailbox_message_header">
+                <a href="javascript://" id="conversationMessageProfile">#</a>
+            </div>
+            <div class="peep_mailbox_message_content" id="conversationMessageText">#</div>
+        </div>
+    </div>
+
+    <div class="peep_mailbox_log_action clearfix" id="conversationActionPrototypeBlock">
+        <div class="peep_mailbox_avatar">
+            <div class="peep_avatar">
+                <a href="javascript://" id="conversationActionAvatarProfileUrl"><img src="{$defaultAvatarUrl}" alt="" style="max-width: 100%;" id="conversationActionAvatarUrl"></a>
+            </div>
+        </div>
+        <div class="peep_mailbox_convers_info_body">
+            <span class="peep_mailbox_message_date peep_remark" id="conversationActionDateTime">#</span>
+            <div class="peep_mailbox_message_header">
+                <a href="javascript://" id="conversationActionProfile">#</a><span class="peep_small" id="conversationActionText">#</span>
+            </div>
+        </div>
+    </div>
+</div>

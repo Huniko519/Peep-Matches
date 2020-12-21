@@ -1,0 +1,66 @@
+{style}
+{literal}
+  .qsearch_group_name {
+    display: block;
+    padding: 3px;
+    margin-right: 4px;
+  }
+
+  .qsearch_group_name:hover {
+    text-decoration: none;
+    background: url({/literal}{$themeUrl}{literal}miniic_arrow_left.png) no-repeat right center;
+  }
+
+  .qsearch_group_name.active_group {
+    font-weight: bold;
+    background: url({/literal}{$themeUrl}{literal}miniic_arrow_left.png) no-repeat right center;
+  }
+
+  .qsearch_result_list {
+    padding-left: 17px;
+  }
+
+  .qsearch_result_list .peep_highbox {
+    padding: 0px 3px 2px 4px;
+  }
+
+  .qsearch_result_list .peep_ipc_info {
+    border: none;
+  }
+
+  .qsearch_res_paging {
+    padding-top: 10px;
+  }
+{/literal}
+{/style}
+
+{$breadcrumb}
+
+<div class="clearfix">
+<div class="peep_left peep_supernarrow">
+<table class="peep_table_3">
+{foreach from=$groups item='g' key='name' name='group'}
+    <tr class="peep_alt{if $group==$name}2{else}1{/if}{if $smarty.foreach.group.last} peep_tr_last{elseif $smarty.foreach.group.first} peep_tr_first{/if}">
+        <td><a class="qsearch_group_name{if $group==$name} active_group{/if}" href="{$url}&group={$name}">{$g}{if !empty($counters[$name])} - <span class="peep_lbutton">{$counters[$name]}{/if}</span></a></td>
+    </tr>
+{/foreach}
+</table>
+</div>
+<div class="peep_right peep_superwide">
+<table class="peep_table_3">
+<tr>
+<td>
+<div class="qsearch_result_list">
+{foreach from=$entries item=data}
+    {$data.html}
+{foreachelse}
+    <div class="peep_nocontent">{text key='searchsys+nothing_found'}</div>
+{/foreach}
+<div class="qsearch_res_paging">{$paging}</div>
+</div>
+</td>
+</tr>
+</table>
+
+</div>
+</div>

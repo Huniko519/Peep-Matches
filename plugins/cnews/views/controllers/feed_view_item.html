@@ -1,0 +1,18 @@
+{style}{literal}
+
+.cnews_item_view
+{
+    width: 600px;
+}
+
+{/literal}{/style}
+
+<div class="clearfix">
+    <div class="cnews_item_view peep_left">
+        {$action}
+    </div>
+    <div class="peep_right">
+        {add_content key='socialsharing.get_sharing_buttons'}
+        {add_content key='cnews.item.content.right' entityType=$entity.type entityId=$entity.id}
+    </div>
+</div>

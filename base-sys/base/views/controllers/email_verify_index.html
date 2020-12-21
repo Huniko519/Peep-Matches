@@ -1,0 +1,16 @@
+
+<div class="verify_mail_cont">
+<div class="site_logo"><a href="{$siteUrl}">{$siteName}</a></div>
+<div class="verify_mail_img">{decorator name='avatar_item' data=$avatar}</div>
+
+{block_decorator name="box" type="empty" addClass="peep_center"}
+    {text key="base+email_verify_promo"}
+{/block_decorator}
+{block_decorator name="box" type="normal" addClass="peep_stdmargin peep_automargin peep_center"}
+    {form name='emailVerifyForm'}
+                        <div style="display: inline;">{label name='email'}:</div><div style="display: inline;"> {input name='email' style="width:250px;" }</div>
+<br/><br/>
+                       {submit name='sendVerifyMail' class='peep_ic_mail' }<br/><div style="color: red;">{error name='email'}</div>
+    {/form}
+{/block_decorator}
+</div>

@@ -1,0 +1,82 @@
+{script}
+  {literal}
+    $("#avatar_change_btn").click(function(){
+        $(this).hide();
+        $("#cancel_change").show();
+        $("#avatar_input").show();
+    });
+    
+    $("#big_avatar_change_btn").click(function(){
+        $(this).hide();
+        $("#cancel_big_change").show();
+        $("#big_avatar_input").show();
+    });
+    
+    $("#cancel_change").click(function(){
+        $(this).hide();
+        $("#avatar_change_btn").show();
+        $("#avatar_input").html('<input type="file" name="avatar" />');
+        $("#avatar_input").hide();
+    });
+    
+    $("#cancel_big_change").click(function(){
+        $(this).hide();
+        $("#big_avatar_change_btn").show();
+        $("#big_avatar_input").html('<input type="file" name="bigAvatar" />');
+        $("#big_avatar_input").hide();
+    });
+    
+    $("#avatar_delete_btn").click(function(){
+        if ( confirm(PEEP.getLanguageText('admin', 'confirm_avatar_delete')) ) 
+        {
+            window.location.href = "{/literal}{url_for_route for='admin_settings_user'}?del-avatar=1{literal}";
+        }
+    });
+    
+    $("#big_avatar_delete_btn").click(function(){
+        if ( confirm(PEEP.getLanguageText('admin', 'confirm_avatar_delete')) ) 
+        {
+            window.location.href = "{/literal}{url_for_route for='admin_settings_user'}?del-avatar=2{literal}";
+        }
+    });
+  {/literal}
+{/script}
+{$menu}
+{form name='userSettingsForm'}
+
+<table class="peep_table_1 peep_form">
+   
+   <tr class="peep_alt1 peep_tr_last">
+        <td class="peep_label">{label name='displayName'}</td>
+        <td class="peep_value">{input name='displayName'} {error name='displayName'}</td>
+        
+    </tr>
+    <tr class="peep_tr_delimiter"><td></td></tr>
+    {if $displayConfirmEmail}
+   
+    <tr class="peep_alt1 peep_tr_last">
+        <td class="peep_label">{label name='confirmEmail'}</td>
+        <td class="peep_value">{input name='confirmEmail'} {error name='confirmEmail'}</td>
+        
+    </tr>
+   
+    {/if}
+    
+   
+    
+    <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+        <td class="peep_label">{text key='admin+join_display_photo_upload'}</td>
+        <td class="peep_value">{input name='join_display_photo_upload'} {error name='join_display_photo_upload'}</td>
+        
+    </tr>
+    <tr class="{cycle name="install" values="peep_alt1,peep_alt2"} peep_tr_last">
+        <td class="peep_label">{text key='admin+join_display_terms_of_use'}</td>
+        <td class="peep_value">{input name='join_display_terms_of_use'} {error name='join_display_terms_of_use'}</td>
+        
+    </tr>
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_right">
+{submit name='save' class='peep_ic_save'}
+</div></div>
+
+{/form}

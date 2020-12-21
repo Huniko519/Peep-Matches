@@ -1,0 +1,17 @@
+<style>
+ul.peep_regular li{
+background:none;
+}
+</style>
+
+{if $list}
+    {foreach name='posts' from=$list item="item"}
+        {assign var=id value=$item.dto->id}
+        {capture assign='info'}
+                {$item.dto->getPost()}
+        {/capture}
+        {decorator name="ic" titleHref=$item.titleHref title=$item.dto->title|strip_tags info=$info toolbar=$tb.$id first = $smarty.foreach.posts.first last = $smarty.foreach.posts.last}
+    {/foreach}
+{else}
+    {text key='base+empty_list'}
+{/if}

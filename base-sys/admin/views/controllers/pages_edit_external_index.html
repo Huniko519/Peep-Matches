@@ -1,0 +1,48 @@
+{capture assign="back_url"}{url_for_route for="admin_pages_main"}{/capture}
+
+<div class="peep_stdmargin">{decorator name="button" class="peep_ic_left_arrow" onclick="location.href='`$back_url`';" langLabel="base+pages_back"}</div>
+
+{form name="edit-form"}
+<div class="peep_superwide peep_automargin">
+<table class="peep_form peep_table_1">
+    <tr id="title-tr" class="{cycle values="peep_alt2, peep_alt1"} peep_tr_first">
+        <td class="peep_label">
+        	{label name="name"}
+       	</td>
+        <td class="peep_value">
+        	{input name="name"}
+        	<br />{error name="name"}
+        </td>
+      </tr>
+
+    <tr class="{cycle values="peep_alt2, peep_alt1"}">
+        <td class="peep_label">{label name="visible-for"}</td>
+        <td class="peep_value">
+        	{input name="visible-for"}
+        	<br />{error name="visible-for"}
+       </td>
+    </tr>
+
+    <tr id="title-tr" class="{cycle values="peep_alt2, peep_alt1"} peep_tr_last">
+        <td class="peep_label">
+        	{label name="url"}
+       	</td>
+        <td class="peep_value">
+        	{input name="url"}<br />
+        	{input name="ext-open-in-new-window"} {label name="ext-open-in-new-window"}
+        	<br />{error name="url"}
+        </td>        
+      </tr>
+
+</table>
+    <div class="clearfix peep_stdmargin peep_btn_delimiter">
+        <div class="peep_right">
+        {capture assign="del_js"}if(confirm('{text key='admin+are_you_sure'}')) location.href='{url_for for="ADMIN_CTRL_PagesEditExternal:delete:[id=>`$id`]"}';{/capture}
+        {decorator name="button" class="peep_red peep_ic_delete peep_negative" extraString="onclick=\"`$del_js`\"" langLabel="admin+delete_btn_label"}
+        
+		{capture assign="are_you_sure_lbl"}{text key='admin+are_you_sure'}{/capture}
+        {submit name="save" class="peep_positive"}
+        </div>
+    </div>
+</div>
+{/form}

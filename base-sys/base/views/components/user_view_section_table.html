@@ -1,0 +1,11 @@
+    {foreach  from=$questions key='sort' item='question' name='question'}
+        {if isset( $questionsData[$question.name] ) }
+            <div class="{if $smarty.foreach.question.last}details_wrap{/if}" style="border-bottom:1px solid rgba(0,0,0,0.1); width:100%; height:auto; padding:5px;">
+                <div class="peep_detals_label" style="width: 100%; height:auto; padding:5px;" >{if empty($labels[$question.name])}{text key="base+questions_question_`$question.name`_label"}{else}{$labels[$question.name]}{/if}</div>
+                <div class="peep_value" style="width: 100%; height:auto; padding:5px;"><span class="{if !empty($question.hidden)}peep_field_eye peep_remark profile_hidden_field{/if}">{$questionsData[$question.name]}</span></div>
+            </div>
+        {/if}
+    {/foreach}
+
+
+

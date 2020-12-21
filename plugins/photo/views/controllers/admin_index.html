@@ -1,0 +1,62 @@
+{$menu}
+
+{form name='configSaveForm'}
+    <table class="peep_table_1 peep_form peep_stdmargin">
+        <tr class="peep_tr_first">
+            <th class="peep_name peep_txtleft" colspan="3">
+                <span class="peep_section_icon peep_ic_up_arrow">{text key='photo+upload_settings'}</span>
+            </th>
+        </tr>
+        <tr class="peep_alt1 peep_tr_last">
+            <td class="peep_label">{label name='acceptedFilesize'}</td>
+            <td class="peep_value">{input name='acceptedFilesize' class='peep_settings_input'} Mb <span class="peep_small">{text key='photo+upload_ini_value' value=$iniValue}</span> {error name='acceptedFilesize'}</td>
+            <td class="peep_desc peep_small">{text key='photo+accepted_filesize_desc'}</td>
+        </tr>
+        <tr class="peep_tr_delimiter"><td colspan="3"></td></tr>
+        <tr class="peep_tr_first">
+            <th class="peep_name peep_txtleft" colspan="3">
+                <span class="peep_section_icon peep_ic_lock">{text key='photo+quotas'}</span>
+            </th>
+        </tr>
+        <tr class="{cycle values='peep_alt2, peep_alt1'}">
+            <td class="peep_label">{label name='albumQuota'}</td>
+            <td class="peep_value">{input name='albumQuota' class='peep_settings_input'} {error name='albumQuota'}</td>
+            <td class="peep_desc peep_small">{text key='photo+album_quota_desc'}</td>
+        </tr>
+        <tr class="{cycle values='peep_alt2, peep_alt1'}">
+            <td class="peep_label">{label name='userQuota'}</td>
+            <td class="peep_value">{input name='userQuota' class='peep_settings_input'} {error name='userQuota'}</td>
+            <td class="peep_desc peep_small">{text key='photo+user_quota_desc'}</td>
+        </tr>
+        <tr class="{cycle values='peep_alt2, peep_alt1'}">
+            <td class="peep_label">{label name='downloadAccept'}</td>
+            <td class="peep_value">{input name='downloadAccept' class='peep_settings_input'}</td>
+            <td class="peep_desc peep_small">&nbsp;</td>
+        </tr>
+        <tr class="{cycle values='peep_alt2, peep_alt1'} peep_tr_last">
+            <td class="peep_label">{label name='storeFullsize'}</td>
+            <td class="peep_value">{input name='storeFullsize' class='peep_settings_input'}</td>
+            <td class="peep_desc peep_small">&nbsp;</td>
+        </tr>
+        {foreach $extendedSettings as $section}
+            <tr class="peep_tr_delimiter"><td colspan="3"></td></tr>
+            <tr class="peep_tr_first">
+                <th class="peep_name peep_txtleft" colspan="3">
+                    <span class="peep_section_icon {$section.icon}">{text key=$section.section_lang}</span>
+                </th>
+            </tr>
+            {foreach $section.settings as $setting}
+                <tr class="{cycle values='peep_alt2, peep_alt1'}{if $setting@last} peep_tr_last{/if}">
+                    <td class="peep_label">{label name=$setting@key}</td>
+                    <td class="peep_value">{input name=$setting@key}</td>
+                    <td class="peep_desc peep_small">{desc name=$setting@key}</td>
+                </tr>
+            {/foreach}
+        {/foreach}
+    </table>
+    <div class="clearfix peep_stdmargin">
+        <div class="peep_right">
+            {submit name='save' class='peep_ic_save peep_positive'}
+        </div>
+    </div>
+{/form}

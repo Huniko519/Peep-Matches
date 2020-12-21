@@ -1,0 +1,201 @@
+<script type="text/javascript">
+function deopen() {
+    $(".togg").slideFadeToggle(function() { 
+        $("#chat_setting_icon").removeClass("opened");
+    });    
+}
+
+$(function() {
+    $("#chat_setting_icon").live('click', function() {
+        if($(this).hasClass("opened")) {
+            deopen();               
+        } else {
+            $(this).addClass("opened");
+            $(".togg").slideFadeToggle(function() { 
+                $("#email").focus();
+            });
+        }
+        return false;
+    });
+
+    $(".close").live('click', function() {
+        deopen();
+        return false;
+    });
+});
+
+$.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({  height: 'toggle' }, "speed", easing, callback);
+};
+
+
+ </script>
+
+
+
+{if $useChat == 'promoted'}
+<div class="peep_im_block peep_hidden" id="chatPromotionBlock">
+    <div class="peep_im_con">
+        <div class="peep_chat">
+            <div class="peep_puller"></div>
+            <div class="peep_chat_block_wrap peep_border">
+                <div class="peep_chat_block peep_active">
+                    <div class="peep_chat_block_main">
+                        <div class="im_top_panel">
+                            <div class="im_js_block">
+                                <a href="javascript://" class="chat_close_bar">
+                                    <span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peep_chat_in_block">
+                            <div class="peep_chat_list showOnlineOnly peep_scrollable" style="width: 200px;">
+                                <div style="display: table; height: 100%; width: 100%;">
+                                    <div style="padding: 0 8px; text-align: center; font-size: 12px; display: table-cell; vertical-align: middle;">
+                                        {$msg}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="peep_bot_panel">
+                        <div class="im_js_block">
+                            <a href="javascript://" class="chat_close_bar"><span class="peep_count_txt">{text key="mailbox+chat"}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+
+{if $useChat == 'available'}
+<div class="peep_im_block">
+    <div class="peep_im_con">
+        <div class="peep_chat">
+            <div class="peep_puller"></div>
+            <div class="peep_chat_block_wrap  peep_border">
+<div class="sideImOpen">
+<div class="res_panel_top">
+                        <div class="im_js_block">
+                            <a href="javascript://" class="res_chat_close_bar">
+                                </span><span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                <a href="javascript://" id="chat_setting_icon"></a>
+                            </a>
+                        </div>
+                        
+                    </div>
+                <div class="peep_chat_block">
+                    {form name='im_user_settings_form'}
+                    <div class="peep_chat_block_main">
+                        <div class="im_top_panel">
+<a href="javascript://" id="chat_setting_icon"></a>
+ <span class="im_top_txt">{text key="mailbox+chat"}</span>
+
+                            <div class="im_js_block">
+                                <a href="javascript://" class="chat_close_bar">
+
+                                    
+                                    <span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                <span class="peep_count_wrap">
+									
+								</span>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peep_chat_in_block">
+<div class="chat_settings togg">
+<span class="peep_btn_sort_users" id="mailboxSortUsersPreference"><span class="peep_btn_sort_online"></span></span>
+<a href="javascript://" class="peep_btn_sound" id="mailboxSoundPreference"><span></span></a>
+<div class="peep_close_bar">
+<div class="im_js_block">
+                                <a href="javascript://" class="chat_close_bar">{text key="mailbox+chat_bar_hide"}</a>
+                            </div>
+</div>
+</div>
+                            <div class="peep_chat_search">
+                                <span>{input name='im_find_contact' id="im_find_contact"}</span>
+                            </div>
+
+                            <div class="peep_chat_list" style="width: 200px;">
+                                <div class="peep_chat_preloader"></div>
+                                <ul></ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="peep_bot_panel">
+                        <div class="im_js_block">
+                            <a href="javascript://" class="chat_open_bar"><span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                <span class="peep_count_wrap">
+                                    <span class="peep_count_bg totalUserOnlineCountBackground">
+                                        <span class="peep_count totalUserOnlineCount">0</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        
+                    </div>
+</div>
+
+
+                    {/form}
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="res_panel_bottom">
+                        <div class="im_js_block">
+                            <a href="javascript://" class="res_chat_open_bar">
+                                </span><span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                <span class="peep_count_wrap">
+                                    <span class="peep_count_bg totalUserOnlineCountBackground">
+                                        <span class="peep_count totalUserOnlineCount">0</span>
+                                    </span>
+                            </a>
+                        </div>
+                        
+                    </div>
+<div class="custom_bot_panel">
+<div class="bottom_tail"></div>
+                        <div class="im_js_block">
+                            <a href="javascript://" class="chat_open_bar"><span class="peep_count_wrap">
+                                    <span class="peep_count_bg totalUserOnlineCountBackground">
+                                        <span class="peep_count totalUserOnlineCount">0</span>
+                                    </span>
+                                </span><br/><span class="peep_count_txt">{text key="mailbox+chat"}</span>
+                                
+                            </a>
+                        </div>
+                        
+                    </div>
+
+</div>
+
+
+<div id="peep_chat_prototypes" style="display: none;">
+
+    <div id="peep_chat_list_proto">
+        <ul>
+            <li>
+                <a href="javascript://" class="clearfix peep_chat_item">
+                    <span class="peep_chat_item_photo_wrap">
+                        <span class="peep_chat_item_photo">
+                            <span class="peep_chat_in_item_photo"><img src="{$avatar_proto_data.src}"  width="32px" height="32px" alt="" id="contactItemAvatarUrl" /></span>
+                        </span>
+                    </span>
+                    <span class="peep_chat_item_author">
+                        <span class="peep_chat_in_item_author" id="contactItemDisplayName"></span>
+                    </span>
+                    <span class="peep_count_wrap peep_count_active" style="display: none;"><span class="peep_count">0</span></span>
+                    <div class="peep_chat_status" id="contactProfileStatus"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{/if}

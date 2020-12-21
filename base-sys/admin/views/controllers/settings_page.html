@@ -1,0 +1,24 @@
+{$menu}
+{form name='page_settings'}
+<table class="peep_table_1 peep_form">
+   <tr class="peep_alt2 peep_tr_first">
+        <td class="peep_label">{label name='head_code'}</td>
+        <td class="peep_value">{input name='head_code'} {error name='head_code'}</td>
+        
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='bottom_code'}</td>
+        <td class="peep_value">{input name='bottom_code'} {error name='bottom_code'}</td>
+        
+    </tr>
+   <tr class="peep_alt2 peep_tr_last">
+        <td class="peep_label"><label>{label name='favicon'} {input name='enable_favicon'}</label></td>
+        <td class="peep_value">
+            <div id="favicon_desabled"{if !empty($faviconEnabled)} style="display:none;"{/if}>{text key='admin+page_settings_no_favicon_label'}</div>
+            <div id="favicon_enabled"{if empty($faviconEnabled)} style="display:none;"{/if}><img src="{$faviconSrc}" /> {input name='favicon'} {error name='favicon'}</div>
+        </td>
+        
+    </tr>
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div></div>
+{/form}

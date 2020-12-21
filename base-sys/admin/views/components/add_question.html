@@ -1,0 +1,35 @@
+{style}
+    span.tag {
+        background: url("images/tag_bg.png") repeat-x scroll 0 0 #F8F8F8;
+        border: 1px solid #DCDCDC;
+        border-radius: 2px 2px 2px 2px;
+        float: left;
+        line-height: 22px;
+        margin-bottom: 3px;
+        margin-right: 4px;
+    }
+{/style}
+
+
+{form name='qst_add_form'}
+	<table class="peep_table_1 peep_form peep_admin_add_profile_question">
+		{foreach from=$formData key='formEl' item='field' name='f'}
+                    <tr class="{cycle values='peep_alt2,peep_alt1'} tr_{$formEl} {if $smarty.foreach.f.first}peep_tr_first{/if} {if $smarty.foreach.f.last}peep_tr_last{/if} {if empty($displayedFormElements[$formEl]) }peep_hidden{/if}">
+                        <td class="peep_label">
+                            {label name=$formEl}
+                        </td>
+                        <td class="peep_value">
+                            {input name=$formEl}
+                            <br/>
+                            {error name=$formEl}
+                        </td>
+                        <td class="peep_desc peep_small">{desc name=$formEl}</td>
+                    </tr>
+		{/foreach}
+	</table>
+    <div class="clearfix peep_stdmargin">
+        <div class="peep_right">
+             {submit name='qst_submit'}
+        </div>
+    </div>
+{/form}

@@ -1,0 +1,115 @@
+<div class="index_page">
+<div class="page_full">
+	<div class="page_fill">
+<div class="index_landing_header">{component class='BASE_CMP_Console'}</div>
+	<div class="index_visitor_top">
+<div class="visitor_top_cover">
+<div class="visitor_site_logo peep_stdmargin"><a href="{$siteUrl}">{$siteName}</a></div>
+
+<div class=" welcome-slideshow">
+            <div class="typing_slider" data-period="2000" data-type='[ "{text key='corevisitor+welcome_text_1'}", "{text key='corevisitor+welcome_text_2'}", "{text key='corevisitor+welcome_text_3'}", "{text key='corevisitor+welcome_text_4'}", "{text key='corevisitor+welcome_text_5'}" ]'>
+    <span class="wrap"></span>
+  </div>
+</div>                
+        
+
+<div class="index_visitor_join">
+{component class='COREVISITOR_CMP_Registration'}
+
+<div class="visitor_index_under peep_center" style="margin-top:-10px;"><div class="peep_connect_buttons">
+
+                {component class='BASE_CMP_SignInButtonList'}
+            </div>
+          
+    </div>
+</div>
+</div>
+</div>
+<div class="visitor_users_block">
+{component class='COREVISITOR_CMP_UserFade'}
+		</div>
+			<div class="canvas">
+				<div class="main_page bg_color clearfix">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="footer" style="margin-top:-50px;">
+	<div class="peep_center">
+		
+			{$bottom_menu}
+			<div class="site_copyright">
+				{text key='base+copyright'}
+			</div>
+					
+	</div>
+</div>  
+</div>  
+{decorator name='floatbox'}
+
+
+<script type="text/javascript">
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typing_slider');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typing_slider > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+
+</script>
+
+
+
+

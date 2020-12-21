@@ -1,0 +1,18 @@
+<style>
+       [class*=PROFILELIKE_CMP_Profilelikebutton] { display:none; }
+{if !($iLiked)}
+    a#profile-like-action {
+        background-image: url({$likeico});
+border:3px solid #ea2b31;
+border-radius:50%;
+background-color:#fff;
+    }
+else
+ a#profile-like-action {
+        background-image: url({$likeico});
+
+}
+{/if}
+</style>
+
+{$script}

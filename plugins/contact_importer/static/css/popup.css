@@ -1,0 +1,166 @@
+#invite_popup_wrap .contactimporter_provider_button img{
+position:relative;
+float:left;
+left:0px;
+right:0px;
+
+}
+
+#invite_popup_wrap .google_invite_icon {
+background:#db4437;
+}
+
+#invite_popup_wrap .google_invite_icon img{
+background:#ce261a;
+}
+
+#invite_popup_wrap .mail_invite_icon {
+background:#35c49e;
+}
+
+#invite_popup_wrap .mail_invite_icon img{
+background:#17b58b;
+}
+
+#invite_popup_wrap .facebook_invite_icon {
+background:#4368b2;
+}
+
+#invite_popup_wrap .facebook_invite_icon img{
+background:#3b5998;
+}
+
+#invite_popup_wrap .contactimporter_provider_button{
+position:relative;
+line-height:45px;
+clear:both;
+margin:7px auto;
+
+width:300px;
+text-align:left;
+}
+#invite_popup_wrap a{
+text-decoration:none !important;
+}
+#invite_popup_wrap .contactimporter_provider_button span{
+color:#fff;
+font-size:13px;
+font-weight:bold;
+margin-left:8px;
+margin-right:8px;
+
+}
+#invite_popup_wrap{
+  position:fixed; 
+  z-index:100;
+  background:rgba(0,0,0,0.8);
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+#invite_popup_cont{
+  position:relative;
+  width:480px;
+  height:auto;
+  background:#fff;
+ margin:50px auto;
+  border-radius:5px;
+  padding:0px 20px 20px 20px;
+ 
+  text-align:center;
+  box-shadow:0 0 10px 0 #000;
+ 
+}
+
+
+.invite_popup_header{
+margin-bottom:20px;
+padding-left:32px;
+height:50px;
+line-height:50px;
+border-bottom:1px solid rgba(0,0,0,0.2);
+font-size:18px;
+font-weight:bold;
+color:#777;
+text-align:left;
+font-family:'Arial Black', Arial, sans-serif;
+background:url(../img/invite_t_ico.png) no-repeat -4px 2px;
+}
+
+
+#invite_popup_close{
+  position:relative;
+  
+  color:white;
+  right:0px;
+  top:8px;
+  float:right;
+  border-radius:4px;
+  padding:0px 10px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  font-size:14px;
+  font-weight:normal;
+  font-family:'Tahoma', sans-serif;
+  cursor:pointer;
+color:#666;
+border:1px solid rgba(0,0,0,0.2);
+
+}
+
+
+#invite_popup_wrap .invite_prom{
+margin:10px auto;
+}
+
+#invite_popup_wrap .invite_prom_t{
+font-size:16px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+#invite_popup_wrap .invite_prom_sub{
+font-size:13px;
+font-weight:bold;
+}
+
+#after_close{
+display:none; position:absolute; z-index:99; width:90%; margin-top:10px;
+  
+}
+
+#after_close_even{
+width:0px;
+height:0px;
+border-right:10px solid transparent;
+border-left:10px solid transparent;
+border-bottom:10px solid #444;
+margin:-8px auto 0 auto;
+}
+
+#after_close_cont{
+ width:90%; padding:10px 10px; background:#444; color:#fff; display:inline-block;  border-radius:4px;
+}
+
+#got_it_close{
+padding:5px 10px; font-size:12px; font-weight:bold; margin-top:10px; text-align:center; background:green; border-radius:4px; cursor:pointer;
+}
+
+
+@media (min-width: 220px) and (max-width: 768px) {
+
+#invite_popup_cont{
+width:80% !important;
+ padding:0px 5px 20px 5px;
+}
+#invite_popup_wrap .contactimporter_provider_button{
+width:90% !important;
+}
+
+}
+

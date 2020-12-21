@@ -1,0 +1,147 @@
+<style>
+.peep_tr_first,.peep_desc, h1{
+display:none;
+}
+.canvas, .page_container {
+margin: 0px auto 0 auto;
+}
+.peep_alt1,.peep_alt2{
+background:none;
+padding:5px;
+}
+.registration_page table.peep_form td.peep_lable{
+width:20%;
+}
+.join_profile_pic{
+height:70px !important;
+line-height:70px !important;
+}
+
+</style>
+
+{block_decorator name="box"  type="empty" addClass="join_left_section peep_supernarrow peep_left" }{text key='base+join_form_title'}
+{if isset($notValidInviteCode)}
+    {block_decorator name="box" type="empty" addClass="join_social_login peep_center" style="padding:15px; margin-top:10px;"}
+
+         {text key="base+join_not_valid_invite_code"}
+    {/block_decorator}
+{else}
+    {if $step == 1}
+        
+        {if !empty($joinConnectHook)}
+           <div class="join_social_auth clearfix" style="margin-top:10px;">
+               {foreach from=$joinConnectHook item='item'}
+                  {$item}
+               {/foreach}
+           </div>
+        {/if}
+    {/if}
+{/if}
+
+<div class="join_prom">
+            <h3>{text key='corevisitor+welcome_text_1'}</h3>
+            <h3>{text key='corevisitor+welcome_text_2'}</h3>
+            <h3>{text key='corevisitor+welcome_text_3'}</h3>
+            <h3>{text key='corevisitor+welcome_text_4'}</h3>
+            <h3>{text key='corevisitor+welcome_text_5'}</h3>   
+</div>
+{/block_decorator}
+{block_decorator name="box" type="empty" addClass="join_right_section peep_supernarrow peep_right"}
+
+    
+    {form name=joinForm}
+        <table class="peep_table_3 peep_form" style="border-spacing:0px 0px">
+            {if $displayAccountType==true}
+            {cycle assign='alt' values='peep_alt1,peep_alt2'}
+            <tr class=" peep_tr_first peep_tr_last">
+               
+                <td class="{$alt} peep_value peep_center">
+ <div class="{$alt} peep_label">
+                    {label name='accountType'}
+                </div>
+                    {input name='accountType'}
+                    <div style="height:1px;"></div>
+                    {error name='accountType'}
+                </td>
+                
+            </tr>
+            
+            {/if}
+            {foreach from=$questionArray key='section' item='questions' name='section'}                
+                {foreach from=$questions item='question' name='question'}
+                    <tr class="{if empty($section)}peep_tr_first{/if} {if $smarty.foreach.question.last && $question.name!='password'}peep_tr_last{/if}">
+                        <td class="{if !empty($question.trClass)}{$question.trClass}{/if} peep_lable">
+                            {label name=$question.name}
+                        </td>
+                        <td class="{if !empty($question.trClass)}{$question.trClass}{/if} peep_value">
+
+                            {input name=$question.name }
+                            <div style="height:1px;"></div>
+                            {error name=$question.name}
+                        </td>
+                        
+                    </tr>
+                    
+                {/foreach}
+                {if !empty($section)}{/if}
+            {/foreach}
+            {if $isLastStep}
+                {if $display_photo}
+                    
+                    {cycle assign='alt' name=userPhoto values='peep_alt1,peep_alt2'}
+                    <tr class=" peep_tr_last">
+                        <td class="{$alt} join_profile_pic ">
+                            {label name='userPhoto'}
+                        </td>
+                        <td class="{$alt} join_profile_pic_upload ">
+
+                            {input name='userPhoto'}
+                            <div style="height:1px;"></div>
+                            {error name='userPhoto'}
+                        </td>
+                        
+                    </tr>
+                    
+                {/if}
+                
+                {if $display_terms_of_use}
+                    
+                    {cycle assign='alt' name=userPhoto values='peep_alt1,peep_alt2'}
+                    <tr class=" peep_tr_last">
+                       <td class="{$alt} peep_terms">
+                            {label name='termOfUse'}
+                        </td>
+                        <td class="{$alt} peep_tems">
+ 
+                            {input name='termOfUse'}
+                            <div style="height:1px;"></div>
+                            {error name='termOfUse'}
+                        </td>
+                        
+                    </tr>
+                    
+                {/if}
+                {if $display_captcha}
+                                       {cycle assign='alt' name=captchaField values='peep_alt1,peep_alt2'}
+                    <tr class="peep_tr_last" >
+
+                        <td colspan="3" class=" {$alt} peep_value">
+                            <div style="padding:10px;">
+                                {input name='captchaField' placeholder="{text key='base+questions_section_captcha_label'}" style='width:100%;'}
+                                <div style="height:1px;"></div>
+                                {error name='captchaField'}
+                            </div>
+                        </td>
+                    </tr>
+                {/if}
+                
+            {/if}
+        </table>
+		<div class="clearfix">
+           <div class="peep_center">
+                {submit name='joinSubmit'}
+           </div>
+        </div>
+    {/form}
+
+{/block_decorator}

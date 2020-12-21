@@ -1,0 +1,57 @@
+{script}
+{literal}
+$(document).ready(
+	function(){
+		$('tr.item-row', '#list-table').hover(
+				function(){
+					$('span.management-controls', $(this)).show();
+				},
+				function(){
+					$('span.management-controls', $(this)).hide();
+				}				
+		)			
+	}
+);
+{/literal}
+{/script}
+
+{$menu}
+{if count($list) > 0}
+	<table id="list-table" class="peep_stdmargin peep_full peep_table_1">
+		<tr class="peep_tr_first">
+			<th>Comment</th>
+			<th class="peep_center" width="100">Date</th>
+			<th width="60"></th>
+		</tr>
+		{foreach from=$list item='item'}
+			<tr  class=" item-row {cycle name=comments values="peep_alt1"} {if $smarty.foreach.item.last}peep_tr_last{/if}">
+				<td>
+					{assign var='userId' value=$item.userId}
+					{capture assign='authorLink'}{user_link name=$displaynameList[$userId] username=$usernameList[$userId]}{/capture}
+					{assign var=id value=$item.entityId}
+					{capture assign='info_string'}{$authorLink} {text key="stories+on"} <a href="{$item.url}">{$postList[$id]->title}</a>{/capture}
+					{decorator name='ipc'
+						infoString=$info_string 
+						content=$item.message 
+						imageSrc=$avatarUrlList[$userId]
+                        imageTitle=$usernameList[$userId]
+						toolbar=''
+						displayName=$displaynameList[$userId]}
+				</td>
+				<td class="peep_small peep_center">{format_date timestamp=$item.createStamp}</td>
+				<td class="peep_nowrap peep_center">
+					<div style=" width: 74px;">
+						<span class="management-controls" style="display: none;">
+							<a href="{url_for for="STORIES_CTRL_ManagementComment:deleteComment:[id=>`$item.id`]"}?back-to={$thisUrl}" class="peep_lbutton peep_red">{text key='stories+story_manage_delete'}</a>
+						</span>
+					</div>
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+{else}
+		<div class="peep_center">
+			{text key='base+comment_no_comments'}
+		</div>
+{/if}		
+{$paging}

@@ -1,0 +1,40 @@
+{block_decorator name="box" type="empty"}
+	{form name=$form->getName()}
+		<table class="account_type_label peep_table_1 peep_form peep_smallmargin">
+			<tr class="peep_center peep_tr_first">
+				<th>{text key="admin+language"}</th>
+				<th>{text key="admin+account_type_translation" }</th>
+			</tr>
+			{foreach from=$langs item='lang' name='lang'}
+				<tr class="{cycle values="peep_alt1,peep_alt2"} {if $smarty.foreach.lang.last}peep_tr_last{/if}">
+					<td class="peep_label">{$lang->getLabel()} ({$lang->getTag()})</td>
+					<td class="peep_value">{input name="lang[`$lang->id`][`$prefix`][`$key`]"}</td>
+				</tr>
+			{/foreach}
+		</table>
+
+        <table class="peep_table_1 peep_form peep_smallmargin">
+            <tbody>
+                    <tr class="peep_alt1 peep_tr_first {if !$form->getElement('order')}peep_tr_last{/if}">
+                        <td class="peep_label">{text key="admin+default_role"}</td>
+                        <td class="peep_value">
+                            {input name="role"}
+                        </td>
+                    </tr>
+                    {if $form->getElement('order')}
+                        <tr class="peep_alt1 peep_tr_last">
+                            <td class="peep_label">{text key="admin+account_type_sort_order"}</td>
+                            <td class="peep_value">
+                                {input name="order"}
+                                <div>{error name="order"}</div>
+                            </td>
+                        </tr>
+                    {/if}
+            </tbody>
+        </table>
+
+        <div class="clearfix peep_smallmargin"><div class="peep_right">
+                {submit name="submit"}
+        </div></div>
+	{/form}
+{/block_decorator}

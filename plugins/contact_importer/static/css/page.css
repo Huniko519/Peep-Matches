@@ -1,0 +1,99 @@
+.invite_page{
+margin:20px auto; padding:20px; border:1px solid rgba(0,0,0,0.1); border-radius:4px;
+}
+
+.invite_page_btns{
+margin-bottom:20px; padding-bottom:20px; 
+}
+
+.invite_page_btns_txt{
+margin-bottom:20px;
+}
+
+.invite_page_btns_or_wrap{
+background:rgba(0,0,0,0.15); height:1px; margin:30px 0;
+}
+
+.invite_page_btns_or{
+position:absolute; width:40px !important; height:40px !important; line-height:40px !important; text-align:center; margin:-20px -20px;; border-radius:50%; border:1px solid rgba(0,0,0,0.15); background:#fff; font-size:15px; font-weight:bold;
+}
+
+.email_invite_txt1{
+font-size:13px; font-weight:bold;
+}
+
+.email_invite_txt2{
+font-size:13px; margin:10px 0;
+}
+.invite_page .mail_invite_icon {
+display:none;
+}
+
+.invite_page .contactimporter_provider_button{
+border:1px solid rgba(0,0,0,0.1);
+width:98%;
+}
+
+.invite_page .contactimporter_provider_button img{
+border-right:1px solid rgba(0,0,0,0.1);
+
+}
+
+.invite_page #invite_txt{
+color:#777;
+font-size:13px;
+margin-left:5px;
+}
+
+.invite_page a{
+text-decoration:none;
+}
+
+#mailing_tab{
+border:1px solid rgba(0,0,0,0.1);
+width:100%;
+margin:5px 3px;
+cursor:pointer;
+}
+
+#mailing_tab img{
+border-right:1px solid rgba(0,0,0,0.1);
+width:45px;
+}
+
+.invite_page_header{
+
+margin-bottom:20px;
+padding-left:22px;
+height:40px;
+line-height:40px;
+border-bottom:1px solid rgba(0,0,0,0.2);
+font-size:18px;
+font-weight:bold;
+color:#777;
+font-family:'Arial Black', Arial, sans-serif;
+}
+
+.invite_page_header img{
+margin-top:-7px;
+}
+
+@media (min-width: 220px) and (max-width: 768px) {
+
+.invite_page{
+padding:20px 0px !important;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+{block_decorator name="box" type="empty" addClass="peep_superwide peep_automargin"}
+    {block_decorator name="box_cap" type="empty" addClass="peep_center" style="padding:15px;" langLabel="base+required_profile_questions"}
+    {/block_decorator}
+
+    {form name=accountTypeForm}
+        <table class="peep_table_1 peep_form peep_stdmargin">
+            <tr class=" peep_tr_first peep_tr_last">
+                <td class="peep_alt1 peep_label">
+                    {label name='accountType'}
+                </td>
+                <td class="peep_alt1 peep_value">
+                    {input name='accountType'}
+                    <div style="height:1px;"></div>
+                    {error name='accountType'}
+                </td>
+                <td class="peep_alt1 peep_desc peep_small">
+                    {question_description_lang name='accountType'}
+                </td>
+            </tr>
+        </table>
+        <div class="clearfix peep_stdmargin">
+           <div class="peep_right">
+               {submit name='submit'}
+           </div>
+        </div>
+    {/form}
+{/block_decorator}

@@ -1,0 +1,32 @@
+<div class="peep_superwide peep_automargin peep_stdmargin">
+{form name='privacy_settings'}
+<table class="peep_table_1 peep_form">
+    <tr class="{cycle values='peep_alt2,peep_alt1'} peep_tr_first">
+		<td class="peep_label">{label name='user_approve'}</td>
+		<td class="peep_value">{input name='user_approve'}</td>
+		<td class="peep_desc"></td>
+	</tr>
+	<tr class="{cycle values='peep_alt2,peep_alt1'}">
+		<td class="peep_label">{label name='who_can_join'}</td>
+		<td class="peep_value">{input name='who_can_join'}</td>
+		<td class="peep_desc"></td>
+	</tr>
+    <tr class="{cycle values='peep_alt2,peep_alt1'}" style="display:none;">
+		<td class="peep_label">{label name='who_can_invite'}</td>
+		<td class="peep_value">{input name='who_can_invite'}</td>
+		<td class="peep_desc"></td>
+	</tr>
+	<tr class="{cycle values='peep_alt2,peep_alt1'} peep_tr_last">
+		<td class="peep_label">{label name='guests_can_view'}</td>
+        <td class="peep_value">
+            <div class="clearfix">
+                <div style="float: left;width: 50%;">{input name='guests_can_view'}</div>
+                <div style="float: left;width: 50%;padding-top: 35px;">{input name='password'}</div>
+            </div>
+        </td>
+		<td class="peep_desc peep_small">{desc name='guests_can_view'}</td>
+	</tr>
+</table>
+<div class="clearfix"><div class="peep_right">{submit name='save' class='peep_button peep_ic_save peep_positive'}</div></div>
+{/form}
+</div>

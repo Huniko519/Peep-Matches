@@ -1,0 +1,23 @@
+{$menu}
+{script}
+{literal}
+window.tf_insert_from_url = function(){
+    window.parent.document.getElementById('{/literal}{$elid}{literal}').jhtmlareaObject.insertImage({src:$('#mp-img-url').val()});
+}
+{/literal}
+{/script}
+
+<table class="peep_table_1 peep_form peep_automargin">
+    <tr class="peep_alt1 peep_tr_first peep_tr_last">
+        <td class="peep_label">
+            {text key='base+tf_img_url'}
+        </td>
+        <td class="peep_value">
+            <input id="mp-img-url" type="text" value="http://" />
+        </td>
+    </tr>
+
+</table>
+
+            <div class="clearfix"><div class="peep_right">{decorator name='button' langLabel='base+tf_insert' extraString='onclick="tf_insert_from_url();"'}</div></div>
+

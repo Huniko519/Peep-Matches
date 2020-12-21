@@ -1,0 +1,262 @@
+{style}{literal}
+
+.action_btn {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+{/literal}{/style}
+
+{$menu}
+
+<div class="peep_smallmargin peep_right">
+    {decorator name='button_list_item' langLabel='emoticons+add_smile_label' class='smile_add_btn'}
+</div>
+
+
+
+
+{if $isSingle}
+    <table id="emoticons" class="peep_table_2 emoticons-single">
+        <tr class="peep_tr_first">
+            <th width="1">Re-arrange</th>
+            <th>Emoticon Image</th>
+            <th width="1">Code</th>
+            <th width="1">Action</th>
+        </tr>
+        {foreach $emoticons as $smile}
+            <tr class="{cycle values="peep_alt1,peep_alt2"}" data-id="{$smile->id}">
+                <td>
+                    <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_up_arrow" title="Up"></a></div>
+                    <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_down_arrow" title="Down"></a></div>
+                </td>
+                <td><img src="{$emoticonsUrl}{$smile->name}" /></td>
+                <td>{$smile->code}</td>
+                <td>
+                    <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_edit" title="Edit"></a></div>
+                    <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_delete" title="Delete"></a></div>
+                </td>
+            </tr>
+        {foreachelse}
+            <tr><td class="peep_center">No items</td></tr>
+        {/foreach}
+    </table>
+{else}
+    <div id="emoticons">
+        {foreach $emoticons as $id => $category}
+            <div id="smile-category-{$id}" style="display: none" class="emoticons-cont">
+                <table id="emoticons-{$id}" class="peep_table_2">
+                    <tr class="peep_tr_first">
+                        <th width="1">Order</th>
+                        <th>Smile</th>
+                        <th width="1">Category Icon</th>
+                        <th width="1">Code</th>
+                        <th width="1">Action</th>
+                    </tr>
+                    {foreach $category as $smile}
+                        <tr class="{cycle values="peep_alt1,peep_alt2"}" data-id="{$smile->id}">
+                            <td>
+                                <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_up_arrow" title="Up"></a></div>
+                                <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_down_arrow" title="Down"></a></div>
+                            </td>
+                            <td><img src="{$emoticonsUrl}{$smile->name}" /></td>
+                            <td><input type="radio" name="category-{$smile->category}" value="{$smile->category}" {if in_array($smile->name, $captions)} checked{/if}/></td>
+                            <td>{$smile->code}</td>
+                            <td>
+                                <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_edit" title="Edit"></a></div>
+                                <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_delete" title="Delete"></a></div>
+                            </td>
+                        </tr>
+                        {if $smile@last}
+                            <tr class="{cycle values="peep_alt1,peep_alt2"}" data-id="{$smile->category}">
+                                <td colspan="5">
+                                    <div class="action_btn"><a href="javascript://" class="action_btn peep_ic_delete delete_category" title="Delete category"></a></div>
+                                </td>
+                            </tr>
+                        {/if}
+                    {foreachelse}
+                        <tr><td class="peep_center">No items</td></tr>
+                    {/foreach}
+                </table>
+            </div>
+        {/foreach}
+    </div>
+{/if}
+
+<div class="peep_clearfix peep_stdmargin">
+    <div class="peep_right">
+        
+    </div>    
+</div>
+
+{script}{literal}
+
+var categoryId = 0;
+
+$(".smile_add_btn").on("click", function( event )
+{
+    PEEP.ajaxFloatBox('EMOTICONS_CMP_Add', [categoryId], {
+        title: PEEP.getLanguageText('emoticons', 'add_smile_label'),
+        width: 550
+    });
+    
+    event.stopImmediatePropagation();
+});
+
+$(".peep_ic_edit", ".emoticons-cont,.emoticons-single").on("click", function()
+{
+    var id = $(this).closest("tr").attr("data-id");
+    
+    PEEP.ajaxFloatBox('EMOTICONS_CMP_Edit', [id], {
+        title: PEEP.getLanguageText('emoticons', 'edit_smile_label'),
+        width: 550
+    });
+});
+
+$(".peep_ic_delete", ".emoticons-cont,.emoticons-single").on("click", function()
+{
+    if ( !confirm(PEEP.getLanguageText('emoticons', 'are_you_sure')) )
+    {
+        return;
+    }
+    
+    $.ajax({
+        url: "{/literal}{url_for_route for="emoticons.admin_delete"}{literal}",
+        data: {id: $(this).closest("tr").attr("data-id")},
+        cache: false,
+        type: 'POST',
+        dataType: 'json',
+        success: function( data )
+        {
+            if ( data && data.error )
+            {
+                PEEP.error(data.message);
+            }
+            else
+            {
+                window.location.reload(true);
+            }
+        }
+    });
+});
+
+function reord( send )
+{
+    send = (send === undefined ? true : false);
+    var table = $(".emoticons-cont,.emoticons-single");
+    
+    $(".peep_ic_up_arrow,.peep_ic_down_arrow", table).show();
+    
+    table.each(function()
+    {
+        $(".peep_ic_up_arrow", $(this).find("tr:eq(1)")).hide();
+        $(".peep_ic_down_arrow", $(this).find("tr:eq(-2)")).hide();
+    });
+    
+    $("tr:odd", table).removeClass().addClass("peep_alt1");
+    $("tr:even", table).removeClass().addClass("peep_alt2");
+    
+    if ( send )
+    {
+        var data = {};
+        
+        $("tr", table).each(function( index )
+        {
+            var id = $(this).attr("data-id");
+            
+            if ( id === undefined )
+            {
+                return;
+            }
+            
+            data[$(this).attr("data-id")] = index;
+        });
+        
+        $.ajax({
+            url: "{/literal}{url_for_route for="emoticons.admin_reorder"}{literal}",
+            data: data,
+            cache: false,
+            type: 'POST'
+        });
+    }
+}
+
+reord(false);
+
+$(".peep_ic_up_arrow", "#emoticons").on("click", function()
+{
+    var tr = $(this).closest("tr");
+    
+    tr.prev().before(tr);
+    
+    reord();
+});
+
+$(".peep_ic_down_arrow", "#emoticons").on("click", function()
+{
+    var tr = $(this).closest("tr");
+    
+    tr.next().after(tr);
+    
+    reord();
+});
+
+$(".tab-category").on("click", function()
+{
+    $(".category_menu li").removeClass("active");
+    $(this).closest("li").addClass("active");
+    $(".emoticons-cont").hide();
+    $("#smile-category-" + $(this).attr("data-category")).show();
+    categoryId = $(this).attr("data-category");
+}).eq(0).trigger("click");
+
+$("#add-category").on("click", function()
+{
+    PEEP.ajaxFloatBox('EMOTICONS_CMP_AddCategory', [], {
+        title: PEEP.getLanguageText('emoticons', 'add_smile_category'),
+        width: 550
+    });
+    
+    event.stopImmediatePropagation();
+});
+
+$(".delete_category").on("click", function()
+{
+    if ( !confirm(PEEP.getLanguageText('emoticons', 'are_you_sure')) )
+    {
+        return;
+    }
+    
+    $.ajax({
+        url: '{/literal}{url_for_route for="emoticons.admin_delete_category"}{literal}',
+        data: {id: $(this).closest("tr").attr("data-id")},
+        cache: false,
+        type: 'POST',
+        dataType: 'json',
+        success: function( data )
+        {
+            if ( data && data.error )
+            {
+                PEEP.error(data.message);
+            }
+            
+            window.location.reload(true);
+        }
+    });
+});
+
+$(".emoticons-cont input[name^='category-']").on("click", function()
+{
+    $.ajax({
+        url: '{/literal}{url_for_route for="emoticons.admin_set_category"}{literal}',
+        data: {id: $(this).closest("tr").attr("data-id"), categoryId:this.value},
+        cache: false,
+        type: 'POST',
+        success: function()
+        {
+            window.location.reload(true);
+        }
+    });
+});
+{/literal}{/script}

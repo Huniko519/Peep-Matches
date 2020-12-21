@@ -1,0 +1,6 @@
+
+<li {if count($feed)}style="display: none;"{/if} class="peep_cnews_item peep_nocontent cnews_nocontent">{text key="cnews+empty_feed_message"}</li>
+
+{foreach from=$feed item=item name=feed}
+    {cnews_item action=$item lastItem=$smarty.foreach.feed.last}
+{/foreach}

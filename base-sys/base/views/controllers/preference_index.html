@@ -1,0 +1,60 @@
+{style}
+{literal}
+tr.peep_preference td.peep_label{
+    width:80%
+}
+.peep_content_menu li {
+   
+width:100%;
+
+}
+.peep_content_menu li a{
+border-bottom:1px solid #cdcdcd;
+padding:15px 0px 15px 0px;
+}
+{/literal}
+{/style}
+<div class="profile_sett_page clearfix">
+{block_decorator name="box" type="empty" addClass="peep_supernarrow peep_left peep_stdmargin" style="width:21%;"}
+{$contentMenu}
+{/block_decorator}
+{block_decorator name="box" type="empty" addClass="peep_superwide peep_right peep_stdmargin" style="width:72%;"}
+    {if empty($preferenceList)}
+        {block_decorator name="box" type="empty" addClass="peep_right" }
+             {text key="base+preference_no_items"}
+        {/block_decorator}
+    {else}
+        {form name='preferenceForm'}
+            <table class="peep_table_1 peep_form">
+                {foreach from=$preferenceList key='section' item='preferences'}
+                    
+                    {foreach from=$preferences item='preference' name='preference'}
+                        <tr class="peep_preference {cycle name=$section values='peep_alt1,peep_alt2'} {if $smarty.foreach.preference.last}peep_tr_last{/if}">
+<td class="peep_value">
+                                {input name=$preference}
+                                <div style="height:1px;"></div>
+                                {error name=$preference}
+                            </td>
+                            <td class="peep_label">
+                                {label name=$preference}
+<br>{desc name=$preference}</br>
+                            </td>
+                            
+                            
+                        </tr>
+                    {/foreach}
+                {/foreach}
+            </table>
+            <div class="clearfix peep_stdmargin"><div class="peep_right">
+            {submit name='preferenceSubmit'}
+			</div></div>
+{if !$isAdmin }
+			
+				<div style="height:50px;"><a href="{$unregisterProfileUrl}" class="sett_delete_acc" style="width:100%; height:40px; line-height:40px;  position:absolute; text-align:center; border:1px solid #cdcdcd; color:#fff; background:#c63333;">{text key='base+delete_profile'}</a></div>
+{/if}		   
+        {/form}
+    {/if}
+
+
+{/block_decorator}
+</div>

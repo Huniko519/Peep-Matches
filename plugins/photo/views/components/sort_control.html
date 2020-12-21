@@ -1,0 +1,94 @@
+ {style}
+.peep_box_menu a{
+padding:15px 10px 15px 10px;
+width:100%;
+border:none;
+border-bottom:1px solid #cdcdcd;
+font-size:13px;
+background:none;
+}
+.peep_box_menu a:last-child{
+border-bottom:none;
+}
+.peep_box_menu a:hover{
+background:none;
+color: #d76243;
+}
+.peep_box_menu a.active{
+background:none;
+border-left:5px solid #111;
+color: #d76243;
+}
+.peep_photo_side_menu{
+
+width:100%;
+background:#eee;
+border-radius:8px;
+-webkit-border-radius:8px;
+-moz-border-radius:8px;
+-o-border-radius:8px;
+-ms-border-radius:8px;
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.peep_searchbar_input{
+width:100%;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+
+.peep_searchbar_input{
+width:100%;
+}
+.peep_searchbar_btn {
+    display:none;
+}
+}
+{/style}
+
+<div class="peep_full peep_stdmargin ">
+{if !empty($initSearchEngine)}
+        <div id="photo-list-search" class="peep_full peep_stdmargin">
+            <div class="peep_searchbar clearfix">
+                <div class="peep_searchbar_input peep_full">
+                    <input id="search-photo" type="text" class="invitation" placeholder="{text key='photo+search_invitation'}" value="{if !empty($tag)}{$tag}{/if}">
+                    <div class="peep_searchbar_ac_wrap">
+                        <ul class="peep_searchbar_ac" style="display: none"></ul>
+                        <div class="peep_hidden">
+                            <li class="hash-prototype browse-photo-search clearfix" style="display: none">
+                                <div class="peep_search_result_tag"></div>
+                                <span class="peep_searchbar_ac_count peep_right"></span>
+                            </li>
+                            <li class="user-prototype browse-photo-search clearfix" style="display: none">
+                                <div class="peep_search_result_user peep_mini_avatar peep_left">
+                                    <div class="peep_avatar">
+                                        <img style="max-width: 100%;" alt="" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D">
+                                    </div>
+                                    <span class="peep_searchbar_username peep_small"></span>
+                                </div>
+                                <span class="peep_searchbar_ac_count peep_right"></span>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="peep_btn_close_search"></div>
+                </div>
+                <span class="peep_searchbar_btn peep_ic_lens peep_cursor_pointer peep_left" style="display:none;"></span>
+            </div>
+        </div>
+    {/if}
+</div>
+<div class="peep_photo_side_menu peep_full">
+<div class="peep_box_menu">
+        {foreach $itemList as $key => $item}
+            <a href="{$item.url}" list-type="{$key}" {if $item.isActive} class="active"{/if}>
+                <span>{$item.label}</span>
+            </a>
+        {/foreach}
+    </div>
+</div>
+
+
+
+    
+
+

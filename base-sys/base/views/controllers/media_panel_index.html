@@ -1,0 +1,25 @@
+{$menu}
+{form name="image-upload"}
+<center>
+	<table class="peep_table_1 peep_form">
+		<tr class="{cycle values="peep_alt1, peep_alt2"} peep_tr_first">
+			<td class="peep_label">
+				{label name="file"}
+			</td>
+			<td class="peep_value">
+				{input name="file"}<br/>
+				{error name="file"}
+			</td>
+		</tr>
+		<tr class="peep_tr_last">
+			<td colspan="2" align="center">
+				<p>
+					{text key='base+tf_img_types'} <span class="peep_txt_value">JPG</span>/<span class="peep_txt_value">PNG</span>/<span class="peep_txt_value">GIF</span>. {text key='base+tf_img_max_size'} <span class="peep_txt_value">{$maxSize} Mb</span>.
+	
+				</p>	
+			</td>
+		</tr>
+	</table>
+	<div class="clearfix"><div class="peep_right">{submit name="submit"}</div></div>	
+</center>
+{/form}

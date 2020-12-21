@@ -1,0 +1,7 @@
+<div class="peep_content_menu_wrap">
+<ul class="peep_content_menu clearfix">
+ 	{foreach from=$data item='item' name='contentMenu'}
+    <li class="{$item.class} {if $item.active} active{/if}"><a href="{$item.url}">{$item.label}</a></li>
+	{/foreach}
+</ul>
+</div>

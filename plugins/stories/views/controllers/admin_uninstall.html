@@ -1,0 +1,17 @@
+<div class="peep_automargin peep_wide">
+{if $inprogress}
+    {block_decorator name='box' iconClass='peep_ic_clock' langLabel='stories+uninstall_inprogress'}
+        {text key='stories+uninstall_inprogress_desc'}
+    {/block_decorator}
+{else}
+	{block_decorator name='box' iconClass='peep_ic_warning' langLabel='stories+delete_content_warning'}
+	<form id="form_delete" method="post">
+	    <input type="hidden" name="action" value="delete_content" />
+	    <div class="peep_smallmargin">{text key='stories+delete_content_desc'}</div>
+	    <div class="peep_txtright">
+	    {decorator name='button' type='submit' id='btn-delete-content' langLabel='stories+delete_content' class='peep_ic_delete peep_negative'}
+	    </div>
+	</form>
+	{/block_decorator}
+{/if}
+</div>

@@ -1,0 +1,15 @@
+<div class="clearfix console_list_ipc_item peep_cursor_pointer {if $mode == 'mail'}console_item_with_url{/if} {if $mode == 'chat'}consoleChatItem{/if}" data-url="{$url}" data-convid="{$convId}" data-opponentid="{$opponentId}" id="mailboxConsoleMessageItem{$convId}">
+    <div class="peep_avatar">
+        <img src="{$avatarUrl}">
+    </div>
+    <div class="peep_console_invt_cont peep_console_invt_no_img">
+        <div class="peep_console_invt_txt"><div class="peep_console_mailbox_cont" target="_blank">
+            <div class="peep_console_mailbox_title">{$displayName}{if $unreadMessageCount > 0} ({$unreadMessageCount}){/if} <div id="conversationLastMessageDate" class="peep_mailbox_convers_info_date">{$dateLabel}</div></div>
+            <div class="peep_console_mailbox_txt peep_remark">
+                {$text}
+            </div>
+        </div></div>
+        <div class="peep_console_invt_toolbar">
+        </div>
+    </div>
+</div>

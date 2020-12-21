@@ -1,0 +1,42 @@
+{form name='qst_edit_form'}
+	<table class="peep_table_1 peep_form peep_admin_edit_profile_question">
+
+         <tr class="{cycle values='peep_alt2,peep_alt1'} tr_qst_name peep_tr_first">
+		        <td class="peep_label">
+                     {text key="admin+questions_question_name_label"}
+		        </td>
+		        <td class="peep_value">
+                     <a href="javascript://" class="question_label">{$questionLabel}</a>
+		        </td>
+		        <td class="peep_desc peep_small">
+		        </td>
+		 </tr>
+         <tr class="{cycle values='peep_alt2,peep_alt1'} tr_qst_name">
+		        <td class="peep_label">
+                    {text key="admin+questions_edit_question_description_label"}
+		        </td>
+		        <td class="peep_value">
+                    <a href="javascript://"  class="question_description" >{$questionDescription}</a>
+		        </td>
+		        <td class="peep_desc peep_small">
+		        </td>
+		 </tr>
+
+		{foreach from=$formData key='formEl' item='field' name='f'}
+		    <tr class="{cycle values='peep_alt2,peep_alt1'} tr_{$formEl} {if $smarty.foreach.f.last}peep_tr_last{/if}">
+		        <td class="peep_label">
+		            {label name=$formEl}
+		        </td>
+		        <td class="peep_value">
+                {input name=$formEl}
+                <br/>
+                {error name=$formEl}
+		        </td>
+		        <td class="peep_desc peep_small">{desc name=$formEl}</td>
+		    </tr>
+        {/foreach}
+		</table>
+    <div class="clearfix peep_stdmargin peep_submit"><div class="peep_right">
+    {submit name='qst_submit'}
+    </div></div>
+{/form}

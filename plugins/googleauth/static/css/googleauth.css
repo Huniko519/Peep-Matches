@@ -1,0 +1,41 @@
+.peep_ico_signin_g {
+    background-image: url(../img/ico_signin_g.png);
+}
+
+.googleauth_wrap {
+}
+
+.googleauth_button {
+margin:0 auto;
+background: #dc4a36;
+height: 36px;
+width:220px;
+display: inline-block;
+cursor: pointer;
+border-bottom: 1px solid #8d2d1d;
+vertical-align: top;
+border-radius: 0px;
+}
+span.googleauth_button_left{
+background: #dc4a36 url(../img/google_auth.png) no-repeat center center;
+
+float:left;
+left:0px;
+width:40px
+height:40px;
+padding:18px 20px;
+border-right: 1px solid #8d2d1d;
+}
+span.googleauth_button_right {
+float:left;
+left:40px;
+padding: 0px 7px 0px 20px;
+color: #fff;
+text-decoration: none;
+font-size: 16px;
+line-height: 35px;
+}
+
+span.googleauth_button_text:hover, span.googleauth_button_text a:hover {
+  text-decoration: none;
+}

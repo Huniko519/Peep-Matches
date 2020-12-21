@@ -1,0 +1,23 @@
+{$menu}
+{form name="google_settings"}
+    <table class="peep_table_1 peep_form">
+        <tr class="peep_tr_first">
+            <th class="peep_name peep_txtleft" colspan="3">
+                <span class="peep_section_icon peep_ic_script">{text key='contactimporter+google_settings_heading'}</span>
+            </th>
+        </tr>
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"}">
+            <td class="peep_label">{label name="clientId"}</td>
+            <td class="peep_value">{input name="clientId"} {error name="clientId"}</td>
+            <td class="peep_desc"><a href="{$manualUrl}" target="_blank">{text key="contactimporter+google_config"}</a></td>
+        </tr>
+
+        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"} peep_tr_last">
+            <td class="peep_label">{label name="clientSecret"}</td>
+            <td class="peep_value">{input name="clientSecret"} {error name="clientSecret"}</td>
+            <td class="peep_desc"></td>
+        </tr>
+
+    </table>
+     <div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_positive peep_ic_save'}</div><div class="peep_right"></div></div>
+{/form}

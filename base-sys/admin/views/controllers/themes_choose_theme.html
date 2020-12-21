@@ -1,0 +1,197 @@
+{style}
+{literal}
+
+.theme_thumbs {
+    width: 60%;
+}
+.theme_select_delete_btn, .theme_select_submit .peep_positive{
+width:270px;
+}
+
+.theme_icon {
+    background-repeat:no-repeat;
+    display:block;
+    cursor:pointer;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    border: none;
+    height: 210px;
+    width: 417px;
+    margin: 0;
+background-size:100%;
+-webkit-background-size:100%;
+-moz-background-size:100%;
+}
+
+.theme_title{
+    font-weight:bold;
+}
+
+.theme_desc{
+    padding:10px 0;
+}
+
+.theme_controls input[type="text"]{
+    width:310px;
+}
+
+.theme_control_image{
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    border:1px solid #ccc;
+    height:40px;
+    width:310px;
+}
+
+.theme_item {
+    
+    padding-bottom: 7px;
+    padding-right: 9px;
+    text-align: center;    
+    position: relative;
+}
+
+.theme_item a {
+    display: block;
+    outline: 0 none;
+}
+
+.theme_icon span.name {
+    display: none;
+}
+
+.theme_item span.fake{
+    
+    display: block;
+    height: 200px;
+border:5px solid #ccc;
+}
+
+.theme_item .theme_icon span.clicked,
+.theme_item .theme_icon.clicked span.clicked {
+    
+border:5px solid #57ad1d;
+}
+
+.theme_item .theme_icon.clicked span {
+    
+border:5px solid #57ad1d;
+}
+
+html body .selected_theme_info{
+    float:right;
+    width:312px;
+
+}
+
+html body .selected_theme_info_stick{
+    width:312px;
+}
+
+.themes_preview {
+    overflow: hidden;
+    padding: 6px 6px 0;
+    position: relative;
+    width: 302px;
+   border:1px solid #cdcdcd;
+padding-bottom:20px;
+}
+.theme_wrap a {
+    display: block;
+    height: 179px;
+    width: auto;
+    cursor: pointer;
+    background-position: 0px 0px;
+}
+.theme_text_wrap {
+    padding: 13px 0 0;
+}
+.theme_text_wrap .theme_desc {
+    font-size: 11px;
+    padding: 3px 0;
+}
+.theme_info .peep_table_3 td {
+    text-align: left;
+}
+.theme_info .peep_table_3 {
+    margin-bottom: 5px;
+}
+.theme_info .peep_table_3 td.peep_label {
+    padding-left: 0;
+    width: 18%;
+}
+.theme_item.theme_update span.fake {
+    border:5px solid #e89494;
+}
+.theme_item.theme_clicked span.fake {
+    
+}
+.theme_item.active span.clicked {
+    
+}
+.theme_update_label {
+    position: absolute;
+    right: 14px;
+    top: 5px;
+    background: #e89494;
+    
+}
+.theme_item.theme_clicked .theme_update_label,
+.theme_item.active .theme_update_label {
+    background: none repeat scroll 0 0 #57ad1d;
+   
+}
+{/literal}
+{/style}
+<div class="clearfix">
+
+<div class="selected_theme_info">
+<div class="selected_theme_info_stick">
+{block_decorator name='box' type='empty' iconClass="peep_ic_info" }
+<div class="themes_preview">
+    
+    <div class="theme_text_wrap">
+        <div class="theme_title">{$themeInfo.title}</div>
+        <div class="theme_desc">{$themeInfo.description}</div>
+    </div>
+
+			<table style="padding-bottom:15px;">
+			<tr class="peep_tr_first">
+				
+				<td class="peep_value"><span class="author">{$themeInfo.author}</span></td>
+			</tr>
+			<tr>
+				
+				<td class="peep_value"><span class="author_url"><a href="{$themeInfo.authorUrl}">{$themeInfo.authorUrl}</a></span></td>
+			</tr>
+			</table>
+        <div class="peep_center" style="padding-top:20px;"><div class="peep_center theme_control_button peep_btn_delimiter">{decorator name='button' class='theme_select_submit peep_positive' langLabel='admin+themes_choose_activate_button_label'}<span class="dlt_btn" {if empty($themeInfo.delete_url)} style="display:none;"{/if}>{decorator name='button' class='theme_select_delete_btn peep_ic_delete' langLabel='admin+themes_choose_delete_button_label'}</span> </div></div>
+            
+		</div>
+{/block_decorator}
+</div>
+</div>
+
+<div class="theme_thumbs">
+{block_decorator name='box' type='empty' iconClass="peep_ic_monitor"}
+<div class="themes_select clearfix">
+{foreach from=$themes item='theme'}
+<div class="theme_item{if $theme.active} active{/if}{if $theme.update_url} theme_update{/if}">
+	<a class="theme_icon {$theme.key}" href="javascript://" style="background-image:url({$theme.iconUrl});">
+		<span class="fake{if $theme.active} clicked{/if}"></span>
+		<span class="name">{$theme.title}</span>
+	</a>
+    {if $theme.update_url}<div class="theme_update_label"><a class="peep_lbutton peep_green" href="{$theme.update_url}">{text key='admin+manage_plugins_update_button_label'}</a></div>{/if}
+</div>
+{/foreach}
+</div>
+{/block_decorator}
+
+</div>
+    <div style="display: none;">
+        <div class="delete_confirm_node clearfix">    
+            <div class="message peep_stdmargin"></div>
+            <div class="peep_right">{decorator name='button' class='theme_select_delete peep_positive' langLabel='base+yes'}</div>
+        </div>
+    </div>
+</div>

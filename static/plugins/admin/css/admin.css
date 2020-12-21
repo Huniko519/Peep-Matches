@@ -1,0 +1,895 @@
+..peep_plugin_controls{
+display:block !important;
+}
+body.peep_admin_area {
+ background: #f5f5f5;
+ background-image: none;
+ position:relative;
+ min-height: 100% !important;
+}
+
+/* - admin footer fix */
+.peep_admin_area .peep_footer,
+.peep_footer.peep_admin {
+ margin-top: 0;
+}
+
+/* - other styles -*/
+.peep_header.peep_admin_header {
+	width: 100%;
+	background: #f8f8f8;
+	padding: 0px;
+	margin:0px;
+}
+.admin_page_container.peep_admin {
+	border: none;
+	background: #f5f5f5;
+	margin: 0px auto;
+	width: auto;
+height:100%;
+}
+.admin_page_container.peep_admin .admin_main_page
+{
+	min-height: 300px;
+}
+
+.admin_page_container.peep_admin .admin_page .content {
+	float: none;
+}
+
+.admin_canvas {
+	margin: 0px 40px 0 280px;
+	width: auto;
+	word-wrap: break-word;
+
+}
+
+.admin_page_container {
+	width: auto;
+	margin: 0px 40px 16px 280px;
+	
+}
+
+
+table.peep_admin_footer
+{
+	
+	margin-top: 15px;
+	
+	font-size: 11px;
+	line-height: 1.25;
+}
+
+table.peep_admin_footer div.group
+{
+	margin-bottom: 20px;
+}
+
+table.peep_admin_footer h3
+{
+	font-size: 11px;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+	margin-top: 0;
+}
+
+
+.admin_site_panel{
+position:fixed; 
+overflow-y:hidden; 
+left:0px; 
+top:0px; 
+z-index:3; 
+width:240px; 
+height:100%; 
+background:#d76243;
+}
+.admin_site_panel{
+overflow-y:auto; 
+}
+.admin_logo_wrap{
+position:relative; 
+z-index:999; 
+width:240px; 
+left:0px; 
+top:0px;
+padding:20px 0px 10px 0px; 
+background:#a0452e;
+text-align:center;
+}
+.admin_site_panel .admin_logo_wrap .peep_admin_title {
+	color: #fdfdfd;
+	margin-left: 0px;
+	text-decoration:none;    
+}
+.admin_site_panel .admin_logo_wrap .peep_admin_title:hover,
+.admin_site_panel .admin_logo_wrap .peep_tagline:hover {
+text-decoration:none; 
+}
+.admin_site_panel .admin_logo_wrap .peep_tagline {
+	color: #fdfdfd;
+	width:150px;
+	padding: 6px 0px;
+margin:10px auto 10px auto;;
+background:#57ad1d;
+border-radius:4px;
+display:block;
+
+    
+}
+.peep_admin_header .peep_console{
+    float: none;
+}
+
+/* ---- Admin Menu styles ---- */
+
+div.admin_menu_cont{
+    margin: 10px 0px 0px 0px;
+    text-align: left;
+padding-bottom:100px;
+}
+
+div.admin_menu_cont .menu_item{
+	margin-left: 0px;
+	cursor: pointer;
+	display: inline-block;
+	height: 50px;
+
+width:240px;
+border-bottom:2px solid #c1583e;
+border-left:8px solid #494949;
+	vertical-align: middle;
+	position:relative;
+}
+
+div.admin_menu_cont .menu_item:first-child {
+	margin-left:0px;
+}
+
+div.admin_menu_cont .menu_item:hover{
+    text-decoration: none;
+}
+
+div.admin_menu_cont .menu_item .label{
+    color:#fdfdfd;
+    font-size:14px;
+    font-weight:normal;
+    text-align: left;
+	font-family: 'UbuntuRegular';
+    display: inline-block;
+position:relative;
+float:left;
+width:240px;
+    margin-left:10px;
+line-height:49px;
+	text-transform: uppercase;
+}
+
+div.admin_menu_cont .menu_item .menu_items{
+    display:none;
+    position: absolute;
+	left:18px;
+    z-index: 10;	
+}
+
+
+div.admin_menu_cont .menu_item.active span.label,
+div.admin_menu_cont .menu_item:hover span.label{
+    color: #fff;
+}
+
+
+.admin_menu_cont div:hover,.admin_menu_cont div.active{
+    background:url('../images/admin_menu_tail.png') no-repeat 200px center;
+border-left:8px solid #a0452e;
+}
+
+.peep_admin_sub_menu{
+	background: #eee ;
+
+}
+
+.peep_admin_sub_menu{
+    text-align: center;
+}
+
+.peep_admin_sub_menu li{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.peep_admin_sub_menu li:first-child{
+    margin-left: 0px;
+}
+
+.peep_admin_sub_menu a,
+.peep_admin_sub_menu .peep_admin_menu a{
+	color: #666;
+	font-size: 13px;
+	display: block;
+    text-shadow: #fafafa 0px 1px 0;
+	text-transform:uppercase;
+	font-family: 'UbuntuBold', "Trebuchet MS", "Helvetica CY", sans-serif;
+	padding: 19px 0px;
+}
+
+.peep_admin_sub_menu .peep_admin_menu li.active a,
+.peep_admin_sub_menu .peep_admin_menu a:hover{
+    color: #d76243;
+    background: none;
+}
+
+
+
+.peep_admin_menu a{
+	color: #666;
+	font-size: 11px;
+}
+
+.peep_admin_menu a:hover,
+.peep_admin_menu li.active a{
+	text-decoration: none;
+}
+
+.admin_menu_cont .menu_items .peep_tooltip_body {
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	 box-shadow:0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+
+.admin_menu_cont .menu_items.peep_tooltip .peep_tooltip_tail {
+	
+}
+.admin_menu_cont .menu_items.peep_tooltip .peep_tooltip_tail span{
+	background:none;	
+}
+.admin_menu_cont .menu_items.peep_tooltip {
+	margin-top: 0px;
+position:fixed;
+z-index:99;
+} 
+.menu_items.peep_tooltip .peep_admin_menu {
+	min-width:56px;
+    text-align: left;
+	cursor: default;
+z-index:99;
+float:right;
+position:fixed;
+left:240px;
+}
+.menu_items.peep_tooltip .peep_admin_menu li{
+	white-space: nowrap;
+	margin-bottom: 1px;
+	border: 1px solid transparent;
+}
+.menu_items.peep_tooltip .peep_admin_menu li:hover {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+	background: #fff url(../images/console_item_bg.png) repeat-x center 0px;
+}
+.menu_items.peep_tooltip .peep_admin_menu li a {
+	padding: 5px 8px;
+	display:block;
+}
+.peep_admin_sub_menu .peep_tooltip_tail {
+	display: none;
+}
+ 
+.css_code
+{
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+/* --- admin_notifications --- */
+html body .admin_notification {
+ background-color: #fff;
+ border: 1px solid #ffbaba;
+}
+html body .admin_warning {
+ background-color: #fff;
+ border: 1px solid #f2ce91;
+}
+.peep_plugin_update {
+	background-color: #c8db9d !important;
+}
+html body .admin_notification.important {
+	background-color: #ffd0bf;
+	border: 1px solid #e5b19e;
+}
+/* ---- End of Admin Menu styles ---- */
+
+
+/* ---- Admin Content styles ---- */
+
+.peep_admin_content{
+	float: right;
+	width: 830px;
+}
+
+.peep_admin_content .peep_box_cap_2{
+	background: #fff;
+	height: 20px;
+	padding-left: 10px;
+	padding-top: 4px;
+}
+
+.peep_admin_content .peep_box_cap_2 h3{
+	background-color: #fff;
+	display: inline;
+	font-size: 15px;
+	padding-right: 5px;
+}
+
+.peep_admin_content .peep_box_2{
+	margin-bottom: 8px;
+}
+
+.peep_admin_content .peep_box{
+	background: #eee;
+	padding: 5px;
+}
+
+.peep_admin_area .peep_page_container .peep_page {
+	border-bottom:none;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;	
+	padding-bottom: 30px;
+}
+/* ---- End of Admin Content styles ---- */
+
+
+/* ---- Admin Sidebar styles ---- */
+
+.peep_admin_sidebar{
+	float: left;
+	padding: 0;
+	width: 170px;
+	margin: 0;
+}
+
+.peep_admin_sidebar .peep_box_cap{
+	background: #fff;
+	border-bottom: 1px solid #aaa;
+	height: 16px;
+	padding: 5px 5px 6px 10px;
+}
+
+.peep_admin_menu_cont .peep_box_cap h3{
+	background: none;
+	color: #666;
+	float: left;
+	font-size: 13px;
+    padding-left:0;
+    padding-top:0;
+    line-height:15px;
+	text-transform: none;
+}
+
+.peep_admin_sidebar .peep_box_cap a.close,
+.peep_admin_sidebar .peep_box_cap a.open{
+	background: url(../images/icon-arrow-down.png) no-repeat;
+	float: right;
+	height: 16px;
+	margin-top: 1px;
+	width: 16px;
+}
+
+.peep_admin_sidebar .peep_box_cap a.open{
+    background: url(../images/ic_arrow-right.png) no-repeat;
+}
+
+.peep_admin_sidebar .peep_box{
+	background: url(../images/box-body-bg.png) repeat;
+
+}
+
+/* ---- End of Admin Sidebar styles ---- */
+
+/* ---- Admin Profile Questions styles ---- */
+
+.peep_admin_edit_profile_question{
+}
+
+.peep_admin_edit_profile_question .quest_value{
+    margin: 2px 10px 2px 0px;
+    padding: 2px 5px;
+    background: #ccc;
+}
+
+.peep_admin_edit_profile_question .question_values{
+    padding: 4px 0px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+td.delete_edit_buttons,
+th.delete_edit_buttons{
+    width: 11%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+th.delete_edit_buttons{
+    line-height: 16px;
+}
+
+.peep_admin_profile_question_dnd_cursor{
+    cursor:move;
+}
+/* ---- End of the Admin Profile Questions styles ---- */
+
+/* ----  Admin Permissions styles ---- */
+.peep_admin_permissions_overflow {
+	overflow-x: auto;
+}
+.peep_admin_permissions .peep_table_2 {
+	margin-bottom: 0px;
+}
+/* ---- End of the Admin Permissions styles ---- */
+
+/* ---- Admin Theme styles ---- */
+.themes_select .active .fake{
+	background:url(../images/checked_template.png) no-repeat 4px 4px;
+}
+
+.theme_control_desc{
+	background:url(../images/ic_question.png) no-repeat 50% 50%;
+	display:inline-block;
+	width:20px;
+	height: 20px;
+}
+
+.theme_control_desc_body{
+	display:none;
+	background: #ccc;
+	border: 1px solid #000;
+	position: absolute;
+}
+.color_button[type=button] {
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;	
+}
+/* ---- End of the Admin Theme styles ---- */
+
+/* ---- Other Admin styles ---- */
+.peep_admin_search_box {
+	 border-top-left-radius: 6px;
+	-moz-border-top-left-radius: 6px;
+	-webkit-border-top-left-radius: 6px;
+	 border-top-right-radius: 6px;
+	-moz-border-top-right-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+}
+.peep_admin_area .peep_table_2 .peep_item_set3 {
+	width: auto;
+}
+html body .peep_admin_permissions.peep_superwide {
+	overflow: initial;
+}
+/* ---- End of the Other Admin styles ---- */
+
+/*--------------------------------------------------------------------
+		[?] Custom pages declarations TODO remove
+---------------------------------------------------------------------*/
+
+
+/* !!!admin pages styles */
+
+.peep_admin_content{
+    width: 815px;
+}
+
+html body .selected_theme_info {
+	float: right;
+	width: 336px;
+}
+
+
+/*  pages and menus */
+.peep_navbox{
+	background:;
+	float:left;
+	font-size:11px;
+	height:18px;
+	margin-right:5px;
+	margin-bottom:5px;
+	padding:4px 8px;
+	border: 1px solid #ccc;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.peep_navbox a.move{
+	color:#666;
+	font-weight:bold;
+}
+
+.peep_navbox a.move:hover{
+	cursor:move;
+	text-decoration:none;
+}
+
+.peep_navbox a.edit{
+	background:url(../images/arrow-up-down.png) no-repeat 10px 10px;
+	cursor:pointer;
+}
+
+.peep_navbox a.edit:hover{
+	text-decoration:none;
+}
+
+.guest_item{
+	background-color:#aaffaa;
+}
+
+.member_item{
+	background-color:#ffaaaa;
+}
+
+.peep_main_menu_scheme,
+.peep_bottom_menu_scheme{
+    float: left;
+    height: 134px;
+    margin-right: 10px;
+    width: 155px;
+}
+
+.peep_main_menu_scheme{
+    background: url(images/admin-pages-menu-main.jpg) no-repeat;
+}
+
+.peep_bottom_menu_scheme{
+    background: url(images/admin-pages-menu-bottom.jpg) no-repeat;
+}
+
+.peep_dash_help_box{
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 31%;
+    height: 105px;
+}
+
+.peep_dash_help_box h3{
+    padding: 4px 0 4px 20px;
+    background: transparent no-repeat left center;
+}
+
+.peep_dash_help_box a{
+    display: block;
+}
+
+
+/* user dashboard settings */
+
+.peep_dragndrop_panel {
+	background: #fff;
+	/*padding: 0px 10px 10px;*/
+	margin-top: 5px;
+    border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.peep_dashboard_box{
+    background: #FFFFFF;
+    padding: 5px 10px 10px 10px;
+    margin-top: 5px;
+}
+
+.peep_dnd_schem_item{
+	background:#F0F0F0 url(../images/ic_file.png) no-repeat 10px 50%;
+    border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border:1px solid #ccc;
+	cursor:move;
+	/*float:left;*/
+	height:40px;
+	margin:2px 4px 2px 0;
+	padding:0 5px 0 33px;
+	/*width:200px ;*/
+    position: relative;
+    font-size: 11px;
+}
+
+.peep_dnd_schem_item span.peep_label{
+	float:left;
+	overflow:hidden;
+	padding-top:10px;
+	/*white-space:nowrap;*/
+	/*width:80px;*/
+    height: 30px;
+}
+
+.peep_dnd_schem_item span.action{
+	/*float:right;*/
+	line-height:15px;
+	overflow:hidden;
+	width:70px;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+}
+.peep_dnd_schem_item span.action .peep_lbutton {
+	vertical-align: top;
+}
+
+.peep_dnd_helper {
+	border: 1px dashed #000;
+}
+
+.peep_dnd_freezed .peep_dnd_schem_item {
+	background-color: #FFAAAA;
+}
+
+.peep_dragndrop_sections .peep_highbox{
+    margin-top: 6px;
+}
+
+.peep_dnd_placeholder {
+    height: 10px;
+	border: 1px dashed #999999;
+	background-color: #FFF;
+}
+
+.peep_dnd_preloader {
+    height: 30px;
+}
+
+.peep_dnd_configurable_component .control {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    text-decoration: none;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.peep_dnd_configurable_component .peep_box_icons
+{
+	float: right;
+    padding: 8px 2px 0 0;
+}
+
+.peep_dnd_configurable_component h3 {
+    float: left;
+}
+
+.peep_dnd_content_components{
+   padding: 10px 0;
+   width: 74%;
+}
+
+.peep_dnd_clonable_components {
+   border-bottom: 2px solid #ccc;
+   padding: 10px 0 10px 0;
+   width: 100%;
+}
+
+/* Dnd Slider */
+.peep_dnd_slider {
+    /*background:url(../images/h2bg.png) repeat-x center;*/
+    height: 6px;
+    background-color: #ddd;
+    position: relative;
+    margin: 10px 3px 0;
+    cursor: pointer;
+}
+
+.peep_dnd_slider_pusher {
+    float: left;
+    height: 1px;
+}
+
+.peep_dnd_slider_marker {
+   width: 10px;
+   height: 1px;
+   float: left;
+}
+
+.peep_dnd_slider_marker_point {
+    position: absolute;
+    width: 0px;
+    height: 6px;
+    border-left: 1px solid #999;
+    border-right: 1px solid #FFF;
+    top: 0;
+}
+
+.peep_dnd_slider_handle {
+    position: absolute;
+    top: -5px;
+    width: 22px;
+    height: 16px;
+    cursor: move;
+    z-index: 50;
+    background: transparent url(../images/ic_move_horizontal.png) no-repeat center;
+}
+
+.peep_dnd_slider_helper {
+}
+
+.peep_dnd_slider_in_move {
+    opacity: 0.5;
+    filter: alpha(opacity = 50);
+}
+
+.peep_dragndrop_sections .top_section,
+.peep_dragndrop_sections .left_section,
+.peep_dragndrop_sections .right_section,
+.peep_dragndrop_sections .bottom_section,
+.peep_dragndrop_sections .sidebar_section{
+    background-position: center 7px;
+    background-repeat: no-repeat;
+}
+
+.peep_dragndrop_sections .top_section { background-image: url(../images/dnd-label-top.png) }
+.peep_dragndrop_sections .left_section { background-image: url(../images/dnd-label-column1.png) }
+.peep_dragndrop_sections .right_section { background-image: url(../images/dnd-label-column2.png) }
+.peep_dragndrop_sections .bottom_section { background-image: url(../images/dnd-label-bottom.png) }
+.peep_dragndrop_sections .sidebar_section { background-image: url(../images/dnd-label-sidebar.png) }
+
+body .peep_dragndrop_panel .peep_dnd_schem_item{
+   width: 134px;
+}
+
+.peep_dragndrop_sections .peep_highbox{
+   margin-top: 6px;
+}
+
+
+
+.peep_highbox_table .peep_highbox,
+.peep_highbox
+{
+	background-color: #fff;
+}
+
+.peep_highbox {
+    border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 4px;
+}
+
+.peep_dragndrop_sections .peep_highbox {
+    padding: 0;
+}
+.peep_dragndrop_sections .peep_highbox.join_npeep_widget {
+    padding: 10px;
+}
+
+.peep_highbox,
+.peep_highbox_table .peep_highbox
+{
+	border:1px solid #ccc;
+	
+}
+
+.peep_highbox_table .peep_highbox
+{
+	height:50px;
+	padding:10px;
+}
+
+.peep_highbox_table .peep_highbox .peep_dnd_schem_item{
+	float:none;
+	margin-bottom:4px;
+	margin-right:0;
+	width:auto;
+}
+
+input[type=text].peep_settings_input{
+    width: 40px;
+}
+
+/* color picker */
+.special_block_top {
+	width: 252px;
+	height: 7px;
+}
+
+.special_block_mid {
+	width: 238px;
+	padding: 0 7px 5px;
+        margin: 0 auto;
+}
+
+.special_block_bot {
+	width: 252px;
+	height: 19px;
+}
+
+.colorCode {
+	width: 68px;
+}
+
+table.colorPicker {
+	border-collapse: separate !important;
+	border-spacing: 3px !important;
+}
+
+table.colorPicker td {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+}
+
+#adminmenubtnmobile{
+font-size:18px;
+position:absolute;
+color:#fff;
+left:10px;
+top:5px;
+background:none;
+border:1px solid #fff;
+width:35px;
+height:35px;
+text-align:center;
+border-radius:3px;
+font-weight:normal;
+cursor:pointer;
+display:none;
+}
+
+.admin_support_res li{
+width:29%;
+text-align:center;
+padding:30px 5px;
+border-radius:4px;
+background:#494949;
+font-size:13px;
+color:#fff;
+float:left;
+margin:5px;
+}
+
+
+@media (min-width: 220px) and (max-width: 950px) {
+.admin_site_panel{
+left:-240px;
+}
+.admin_canvas{
+width:auto;
+margin:0px 8px 40px 8px;
+}
+.peepmatches_version{
+width:100% !important;
+display:block;
+left:0px !important;
+position:fixed !important;
+z-index:105 !important;
+}
+.admin_custom_right{
+margin-bottom:40px;
+
+}
+#adminmenubtnmobile{
+display:block;
+}
+.admin_support_res li{
+width:100%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

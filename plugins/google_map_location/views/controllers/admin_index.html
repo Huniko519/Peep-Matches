@@ -1,0 +1,40 @@
+{form name='configSaveForm'}
+
+<table class="peep_table_1 peep_form">
+    <tr class="peep_tr_first">
+        <th class="peep_name peep_txtleft" colspan="3">
+            <span class="peep_section_icon peep_ic_gear_wheel">{text key='googlelocation+general_settings'}</span>
+        </th>
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{text key='googlelocation+api_key'}</td>
+        <td class="peep_value">
+            {input name='api_key'}  <br /> {error name='api_key'}
+        </td>
+        <td class="peep_desc peep_small">{text key='googlelocation+api_key_description'}</td>
+    </tr>
+    <tr class="peep_alt1 ">
+        <td class="peep_label">{text key='googlelocation+distanse_units'}</td>
+        <td class="peep_value">
+            {input name='distanse_units'}  <br /> {error name='distanse_units'}
+        </td>
+        <td class="peep_desc peep_small">{text key='googlelocation+distanse_units_description'}</td>
+    </tr>
+    <tr class="peep_alt1 ">
+        <td class="peep_label">{text key='googlelocation+country_restriction_label'}</td>
+        <td class="peep_value">
+            {input name='country_restriction'}  <br /> {error name='country_restriction'}
+        </td>
+        <td class="peep_desc peep_small">{text key='googlelocation+country_restriction_description'}</td>
+    </tr>
+    <tr class="peep_alt1 peep_tr_last">
+        <td class="peep_label">{text key='googlelocation+auto_fill_location_on_search'}</td>
+        <td class="peep_value">
+            {input name='auto_fill_location_on_search'}  <br /> {error name='auto_fill_location_on_search'}
+        </td>
+        <td class="peep_desc peep_small">{text key='googlelocation+auto_fill_location_on_search_description'}</td>
+    </tr>
+</table>
+<div class="clearfix peep_submit peep_smallmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div></div>
+
+{/form}

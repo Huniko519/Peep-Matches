@@ -1,0 +1,281 @@
+.peep_social_sharing {
+	padding-left: 10px;
+	padding-right: 10px;
+	float:left;
+}
+.addthis_toolbox {
+	display: inline-block;
+	margin: 20px 2px;
+    width:100%;
+}
+
+.peep_social_sharing_widget {
+	margin-bottom: 0px;
+}
+.peep_social_sharing_box {
+    margin-bottom: 0px;
+}
+.addthis_toolbox .peep_social_sharing_button {
+    max-width:100px;
+    height: 21px;
+}
+
+.peep_social_sharing_widget .peep_social_sharing_button {
+	margin-bottom: 8px;
+}
+.addthis_button_facebook_like {
+	height: 21px;
+}
+.peep_social_sharing_nomargin {
+	margin-bottom: 0px;
+}
+
+#share_more_btn{
+width:38px; 
+height:32px; 
+background:#35c49e; 
+text-align:center; 
+line-height:32px; 
+color:#fff; 
+font-size:24px; 
+font-weight:bold; 
+bottom:0px;
+cursor:pointer;
+float:left;
+}
+
+.member_home #share_more_btn{
+margin-left:-8px;
+margin-top:-4px;
+}
+
+.member_home #share_more_btn:hover{
+width:55px; 
+}
+
+#share_popup_wrap{
+display:none;
+float:left;
+position:fixed; 
+z-index:100 !important;
+background:rgba(0,0,0,0.8); 
+width:100%; 
+height:100%; 
+top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.share_popup_cont{
+width:400px;
+height:auto;
+padding:20px 10px;
+border:4px;
+margin:50px auto;
+background:#fff;
+border-radius:6px;
+}
+
+#share_close{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+position:absolute;
+right:10px;
+top:10px;
+cursor:pointer;
+height:30px;
+width:30px;
+line-height:30px;
+text-align:center;
+border:1px solid #fff;
+border-radius:4px;
+}
+
+#share_popup_wrap .peep_social_sharing_button {
+margin:20px;
+
+}
+
+
+
+#share_popup_wrap .at-icon-wrapper{
+width:55px !important;
+height:55px !important;
+margin-top:25px;
+border-radius:100%;
+}
+
+#share_popup_wrap .at-icon-wrapper:hover{
+width:55px !important;
+height:55px !important;
+}
+#share_popup_wrap a.at300b, #share_popup_wrap a.at300m {
+    width: 55px;
+    height:55px;
+border-radius:100%;
+}
+#share_popup_wrap .at-icon{
+width: 55px !important;
+    height:55px !important;
+border-radius:100%;
+}
+#share_popup_wrap .at-icon:hover{
+width: 55px !important;
+ height:55px !important;  
+}
+
+.share_pop_title{
+font-size:28px;
+font-weight:bold;
+text-align:center;
+}
+
+.share_pop_txt{
+font-size:15px;
+font-weight:bold;
+text-align:center;
+margin:20px 5px;
+border-bottom:1px solid rgba(0,0,0,0.2);
+padding-bottom:15px;
+}
+
+
+.member_home .home_share_btns{
+display:block;
+}
+
+#share_side_close{
+color:#777;
+font-size:14px;
+font-weight:bold;
+height:20px;
+line-height:20px;
+width:20px;
+background:rgba(0,0,0,0.3);
+border-radius:100%;
+float:right;
+margin-right:6px;
+cursor:pointer;
+text-align:center;
+color:#fff;
+}
+
+.member_home .addthis_toolbox .peep_social_sharing_button {
+ max-width:45px !important;
+    height:auto;
+
+}
+
+.member_home .peep_photoview_info .addthis_toolbox .peep_social_sharing_button {
+ max-width:28px !important;
+    height:28px;
+
+}
+
+.member_home .peep_photoview_info .addthis_toolbox{
+width:100%;
+height:30px;
+margin: 20px 0px;
+}
+
+.member_home .addthis_toolbox{
+width:45px;
+height:auto;
+margin: 8px -10px;
+}
+
+
+.at-icon-wrapper{
+width:28px !important;
+height:28px !important;
+}
+
+
+.member_home .at-icon-wrapper{
+width:38px !important;
+height:32px !important;
+}
+
+.member_home .peep_photoview_info .at-icon-wrapper{
+width:28px !important;
+height:28px !important;
+}
+
+
+.addthis_toolbox a.at300b, .addthis_toolbox a.at300m {
+    width: 100%;
+    height:28px;
+}
+
+.member_home .addthis_toolbox a.at300b, .member_home .addthis_toolbox a.at300m {
+    width: 100%;
+    height:28px;
+} 
+ .addthis_16x16_style .at-icon{
+width: 28px !important;
+    height:28px !important;
+}
+
+.member_home .addthis_16x16_style .at-icon{
+width: 38px !important;
+    height:32px !important;
+}
+
+.member_home .peep_photoview_info .addthis_16x16_style .at-icon{
+width: 28px !important;
+    height:28px !important;
+}
+
+
+
+
+@media (min-width: 220px) and (max-width: 479px) {
+.home_share_btns{
+bottom:8px !important; 
+left:4px !important; 
+width:32px !important; 
+height:32px !important;
+background:none !important;
+border:none !important;
+}
+
+.member_home .addthis_toolbox {
+display:none !important;
+}
+
+.member_home #share_more_btn{
+margin-left:8px !important;
+height:32px !important;
+width:32px !important;
+}
+.member_home #share_more_btn:hover{
+width:32px !important;
+}
+
+#share_side_close{
+display:none !important
+}
+
+.share_popup_cont{
+width:200px !important;
+}
+
+#share_popup_wrap{
+overflow-y:auto;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

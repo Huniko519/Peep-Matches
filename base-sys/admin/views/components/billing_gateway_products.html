@@ -1,0 +1,25 @@
+<div class="peep_automargin peep_superwide">
+	{block_decorator name='box' langLabel='base+billing_gateway_products_binding' iconClass='peep_ic_link' type='empty' addClass='peep_stdmargin'}
+	<form method="post" action="{$actionUrl}">
+	   <input type="hidden" name="action" value="update_products" />
+	   <input type="hidden" name="back_url" value="{$backUrl}" />
+	   <table class="peep_table_1 peep_form">
+	   <tr class="peep_tr_first">
+	       <th>{text key='admin+plugin'}</th>
+	       <th>{text key='base+billing_product'}</th>
+	       <th>{text key='base+billing_product_id'}</th>
+	   </tr>
+	   {foreach from=$products item='prod' name='prod'}
+	       <tr class="peep_alt{cycle values='1,2'} {if $smarty.foreach.prod.last}peep_tr_last{/if}">
+	           <td>{$prod.plugin}</td>
+	           <td class="peep_small">{$prod.label}</td>
+	           <td><input type="text" name="products[{$prod.id}]" width="24" value="{$prod.productId}" /></td>
+	       </tr>
+	   {/foreach}
+	   </table>
+	   <div class="peep_center">
+	       {block_decorator name='button' type='submit' langLabel='admin+save_btn_label' class='peep_ic_save'}{/block_decorator}
+	   </div>
+	{/block_decorator}
+	</form>
+</div>

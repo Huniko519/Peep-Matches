@@ -1,0 +1,21 @@
+<div class="peep_regular" >
+	{foreach from=$people item='p'}
+	<div class="peep_ipc  clearfix" style="border-bottom:1px dashed #cdcdcd;">
+		
+		<div class="peep_ipc_picture">
+			{decorator name=avatar_item data=$avatars[$p->id]}
+		</div>
+		
+			
+			<div class="peep_ipc_info" style="border:none;">
+				{text key='profilelike+total_likes'} {$p->cnt}
+			</div>
+			</div>
+	
+	{/foreach}
+	<div class="peep_box_toolbar_cont clearfix">
+		<div class="peep_box_toolbar peep_remark peep_bl" style="float:right;">			
+				<a href="{$url}profilelike/mostlikemembers">{text key='profilelike+view_all'}</a>
+		</div>
+	</div>
+</div>

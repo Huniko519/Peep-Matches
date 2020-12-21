@@ -1,0 +1,27 @@
+{if !empty($menu)}
+    {$menu}
+{/if}
+
+{if $locationName}
+<div class="peep_std_margin">
+    <h2>{text key="googlelocation+user_list_location_sring" location=$locationName}</h2>
+</div>
+{/if}
+
+{if $backUrl}
+    {literal}
+    <script language="javascript" type="text/javascript">
+        $(function(){
+            $(".back_to_map_button").click(
+                function() { window.location = {/literal}"{$backUrl}"{literal} }
+            );
+       });
+    </script>
+    {/literal}
+
+    {block_decorator name="box" type="empty" style="margin-bottom:20px"}
+        {decorator name="button" buttonName="back_to_map" class="back_to_map_button peep_ic_left_arrow" langLabel="googlelocation+back_to_map"}
+    {/block_decorator}
+{/if}
+
+{$cmp}

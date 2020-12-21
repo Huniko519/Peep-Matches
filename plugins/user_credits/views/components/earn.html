@@ -1,0 +1,20 @@
+{style}
+{literal}
+    .peep_credits { margin-bottom: 0px; }
+{/literal}
+{/style}
+
+<table class="peep_table_1 peep_credits">
+    <tbody>
+    <tr class="peep_tr_first">
+        <th>{text key='usercredits+actions'}</th>
+        <th class="peep_txtcenter">{text key='usercredits+price_in_credits'}</th>
+    </tr>
+    {foreach from=$earning item='action'}
+    <tr>
+        <td class="peep_txtleft">{text key="`$action.pluginKey`+usercredits_action_`$action.actionKey`"}</td>
+        <td class="peep_txtcenter">{$action.amount}</td>
+    </tr>
+    {/foreach}
+    </tbody>
+</table>

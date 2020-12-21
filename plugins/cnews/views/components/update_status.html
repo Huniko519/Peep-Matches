@@ -1,0 +1,90 @@
+<script>
+$(document).ready(function(){
+	
+	$('ul.tabs li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('ul.tabs li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+
+})
+</script>
+
+
+
+
+{style}{literal}
+
+textarea.peep_cnews_status_input {
+    height: 50px;
+}
+
+textarea.peep_cnews_status_input.invitation {
+    height: 20px;
+}
+
+.cnews-attachment-preview {
+    width: 95%;
+}
+.peep_side_preloader {
+	float: right;
+	padding: 0px 4px 0px 0px;
+	margin-top: 6px;
+}
+.peep_side_preloader {
+	display: inline-block;
+	background-repeat: no-repeat;
+}
+
+
+{/literal}{/style}
+
+{form name="cnews_update_status" class="cnews_update_status" style="display:none;"}
+	<ul class="tabs clearfix">
+<li class="tab-link current" data-tab="tab-1">{text key='cnews+tabs_status_tab'}</li>
+<li class="tab-link" data-tab="tab-2">{text key='cnews+tabs_photo_tab'}</li>
+<span class="peep_side_preloader_wrap"><span class="peep_side_preloader peep_inprogress cnews-status-preloader" style="display:none;"></span>
+</ul>
+		<div class="peep_full clearfix" style="margin-top:0px; ">
+			
+			<div class="tab-content current" id="tab-1">
+<div class="status_avatar">
+
+{decorator name='avatar_item' data=$avatar}
+			</div>
+				<div class="feed_status">{input name="status" class="peep_cnews_status_input"}</div>
+			</div>
+		</div>
+		<div class=" tab-content" id="tab-2">
+<div class="upload_avatar">
+{decorator name='avatar_item' data=$avatar}
+			</div>
+<div class="feed_upload">
+<a class="image" id="{$uniqId}-btn" href="javascript://"></a>
+</div>
+</div>
+                <div id="attachment_preview_{$uniqId}-oembed" class="cnews-attachment-preview peep_smallmargin"></div>
+                <div id="attachment_preview_{$uniqId}" class="cnews-attachment-preview peep_smallmargin">
+                    {$attachment}
+
+                </div>
+            
+		<div class="peep_submit_auto_click" style="text-align: left;">
+			<div class="clearfix peep_status_update_btn_block">
+				<span class="peep_attachment_btn">{submit name="save"}</span>
+                                <span class="peep_attachment_icons">
+                                    <span class="peep_attachments" id="{$uniqId}-btn-cont" >
+                                        <span class="buttons clearfix">
+                                            
+                                        </span>
+                                    </span>
+                                </span>
+				</span>
+			</div>
+		</div>
+	
+{/form}

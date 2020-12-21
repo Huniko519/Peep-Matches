@@ -1,0 +1,62 @@
+{if !empty($menu)}{$menu}{/if}
+{if !empty($list)}
+<div class="peep_user_list peep_full peep_stdmargin">
+	{foreach from=$list item='item' name='user_list'}
+		{assign var='dto' value=$item.dto}
+		{assign var='id' value=$dto->id}
+
+		{if $smarty.foreach.user_list.first}
+			<div class="clearfix {cycle name="rows" values="peep_alt2, peep_alt1"}">
+		{/if}
+
+		{capture assign="fields"}
+			{if !empty($questionList[$id].sex)}{question_value_lang name='sex' value=$questionList[$id].sex}{/if}{if !empty($questionList[$id].birthdate)}{age dateTime=$questionList[$id].birthdate}{/if}
+       
+		{/capture}
+
+		{capture assign="activity"}
+            {if empty($onlineInfo) || empty($onlineInfo[$id])}
+            {else}
+                {if (!empty($onlineInfo) && $onlineInfo[$id])}{online_now userId=$dto->id}{else}Activity: {format_date timestamp=$dto->activityStamp}{/if}
+            {/if}
+		{/capture}
+
+
+
+		{capture assign='toolbar'}
+			{if $case == 'sent-requests'}
+				<div class=" peep_tiny" style="margin-left: 53px;">
+					<a href="{url_for for="FRIENDS_CTRL_Action:cancel:[id=>$id]"}">{text key='friends+cancel_request'}</a>
+				</div>
+			{elseif $case == 'got-requests'}
+				<div class="peep_tiny" style="margin-left: 53px;">
+					<a href="{url_for for="FRIENDS_CTRL_Action:accept:[id=>$id]"}">{text key='friends+accept_request'}</a> &middot; <a href="{url_for for="FRIENDS_CTRL_Action:ignore:[id=>$id]"}">{text key='friends+ignore_request'}</a>
+				</div>
+			{/if}
+		{/capture}
+
+		{decorator name="user_list_item" toolbar=$toolbar
+               avatar=$avatars[$id]
+               userUrl= $avatars[$id].url
+               displayName= $avatars[$id].title
+               fields=$fields
+               activity=$activity
+               set_class='peep_item_set3'}
+
+		{if $smarty.foreach.user_list.iteration % 3 == 0 && !$smarty.foreach.user_list.last}
+			</div>
+			<div class="clearfix {cycle name="rows" values="peep_alt1,peep_alt2"}">
+		{/if}
+
+		{if $smarty.foreach.user_list.last}
+		  </div>
+		{/if}
+
+	{/foreach}
+
+</div>
+
+{$paging}
+{else}
+	<center>{text key="base+user_no_users"}</center>
+{/if}

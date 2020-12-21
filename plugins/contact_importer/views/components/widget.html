@@ -1,0 +1,71 @@
+{style}
+{literal}
+.contactimporter_provider_button
+{
+	margin: 3px;
+        display: inline-block;
+	cursor: pointer;
+}
+
+.contactimporter_provider_button img
+{
+    width: 45px;
+}
+
+
+{/literal}
+{/style}
+
+<div class="widget_head" style="color:#494949; font-size:13px; font-weight:bold; margin:10px 0;">{text key='contactimporter+invite_block_find'}</div>
+
+<div class="invite_block">
+    {foreach from=$btns item="b"}
+        <a href="{$b.href}" onclick="{$b.onclick}" class="{$b.class} contactimporter_provider_button">
+            <img src="{$b.widgeticonUrl}" /><span id="invite_txt">{$b.langLabel}</span>
+        </a>
+    {/foreach}
+<div id="mailing_tab">
+<img src="{$mailico}" /><span id="invite_txt">{text key='contactimporter+mail_btn_invite'}</span>
+</div>
+<div id="after_close">
+<div id="after_close_even"></div>
+<div id="after_close_cont">
+{text key='contactimporter+after_close_ntf'}<div id="got_it_close">{text key='contactimporter+btn_got'}</div></div>
+</div>
+</div>
+
+
+
+<div id="mailing_cust">
+<div class="mailing_close_wrap">
+<div id="mailing_close">
+{text key='contactimporter+btn_close'}
+</div>
+</div>
+<div class="contactimporter_email_invite_cont">
+{$eicmp}
+</div>
+</div>
+
+  <div id="invite_popup_wrap" style="display:none;">
+  <div id="invite_popup_cont">
+<div class="invite_popup_header">{text key='contactimporter+invite_titles'}
+    <div id="invite_popup_close">{text key='contactimporter+btn_skip'}</div>
+</div>
+<div class="invite_prom">
+<div class="invite_prom_t">{text key='contactimporter+invite_prom_t'}</div>
+<div class="invite_prom_sub">{text key='contactimporter+invite_prom_sub'}</div>
+</div>
+<div class="invites_btns">
+    {foreach from=$btns item="b"}
+        <a href="{$b.href}" onclick="{$b.onclick}" class="{$b.class} contactimporter_provider_button">
+            <img src="{$b.iconUrl}" /><span id="invite_txt">{$b.langLabel}</span>
+        </a>
+    {/foreach}
+</div>
+
+
+</div>
+</div>
+
+

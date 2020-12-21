@@ -1,0 +1,32 @@
+{* `IC` decorator template *}
+{style}
+{literal}
+.peep_ic_toolbar span{
+    display:inline-block;
+}
+{/literal}
+{/style}
+{if $data.first}
+	<ul class="peep_regular peep_ic">
+{/if}
+
+<li>
+	<div class="peep_ic_header"><a {if !empty($data.titleHrefBlank)}target="_blank"{/if} href="{$data.titleHref}">{$data.title}</a></div>
+
+	<div class="peep_ic_description">{$data.info}</div>
+
+	{if !empty($data.toolbar)}
+  		<div class="peep_ic_toolbar peep_small peep_remark clearfix">
+  		{foreach from=$data.toolbar item='item' name='toolbar'}
+            {if !$smarty.foreach.toolbar.first && ( empty($item.class) || $item.class != 'peep_ipc_date' )} <span class="peep_delimiter">&middot;</span> {/if}
+  		    <span class="peep_nowrap{if !empty($item.class)} {$item.class}{/if}">
+                {if !empty($item.href)}<a {if !empty($item.id)} id="{$item.id}"{/if} href="{$item.href}">{/if}{$item.label}{if !empty($item.href)}</a>{/if}
+  		    </span>
+  		{/foreach}
+  		</div>
+    {/if}
+</li>
+
+{if $data.last}
+	</ul>
+{/if}

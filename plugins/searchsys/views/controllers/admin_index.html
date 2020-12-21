@@ -1,0 +1,77 @@
+{$menu}
+
+<div class="clearfix">
+    <div class="peep_left peep_wide">
+    {block_decorator name='box' langLabel='searchsys+questions' iconClass='peep_ic_info'}
+    
+    {if $displayAccountType}
+    <div class="peep_smallmargin peep_center">
+    {form name='qst_account_type_select_form'}
+        {label name='accountType'}
+        {input name='accountType'}
+    {/form}
+    </div>
+    {/if}
+
+    <form method="post">
+    <input type="hidden" name="action" value="update_questions" />
+    <input type="hidden" name="accountType" value="{$accountType}" />
+    {foreach from=$questionsBySections key='section' item='questions' }
+    <table class="peep_table_2 peep_smallmargin">
+        <tr class="peep_tr_first">
+            <th class="section_value" colspan="2">{if $section}{text key="base+questions_section_`$section`_label"}{else}{text key="base+questions_no_section_label"}{/if}</th>
+        </tr>
+       {if isset($questions)}
+           {foreach from=$questions item='question' name='question' }
+               {if $question.name != 'realname' && $question.name != 'username'}
+                  <tr class="question_tr {if $smarty.foreach.question.last}peep_tr_last{/if}">
+                    <td width="1">
+                      <input type="checkbox" name="questions[{$question.name}]" value="1" {if isset($questionsConf[$question.name]) && $questionsConf[$question.name] == 1}checked="checked"{/if} />
+                    </td>
+                    <td class="peep_alt1 peep_txtleft">{text key="base+questions_question_`$question.name`_label"}</td>
+                 </tr>
+               {/if}
+           {/foreach}
+        {/if}
+        <tr class="peep_tr_delimiter"><td colspan="2"></td></tr>
+    </table>
+    {/foreach}
+    
+    <table class="peep_table_2" style="margin: 0px;">
+        <tr class="peep_alt1"><td colspan="3">{decorator name='button' type='submit' langLabel='searchsys+update'}</td></tr>
+    </table>
+    </form>
+    {/block_decorator}
+    </div>
+    
+    <div class="peep_right peep_narrow">
+    {block_decorator name='box' langLabel='searchsys+settings' iconClass='peep_ic_gear_wheel'}
+    <form method="post">
+    <input type="hidden" name="action" value="update_settings" />
+    <table class="peep_table_2" style="margin: 0px;">
+        <tr class="peep_alt1">
+            <td class="peep_label" width="10%"><input type="checkbox" name="username_search" value="1" {if $usernameSearch} checked="checked"{/if} /></td>
+            <td class="peep_value peep_txtleft">{text key="searchsys+`$displayNameQuestion`_search"}</td>
+        </tr>
+        <tr class="peep_alt1">
+            <td class="peep_label" width="10%"><input type="checkbox" name="show_advanced" value="1" {if $showAdvanced} checked="checked"{/if} /></td>
+            <td class="peep_value peep_txtleft">{text key="searchsys+show_advanced"}</td>
+        </tr>
+        <tr class="peep_alt1">
+            <td class="peep_label" width="10%"><input type="checkbox" name="show_section" value="1" {if $showSection} checked="checked"{/if} /></td>
+            <td class="peep_value peep_txtleft">{text key="searchsys+show_section"}</td>
+        </tr>
+        <tr class="peep_alt1">
+            <td class="peep_label" width="10%"><input type="checkbox" name="online_only" value="1" {if $onlineOnly} checked="checked"{/if} /></td>
+            <td class="peep_value peep_txtleft">{text key="searchsys+add_online_only"}</td>
+        </tr>
+        <tr class="peep_alt1">
+            <td class="peep_label" width="10%"><input type="checkbox" name="with_photo" value="1" {if $withPhoto} checked="checked"{/if} /></td>
+            <td class="peep_value peep_txtleft">{text key="searchsys+add_with_photo"}</td>
+        </tr>
+        <tr class="peep_alt1"><td colspan="2">{decorator name='button' type='submit' langLabel='searchsys+update'}</td></tr>
+    </table>
+    </form>
+    {/block_decorator}
+    </div>
+</div>

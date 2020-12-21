@@ -1,0 +1,15 @@
+<div class="peep_full peep_automargin peep_stdmargin">
+{block_decorator name='box' }
+    {if $packs}
+	{form name='buy-credits-form'}
+	    <div class="peep_smallmargin">{input name='pack'}</div>
+	    <div class="peep_center peep_stdmargin">
+		    <div class="peep_smallmargin">{input name='gateway'}</div>
+	    </div>
+	    <div class="clearfix"><div class="peep_right">{submit name='buy' class='peep_positive'}</div></div>
+	{/form}
+	{else}
+        <div class="peep_nocontent">{text key='usercredits+no_packs'}</div>
+	{/if}
+{/block_decorator}
+</div>

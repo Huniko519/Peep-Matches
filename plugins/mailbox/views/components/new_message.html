@@ -1,0 +1,69 @@
+<!-- ----------------------MAILBOX SEND NEW MESSAGE--------------------------- -->
+<div class="peep_chat_dialog peep_mailchat_new_message " id="newMessageWindow">
+    <div class="peep_chat_block peep_mailchat_select_user_wrap">
+        {form name="mailbox-new-message-form"}
+        <!-- ---- NEW MESSAGE CAP ---->
+        <!-- ----------------------- SELECTED USER CAP --------------------------- -->
+        <div class="peep_mailchat_selected_user peep_author_block clearfix">
+            <div aria-disabled="false" style="position: absolute;" class="peep_puller ui-draggable"></div>
+            <a href="javascript://" target="_blank" class="peep_chat_in_item_author_href peep_chat_in_item_photo_wrap" id="userFieldProfileLink">
+                <span class="peep_chat_in_item_photo"><img title="" alt="" src="{$defaultAvatarUrl}" height="32px" width="32px" id="userFieldAvatar"></span>
+            </a>
+            <a href="javascript://" class="peep_chat_item_author_wrap" id="newMessageWindowMinimizeBtn">
+                <span class="peep_chat_item_author">
+                    <span class="peep_chat_message_to">{text key='mailbox+new_message_to'}</span>
+                    <span class="peep_chat_in_item_author" id="userFieldDisplayname"></span>
+                </span>
+                <span class="peep_mailchat_delete_receiver" id="userFieldDeleteBtn"></span>
+            </a>
+            <a class="peep_btn_close" id="newMessageWindowCloseBtn" href="javascript://"><span></span></a>
+        </div>
+        <!-- ----------------------- UNSELECTED USER CAP --------------------------- -->
+        <div class="peep_mailchat_select_user peep_author_block">
+            <div aria-disabled="false" style="position: absolute;" class="peep_puller ui-draggable"></div>
+            {input name='opponentId'}
+            <a href="javascript://" class="peep_chat_minimize_btn" id="newMessageWindowUnselectedCapMinimizeBtn"></a>
+            <a class="peep_btn_close" id="newMessageWindowUnselectedCapCloseBtn" href="javascript://"><span></span></a>
+            <div class="peep_mailchat_new_message_title">{text key="mailbox+new_message_title"}</div>
+        </div>
+        <!-- ----------------------- END OF USER CAP --------------------------- -->
+        <!-- ---- END OF NEW MESSAGE CAP ---->
+        <div class="peep_chat_subject_block">
+            {input name='subject' class="newMessageWindowSubjectInputControl"}
+        </div>
+        <div class="peep_chat_mailchat_inputarea">
+            {input name='message' class="newMessageWindowMessageInputControl"}
+            {if $enableAttachments}
+            <div class="peep_file_attachment_preview clearfix">
+            {$attachments}
+            </div>
+            {/if}
+            <div class="peep_file_attachment_preview clearfix" id="newMessageWindowEmbedAttachmentsBlock"></div>
+            <div class="peep_chat_mailchat_buttons clearfix">
+                <span class="peep_attachment_btn">
+                    {submit name="send"}
+                </span>
+                {if $enableAttachments}
+                <span class="peep_attachment_icons">
+                    <div class="peep_attachments">
+                        <span class="buttons clearfix">
+                            <a class="attach" href="javascript://" title="Attach" id="newMessageWindowAttachmentsBtn"></a>
+                        </span>
+                    </div>
+                </span>
+                {/if}
+            </div>
+            {*<div class="captcha" {if $displayCaptcha==false} style='display:none;' {/if}>
+                <div class="peep_center">
+                    <div style="padding:10px;">{text key='mailbox+please_enter_captcha'}</div>
+                </div>
+                <div>
+                    {input name="captcha"}<br/>{error name="captcha"}
+                </div>
+            </div>*}
+        </div>
+
+        {/form}
+    </div>
+</div>
+<!-- -----------------------END OF SEND NEW MESSAGE---------------------------- -->

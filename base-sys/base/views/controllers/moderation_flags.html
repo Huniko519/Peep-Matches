@@ -1,0 +1,183 @@
+<script type="text/javascript">
+
+function MODERATION_FlagsInit( uniqId, options )
+{
+    var c = $("#" + uniqId);
+    
+    $("[data-checkall]", c).click(function() {
+        $("[data-item]", c).prop("checked", this.checked);
+    });
+
+    $("[data-command]", c).click(function() {
+        var node = $(this),
+            command = node.data("command"),
+            contentLabel = node.data("content"),
+            action = command.split(".")[0],
+            itemKey = node.data("item"),
+            form = $("#" + uniqId + "-form");
+            
+        var count = c.find("[data-item]:checked").length;
+        
+        if ( !contentLabel && !count ) {
+            alert(PEEP.getLanguageText("base", "moderation_no_items_warning"));
+            
+            return false;
+        }
+        
+        var deleteConfirmMsg = contentLabel
+            ? PEEP.getLanguageText("base", "moderation_delete_confirmation", { "content": contentLabel })
+            : PEEP.getLanguageText("base", "moderation_delete_multiple_confirmation", { "content": options.groupLabel, "count": count });
+
+        if ( action === "delete" && !confirm(deleteConfirmMsg) ) {
+            return false;
+        }
+
+        $(form.get(0)["command"]).val(command);
+        $(form.get(0)["item"]).val(itemKey);
+
+        form.submit();
+        
+        return false;
+    });
+    
+    
+    
+    (function() {
+        
+        var OFFSET = 40;
+        var stickers = [];
+        
+        function stick( sticker ) {
+            sticker.addClass("peep_moderation_sticked");
+        };
+        
+        function unstick( sticker ) {
+            sticker.removeClass("peep_moderation_sticked");
+        };
+        
+        $(document).on("scroll", function() {
+            var top = $(document).scrollTop();
+            $.each(stickers, function(i, sticker) {
+                if ( sticker.top - top <= OFFSET ) {
+                    stick(sticker.el);
+                } else {
+                    unstick(sticker.el);
+                }
+            });
+        });
+        
+        $(".peep_moderation_sticky").each(function() {
+            var sticker = {};
+            sticker.el = $(this);
+            sticker.top = sticker.el.position().top;
+                        
+            stickers.push(sticker);
+        });
+    })();
+}
+
+</script>
+
+
+{style}
+
+.peep_moderation_sticked {
+    position: fixed;
+    top: 40px;
+}
+
+{/style}
+
+{$menu}
+
+<div class="peep_moderation_wrap clearfix" id="{$uniqId}">
+    <div class="peep_moderation_sticky">
+        <div class="peep_smallmargin">
+            {$contentMenu}
+        </div>
+        <table class="peep_table_2">
+            <tbody>
+            <tr class="peep_tr_first peep_tr_last peep_alt1">
+                <td class="peep_txtleft" style="border-right: none;">
+                    <input type="checkbox" data-checkall="">
+                </td>
+                <td class="peep_txtleft" style="border-right: none;">
+                     <span>{text key='base+check_all_to'}</span>
+                </td>
+                <td>
+                    <div class="peep_moderation_label_bnts peep_left">
+                        <a data-command="unflag.multiple" class="peep_lbutton peep_smallmargin peep_green" href="javascript://">{text key='base+unflag'}</a>
+                        <br>
+                        <a data-command="delete.multiple" class="peep_lbutton peep_red" href="javascript://">{text key='base+delete'}</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    <div class="peep_left" style="width: 100%;">
+
+        <form action="{$responderUrl}" method="post" id="{$uniqId}-form">
+            <input type="hidden" name="command" />
+            <input type="hidden" name="item" />
+            
+        <table class="peep_table_2 peep_margin peep_moderation_table">
+        <tbody>
+            <tr class="peep_tr_first">
+                <th>{$group.label}</th>
+                <th>{text key="base+moderation_reporter"}</th>
+                <th>{text key="base+moderation_reason"}</th>
+                <th>{text key="base+moderation_action"}</th>
+            </tr>
+                
+            {foreach from=$flags item="item"}
+            <tr class="peep_alt1">
+                <td>
+                    <div class="clearfix peep_moderation_content_wrap">
+                        <input type="checkbox" class="peep_left" data-item="{$item.entityType}:{$item.entityId}" name="items[]" value="{$item.entityType}:{$item.entityId}">
+                       <div class="peep_avatar">
+                           {decorator name="avatar_item" data=$item.avatar}
+                        </div>
+                        <div class="peep_user_list_data">
+                            <div class="peep_moderation_string peep_txtleft peep_small peep_smallmargin">
+                                {$item.string}
+                            </div>
+                            <div class="peep_moderation_content peep_txtleft">
+                                {$item.content}
+                            </div>      
+
+                        </div>
+                    </div>
+                    <div class="peep_newsfeed_btns peep_small peep_remark clearfix">
+                        <span class="peep_nowrap create_time peep_newsfeed_date peep_small" style="line-height: 14px;">{text key="base+flagged_time" time=$item.time}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="peep_small">
+                        <a href="{$item.reporter.url}"><b>{$item.reporter.name}</b></a>
+                    </div>
+                </td>
+                <td>
+                    <div class="peep_small">
+                        {text key="base+flag_`$item.reason`"}
+                    </div>
+                </td>
+                <td class="peep_small">
+                    <div class="peep_moderation_label_bnts">
+                        <a data-command="unflag.single" data-item="{$item.entityType}:{$item.entityId}" data-content="{$item.contentLabel|strip_tags:false}" class="peep_lbutton peep_smallmargin peep_green" href="javascript://">{text key='base+unflag'}</a>
+                        <br />
+                        <a data-command="delete.single" data-item="{$item.entityType}:{$item.entityId}" data-content="{$item.contentLabel|strip_tags:false}" class="peep_lbutton peep_red" href="javascript://">{text key='base+delete'}</a>
+                    </div>
+                </td>
+            </tr>
+            {/foreach}
+        </tbody>
+        </table>
+            
+        </form>
+
+        <div class="peep_smallmargin">
+            {$paging}
+        </div>
+
+    </div>
+</div>

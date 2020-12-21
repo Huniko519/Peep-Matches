@@ -1,0 +1,221 @@
+{script}{literal}
+    DND_InterfaceFix.fix('.place_section');
+{/literal}{/script}
+
+{style}{literal}
+	.hidden-placeholder {
+		display: none;
+	}
+        
+	.placeholder {
+            height: 10px;
+            border: 1px dashed #999999;
+            background-color: #FFF;
+	}
+
+	.dd_helper {
+	   border: 1px dashed #000;
+	}
+
+	.dd_handle {
+	   cursor: move;
+	}
+
+	.component .action {
+	       display: none;
+	}
+
+	.component .action .dd_delete {
+	       display: none;
+	}
+
+	#place_components .clone .action .dd_delete {
+	       display: inline;
+	}
+
+	.place_section .component .action .dd_delete {
+	       display: inline;
+	}
+
+	.place_section .dd_freezed {
+	   background-color: #FFAAAA;
+	}
+
+	#place_components .component {
+		float: left;
+	}
+
+	.place_section .component {
+
+	}
+
+	.place_section {
+	   min-height: 60px;
+        padding-top: 10px;
+	}
+
+	.view_component div{
+	   overflow: hidden;
+	}
+
+	.configurable_component .controll {
+		display: inline-block;
+		width: 18px;
+		height: 16px;
+		text-decoration: none;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.peep_box_cap_empty .controll {
+	    background-color: #FFFFFF;
+	}
+
+	.configurable_component .peep_box_icons {
+		float: right;
+		padding-top: 6px;
+	}
+
+	.configurable_component h3 {
+	    float: left;
+	}
+
+	.peep_dragndrop_panel {
+       background: #fff;
+	   padding: 0px 10px 10px;
+	   margin-top: 5px;
+	}
+
+	.peep_dragndrop_panel .peep_dnd_schem_item{
+	   width: 150px;
+	}
+
+	.peep_dragndrop_sections .peep_highbox{
+	   margin-top: 6px;
+	   margin-left: 3px;
+	   margin-right: 3px;
+	}
+
+	.content_components{
+	   padding: 10px 0;
+	   width: 74%;
+	}
+
+	.sidebar_components{
+	   border-left: 1px solid #ccc;
+	   padding: 10px 0 10px 10px;
+       width: 24%;
+	}
+
+
+ {/literal}{/style}
+
+
+{add_content key='base.widget_panel.content.top' placeName=$placeName}
+{add_content key='base.`$placeName`.content.top'}
+
+ <div style="display: none" id="fb_settings">
+     <div class="settings_title">
+        {text key="base+widgets_fb_setting_box_title"}
+     </div>
+     <div class="settings_content component_settings" style="min-height: 300px;"></div>
+     <div class="settings_controls component_controls">
+         {decorator name="button" class="dd_save peep_ic_save" langLabel="base+edit_button"}
+     </div>
+ </div>
+
+{block_decorator name='box' add_class='peep_highbox peep_stdmargin'}
+
+    <div class="peep_smallmargin peep_center">
+        {decorator name='button' label='Customize this page' class='peep_ic_gear_wheel'}
+        {decorator name='button' label='Finish customizing' class='peep_ic_lock'}
+    </div>
+
+    <div class="peep_dragndrop_panel">
+
+        {block_decorator name="box" iconClass="peep_ic_add" lang_label="components+section_box_title" type="empty" add_class="peep_smallmargin"}
+
+        <div class="clearfix">
+            <div class="content_components peep_left clearfix" id="place_components">
+                {foreach from=$componentList.place item="component"}
+                    {dd_component uniqName=$component.uniqName}
+                {/foreach}
+		   </div>
+		   <div class="sidebar_components peep_right" id="clonable_components">
+		        {foreach from=$componentList.clonable item="component"}
+		            {dd_component uniqName=$component.uniqName}
+		        {/foreach}
+		   </div>
+        </div>
+
+        {/block_decorator}
+    </div>
+
+{/block_decorator}
+
+<div class="peep_dragndrop_sections peep_stdmargin" id="place_sections">
+
+    <div class="clearfix">
+
+		<div class="peep_highbox place_section top_section" peep_place_section="top">
+
+		    {if isset($componentList.section.top)}
+		        {foreach from=$componentList.section.top item="component"}
+		            {dd_component uniqName=$component.uniqName render=true}
+		        {/foreach}
+		    {/if}
+
+		</div>
+
+		<div class="peep_dnd_slider" >
+               <div class="peep_dnd_slider_handle peep_ic_move_horizontal"></div>
+		    {foreach from=$schemeList item=scheme}
+			    <div class="peep_dnd_slider_item clearfix">
+                    <div class="peep_dnd_slider_pusher {$scheme.leftCssClass}"></div>
+                    <div class="peep_dnd_slider_marker{if $activeScheme.id == $scheme.id} current{/if}"
+                       peep_scheme="{$scheme.id}" dd_leftclass="{$scheme.leftCssClass}" dd_rightclass="{$scheme.rightCssClass}" >
+                    </div>
+                </div>
+               {/foreach}
+		</div>
+
+         <div class="clearfix" style="overflow: hidden;">
+
+	        <div class="peep_left peep_highbox place_section peep_column_equal_fix left_section {if isset($activeScheme.leftCssClass)}{$activeScheme.leftCssClass}{/if}" peep_scheme_class="{if isset($activeScheme.leftCssClass)}{$activeScheme.leftCssClass}{/if}"  peep_place_section="left">
+
+	            {if isset($componentList.section.left)}
+                    {foreach from=$componentList.section.left item="component"}
+                        {dd_component uniqName=$component.uniqName render=true}
+                    {/foreach}
+                {/if}
+
+            </div>
+
+            <div class="peep_right peep_highbox place_section peep_column_equal_fix right_section {if isset($activeScheme.rightCssClass)}{$activeScheme.rightCssClass}{/if}" peep_scheme_class="{if isset($activeScheme.rightCssClass)}{$activeScheme.rightCssClass}{/if}"  peep_place_section="right">
+
+                {if isset($componentList.section.right)}
+                    {foreach from=$componentList.section.right item="component"}
+                        {dd_component uniqName=$component.uniqName render=true}
+                    {/foreach}
+                {/if}
+
+            </div>
+
+         </div>
+
+	    <div class="peep_highbox place_section bottom_section" peep_place_section="bottom">
+
+            {if isset($componentList.section.bottom)}
+                {foreach from=$componentList.section.bottom item="component"}
+                    {dd_component uniqName=$component.uniqName render=true}
+                {/foreach}
+            {/if}
+
+        </div>
+
+	</div>
+
+</div>
+
+{add_content key='base.widget_panel.content.bottom' placeName=$placeName}
+{add_content key='base.`$placeName`.content.bottom'}

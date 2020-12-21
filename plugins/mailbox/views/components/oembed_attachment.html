@@ -1,0 +1,31 @@
+<div class="peep_dialog_item">
+    <div class="peep_dialog_in_item " id="dialogMessageWrapper">
+        {if !empty($message)}
+        <p>{$message}</p>
+        {/if}
+        <div class="peep_oembed_attachment_preview">
+            {if !empty($data.thumbnail_url) }
+            <div class="peep_oembed_attachment_pic">
+                <a href="{$data.href}" target="_blank">
+                    <img src="{$data.thumbnail_url}">
+                </a>
+            </div>
+            {elseif !empty($data.url)}
+            <div class="peep_oembed_attachment_pic">
+                <a href="javascript://" target="_blank" onclick="PEEP.showImageInFloatBox('{$data.href}');">
+                    <img src="{$data.url}" class="attachment_thumb from_fullsize_photo PEEP_AttachmentImage" />
+                </a>
+            </div>
+            {elseif !empty($data.html)}
+            {$data.html}
+            {/if}
+
+            {if !empty($data.title)}
+            <div class="peep_attachment_title"><a href="{$data.href}" target="_blank">{$data.title}</a></div>
+            {/if}
+            {if !empty($data.description)}
+            <div class="peep_attachment_description">{$data.description}</div>
+            {/if}
+        </div>
+    </div><i></i>
+</div>

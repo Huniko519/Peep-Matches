@@ -1,0 +1,108 @@
+{style}{literal}
+    .peep_cnews_line
+    {
+        display: block;
+    }
+{/literal}{/style}
+
+<li id="{$item.autoId}" class="peep_cnews_item {$item.view.class} {if !empty($item.line)}peep_cnews_line_item{/if}" style="{$item.view.style}">
+	<div class="clearfix">
+            
+	    {if empty($item.line)}
+	        <div class="peep_cnews_avatar">
+                    {*foreach from=$item.users item="user"}
+                        {decorator name="avatar_item" url=$user.url src=$user.avatarUrl label=$user.roleLabel.label labelColor=$user.roleLabel.labelColor}
+                    {/foreach*}
+                    {decorator name="avatar_item" url=$item.user.url src=$item.user.avatarUrl label=$item.user.roleLabel.label labelColor=$item.user.roleLabel.labelColor}
+	        </div>
+	    {else}
+	         <div class="peep_cnews_line peep_smallmargin {if $item.view.iconClass}{$item.view.iconClass}{else}peep_ic_info{/if} peep_icon_control">
+	            {if $item.context}<a href="{$item.context.url}">{$item.context.label}</a> &raquo; {/if}{$item.line}
+	         </div>
+	    {/if}
+
+	    <div class="peep_cnews_body" style="border:1px solid rgba(0,0,0,0.12); margin-left:55px; padding:5px;">
+	        <div class="peep_cnews_context_menu_wrap">
+                    <div class="peep_cnews_context_menu">
+                       {$item.contextActionMenu}
+                    </div>
+                    {if empty($item.line)}
+                        <div class="peep_cnews_head peep_automargin">
+                           <a href="{$item.user.url}"><b>{$item.user.name}</b></a>
+                           {if $item.context}  &raquo; <a href="{$item.context.url}">{$item.context.label}</a>{/if}
+                           {$item.string}
+<div class=" peep_nowrap create_time peep_cnews_date peep_small"><a href="{$item.permalink}">{$item.createTime}</a></div>
+                        </div>
+                  {/if}
+
+                    {if $item.content}
+                        <div class="peep_cnews_content">{$item.content}</div>
+                    {/if}
+                </div>
+
+            {if !empty($item.toolbar)}
+            {strip}
+	        <div class="peep_cnews_toolbar peep_small peep_remark clearfix">
+	            <span class="peep_cnews_toolbar_space">&nbsp;</span>
+
+	            {foreach from=$item.toolbar item=toolbarItem}
+                    <span class="peep_cnews_control peep_nowrap {if !empty($toolbarItem.class)}{$toolbarItem.class}{/if}">
+                        {if !empty($toolbarItem.href)}
+                            <a href="{$toolbarItem.href}">{$toolbarItem.label}</a>
+                        {else}
+                            {$toolbarItem.label}
+                        {/if}
+                        <span class="peep_cnews_toolbar_space">&nbsp;</span>
+                    </span>
+                {/foreach}
+	        </div>
+	    {/strip}
+            {/if}
+
+            <div class="peep_cnews_btns peep_small peep_remark clearfix">
+
+                
+
+                <div class="peep_cnews_left">
+                    <span class="peep_cnews_control">
+                        
+
+                        {if $item.features.system.likes}
+                        <span class="peep_cnews_btn_wrap {if $item.features.system.likes.liked}peep_cnews_active{/if}">
+                            <span class="peep_miniic_control {if $item.features.system.likes.allow}peep_cursor_pointer{/if} cnews_like_btn_cont {if $item.features.system.likes.liked}active{/if}">
+                                <span {if !empty($item.features.system.likes.error)}data-error="{$item.features.system.likes.error}"{/if} class="peep_miniic_like {if $item.features.system.likes.allow}cnews_like_btn{/if} {if $item.features.system.likes.liked}cnews_active_button{/if}"></span>
+                            </span>
+                        </span>
+
+                        <div class="peep_cnews_string">
+                            <div class="cnews_likes_string" {if !$item.features.system.likes.count}style="display: block;"{/if}>
+                                {$item.features.system.likes.cmp}
+                            </div>
+                        </div>
+                        {/if}
+                    </span>
+
+                </div>
+            </div>
+
+            {if $item.features.system.comments}
+                <div {if !$item.features.system.comments.expanded}style="display: block"{/if} class="cnews-comments-cont peep_cnews_features">
+                    {block_decorator name='tooltip' addClass='peep_cnews_tooltip peep_add_comments_form peep_small'}
+                        {if $item.features.system.comments}
+                            <div class="peep_cnews_comments">
+                                {$item.features.system.comments.cmp}
+                            </div>
+                        {/if}
+                    {/block_decorator}
+                </div>
+            {/if}
+
+	    </div>
+            
+            
+	</div>
+
+        {if !empty($item.cycle)}
+            <div {if $item.cycle.lastItem}style="display: none"{/if} class="cnews-item-delim peep_border peep_cnews_delimiter peep_cnews_doublesided_stdmargin"></div>
+        {/if}
+</li>

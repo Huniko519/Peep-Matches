@@ -1,0 +1,47 @@
+<div class="peep_automargin">
+    {block_decorator name='box' langLabel='usercredits+earning_actions' iconClass='peep_ic_add' type='empty' addClass='peep_stdmargin'}
+        {if $earning}
+        <table class="peep_table_2 peep_smallmargin">
+            <tr class="peep_alt2 peep_tr_first">
+                <td><b>{text key='usercredits+actions'}</b></td>
+                <td><b>{text key='usercredits+price_in_credits'}</b></td>
+            </tr>
+            {foreach from=$earning item='e' name='e'}
+            <tr class="peep_alt1 {if !$e.disabled}peep_disabled_state{/if}{if $smarty.foreach.e.last} peep_tr_last{/if}">
+                <td class="peep_txtleft">
+                    {text key="`$e.pluginKey`+usercredits_action_`$e.actionKey`"}
+                </td>
+                <td class="peep_action_price_td">
+                    {$e.amount}
+                </td>
+            </tr>
+            {/foreach}
+        </table>
+        {else}
+            <div class="peep_nocontent">{text key='usercredits+no_actions'}</div>
+        {/if}
+    {/block_decorator}
+
+    {block_decorator name='box' langLabel='usercredits+spending_actions' iconClass='peep_ic_warning' type='empty' addClass='peep_stdmargin'}
+        {if $losing}
+            <table class="peep_table_2 peep_smallmargin">
+                <tr class="peep_alt2 peep_tr_first">
+                    <td><b>{text key='usercredits+actions'}</b></td>
+                    <td><b>{text key='usercredits+price_in_credits'}</b></td>
+                </tr>
+                {foreach from=$losing item='l' name='l'}
+                    <tr class="peep_alt1 {if !$l.disabled}peep_enabled_state{/if}{if $smarty.foreach.l.last} peep_tr_last{/if}">
+                        <td class="peep_txtleft">
+                            {text key="`$l.pluginKey`+usercredits_action_`$l.actionKey`"}
+                        </td>
+                        <td class="peep_action_price_td">
+                            {$l.amount}
+                        </td>
+                    </tr>
+                {/foreach}
+            </table>
+        {else}
+            <div class="peep_nocontent">{text key='usercredits+no_actions'}</div>
+        {/if}
+    {/block_decorator}
+</div>

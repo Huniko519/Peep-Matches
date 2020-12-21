@@ -1,0 +1,48 @@
+<div class="peep_photo_list_wrap{if !$hasSideBar} peep_photo_no_sidebar{/if}">
+    <div id="browse-photo" class="peep_photo_list{if !$isClassicMode} peep_photo_pint_mode{/if} peep_superwide peep_right clearfix"></div>
+    <div id="browse-photo-preloader" class="peep_superwide peep_right peep_fw_menu peep_preloader"></div>
+</div>
+
+
+    <div id="browse-photo-item-prototype" class="peep_photo_item_wrap{if $type == 'albums'} peep_photo_album{/if}" style="display:none;">
+        <div class="peep_photo_item">
+<div class="peep_photo_pint_album">
+                 <img id="info_hide" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" width="0" height="0" alt="" />
+
+            </div>
+     {if $type == 'albums'}
+                <div class="peep_photo_item_info peep_small clearfix">
+                    <div class="peep_photo_item_info_description peep_left">
+                        <span class="peep_photo_icon"></span>
+                        <span class="peep_photo_description"></span>
+                    </div>
+                </div>
+            {else}
+
+                <div class="peep_photo_item_info peep_small" style="position:absolute; bottom:0px; opacity: 65;">
+                    <div style="display: none" class="peep_photo_item_info_description">
+                        <span class="peep_photo_description"></span>
+                    </div>
+                    <div style="display: none" class="peep_photo_item_info_user peep_photo_by_user">{text key="photo+uploaded_by"}
+                        <a href="javascript://"><b></b></a>
+                    </div>
+                    
+                </div>
+            {/if}      
+           
+        </div>
+    </div>
+
+
+<div class="peep_hidden">
+    <div id="context-action-prototype" class="peep_context_action">              
+        <div class="peep_tooltip peep_small peep_tooltip_top_right" style="opacity: 1; top: 19px;">
+            <div class="peep_tooltip_tail"><span></span></div>
+            <div class="peep_tooltip_body"></div>
+        </div>
+    </div>
+    <iframe name="photo-downloader"  style="display:none;"></iframe>
+    <li id="search-no-items" class="browse-photo-search clearfix">
+        <span style="line-height: 20px;">{text key='photo+search_result_empty'}</span>
+    </li>
+</div>

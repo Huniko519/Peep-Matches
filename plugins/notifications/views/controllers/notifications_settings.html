@@ -1,0 +1,55 @@
+{style}
+{literal}
+
+.peep_content_menu li {
+   
+width:100%;
+
+}
+.peep_content_menu li a{
+border-bottom:1px solid #cdcdcd;
+padding:15px 0px 15px 0px;
+}
+{/literal}
+{/style}
+<div class="profile_sett_page clearfix">
+{block_decorator name="box" type="empty" addClass="peep_supernarrow peep_left peep_stdmargin" style="width:21%;"}
+{$contentMenu}
+{/block_decorator}
+
+{*<p class="peep_stdmargin">
+    {text key='notifications+preferences_legend'}
+</p>*}
+
+<div class="peep_superwide peep_right peep_stdmargin" style="width:72%;">
+{form name="notificationSettingForm"}
+
+<table class="peep_table_1 peep_form">
+
+    {foreach from=$actions item=plugin name="plugins"}
+	    
+	    {foreach from=$plugin.actions item=action name="actions"}
+	        <tr class="{cycle name="install" values="peep_alt1,peep_alt2"} {if $smarty.foreach.actions.last}peep_tr_last{/if}">
+		        <td class="peep_label">{input name=$action.action}</td>
+		        <td class="peep_value">{$action.description}</td>
+		    </tr>
+	    {/foreach}
+		{if !$smarty.foreach.plugins.last}
+			<tr class="peep_tr_delimiter"><td></td></tr>
+		{/if}
+    {/foreach}
+
+</table>
+
+<table class="peep_table_1 peep_form">
+        
+        <tr class="peep_alt1 peep_tr_last">
+<td class="peep_label">{text key="notifications+config_schedule_title"}</td>
+            <td class="peep_value">{input name="schedule"}</td>
+        </tr>
+</table>
+
+<div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_ic_save'}</div><div class="peep_right"></div></div>
+
+{/form}
+</div>

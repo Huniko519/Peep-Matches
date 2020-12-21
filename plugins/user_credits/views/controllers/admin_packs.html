@@ -1,0 +1,66 @@
+{$menu}
+
+{block_decorator name='box' addClass='peep_std_margin'}{text key='usercredits+packs_description'}{/block_decorator}
+
+{if $types}
+<div class="peep_anno peep_center peep_stdmargin">
+    {text key='usercredits+select_account_type'}: &nbsp;
+    <select name="acc_type" onchange="location.href = '{$route}?type='+this.value;">
+        {foreach from=$types item='type' key='name'}
+        <option value="{$name}"{if $name == $accType} selected="selected"{/if}>{$type}</option>
+        {/foreach}
+    </select>
+</div>
+{/if}
+
+<div class="peep_wide peep_automargin">
+{if $packs}
+	{block_decorator name='box' iconClass='peep_ic_folder' langLabel='usercredits+pack_list' type='empty'}
+	<form method="post">
+	<input type="hidden" name="form_name" value="update-packs-form" />
+	<table class="peep_table_1 peep_smallmargin">
+	    <tr class="peep_alt2 peep_tr_first">
+	        <td><b>{text key='usercredits+credits'}</b></td>
+	        <td><b>{text key='usercredits+price'}</b></td>
+            {if !empty($packs.0.productId)}<td><b>{text key='usercredits+product_id'}</b></td>{/if}
+	        <td></td>
+	    </tr>
+	    {foreach from=$packs item='pack' name='pack'}
+	        <tr class="peep_alt1 {if $smarty.foreach.pack.last}peep_tr_last{/if}" onmouseover="$('span.del-cont', this).show();" onmouseout="$('span.del-cont', this).hide();">
+	            <td><input type="text" name="credits[{$pack.id}]" value="{$pack.credits}" style="width: 80px;" /></td>
+	            <td><input type="text" name="price[{$pack.id}]" value="{$pack.price}" style="width: 80px;" /> {$currency}</td>
+                {if !empty($pack.productId)}<td class="peep_small">{$pack.productId}</td>{/if}
+	            <td width="1" class="ns-hover-block peep_center">
+	            <div style="width: 50px;">
+	                <span class="del-cont" style="display: none;">
+	                    <a class="peep_lbutton peep_red" href="{url_for for="USERCREDITS_CTRL_Admin:packs"}?delPack={$pack.id}"
+	                            onclick="return(confirm('{text key="admin+are_you_sure"}'));">{text key="admin+delete"}</a>
+	                </span>
+	            </div>
+	            </td>
+	        </tr>
+	    {/foreach}
+	</table>
+	<div class="clearfix peep_stdmargin"><div class="peep_right">{decorator name="button" type="submit" langLabel='admin+save_btn_label' class='peep_ic_save peep_positive'}</div></div>
+	</form>
+	{/block_decorator}
+{else}
+    {block_decorator name='box' addClass='peep_stdmargin'}
+        <div class="peep_nocontent">{text key='usercredits+no_packs'}</div>
+    {/block_decorator}
+{/if}
+
+{block_decorator name='box' iconClass='peep_ic_add' langLabel='usercredits+add_pack'}
+    {form name='add-pack-form'}
+    <table class="peep_table_3">
+        <tr peep_tr_first>
+            <td class="peep_label peep_supernarrow">{label name='credits'}</td><td class="peep_value">{input name='credits'}</td>
+        </tr>
+        <tr peep_tr_last>
+            <td class="peep_label peep_supernarrow">{label name='price'}</td><td class="peep_value">{input name='price'}</td>
+        </tr>
+    </table>
+    <div class="clearfix"><div class="peep_right">{submit name='add' class='peep_ic_add peep_positive'}</div></div>
+    {/form}
+{/block_decorator}   
+</div>

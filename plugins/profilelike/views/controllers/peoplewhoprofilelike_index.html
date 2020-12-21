@@ -1,0 +1,26 @@
+<h1>{text key='profilelike+people_who_profile_like_h1'}</h1><br />
+<div class="peep_user_list peep_full peep_stdmargin">
+	{foreach from=$people item='p' name='user_list'}
+		{if $smarty.foreach.user_list.first}
+			<div class="clearfix {cycle name="rows" values="peep_alt2, peep_alt1"}">
+		{/if}
+		<div class="peep_user_list_item clearfix peep_item_set3">
+        	<div class="peep_user_list_picture">
+        		<div class="peep_avatar" style="padding:0px;">
+					{decorator name=avatar_item data=$avatars[$p->userId]}
+				</div>
+    		</div>
+    		<div class="peep_user_list_data">
+				<a href="{$url}user/{$p->username}">{$p->username} </a>
+				<div class="peep_small"></div>
+        	</div>
+		</div>
+        {if $smarty.foreach.user_list.iteration % 2 == 0 && !$smarty.foreach.user_list.last}
+			</div>
+			<div class="clearfix {cycle name="rows" values="peep_alt1,peep_alt2"}">
+		{/if}
+		{if $smarty.foreach.user_list.last}
+		  </div>
+		{/if}
+	{/foreach}
+</div>

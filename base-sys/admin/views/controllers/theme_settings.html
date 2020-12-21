@@ -1,0 +1,107 @@
+{style}
+{literal}
+.theme_icon{
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	height:180px;
+	width:180px;
+}
+
+.theme_title{
+	font-weight:bold;
+}
+
+.theme_desc{
+	padding:10px 0;
+}
+
+.theme_controls input[type="text"]{
+	width:232px;
+	padding:4px;
+}
+
+.theme_control_image{
+	background-repeat:no-repeat;
+	background-position:0% 0%;
+	border:1px solid #ccc;
+	height:40px;
+	width:170px;
+    float:left;
+    cursor:pointer;
+}
+
+.theme_controls select{
+	width:240px;
+}
+
+body table.theme_controls td.peep_label{
+	width:35%;
+}
+
+body table.theme_controls td.peep_input{
+	width:30%;
+}
+
+body table.theme_controls td.peep_desc{
+	text-align:left;
+	width:35%;
+}
+
+.color_input input[type="text"]{
+	width:170px;
+}
+
+.theme_controls .color_button{
+	width:30px;
+	height:27px;
+	padding:0;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.preview_graphics{
+    background-repeat:no-repeat;
+	background-position:50% 50%;
+	border:1px solid #ccc;
+    width:500px;
+    height:350px;
+    margin:0 auto;
+}
+
+{/literal}
+{/style}
+{$contentMenu}
+
+{block_decorator name='box' type='empty' langLabel='admin+theme_settings_cap_label' iconClass='peep_ic_edit'}
+<div class="peep_superwide peep_automargin">
+{if isset($noControls) && $noControls}
+<div class="no_content">{text key='admin+theme_settings_no_controls_label'}</div>
+{else}
+{form name='theme-edit'}
+<table class="peep_form peep_table_1 theme_controls">
+{foreach from=$inputArray key='section' item='inputs'}
+   <tr class="peep_tr_first">
+	   <th colspan="10" style="text-align: left;">{$section}</th>
+   </tr>
+   {foreach from=$inputs item='input' name='i'}
+	<tr class="{cycle values='peep_alt1,peep_alt2' name=$section} {if $smarty.foreach.i.last}peep_tr_last{/if}">
+      <td class="peep_label">{$input.title}</td>
+      <td class="peep_value">{input name=$input.name}</td>
+      <td class="peep_desc">{if isset($input.desc)}{$input.desc}{/if}</td>
+      
+   </tr>
+   {/foreach}
+   <tr class="peep_tr_delimiter"><td></td></tr>
+{/foreach}
+       {capture name='resetLabel'}{text key='admin+theme_settings_reset_confirm_message'}{/capture}
+
+</table>
+    <div class="clearfix peep_stdmargin peep_btn_delimiter">
+        <div class="peep_right">
+            {decorator name="button" class='peep_red peep_ic_delete' langLabel='admin+themes_settings_reset_label' onclick="if(confirm('`$smarty.capture.resetLabel`')) window.location = '`$resetUrl`';"}    
+			{submit name='submit' class='peep_positive peep_btn_delimiter'}     
+        </div>
+    </div>
+{/form}
+{/if}
+</div>
+{/block_decorator}

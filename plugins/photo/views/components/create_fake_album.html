@@ -1,0 +1,26 @@
+<div id="create_fake_album_container">
+    {form name='create_fake_album'}
+        <div style="margin-bottom: 16px;">
+            <div class="peep_smallmargin">
+                {input name='album_name'}<br />{error name='album_name'}
+            </div>
+            {input name='album_desc'}
+        </div>
+
+        {foreach $extendInputs as $input}
+            <div id="{$input}" style="margin-bottom: 8px;">
+                <div class="peep_smallmargin">
+                    {input name=$input}{label name=$input}<br />{error name=$input}
+                </div>
+            </div>
+        {/foreach}
+
+    {add_content key="photo.onRenderCreateFakeAlbum" userId=$userId}
+
+        <div style="margin-bottom: 8px;" class="clearfix">
+            <div class="peep_right">
+                {submit name='submit'}
+            </div>
+        </div>
+    {/form}
+</div>

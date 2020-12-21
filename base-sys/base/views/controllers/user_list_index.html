@@ -1,0 +1,8 @@
+{component class='SEARCHSYS_CMP_UserSearch'}
+<div class="members_tabs peep_full peep_stdmargin clearfix">
+<div class="members_count">{$totalUsers} {text key='corevisitor+members_found'}</div>
+{component class='GOOGLELOCATION_CMP_MapButton'}
+</div>
+{if !empty($listType)}{add_content key="base.content.user_list_top" listType=$listType}{/if}
+
+{$cmp}

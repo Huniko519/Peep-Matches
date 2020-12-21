@@ -1,0 +1,19 @@
+{style}{literal}
+
+html div.peep_console_list_wrapper
+{
+    min-height: 0px;
+    max-height: 257px;
+}
+
+{/literal}{/style}
+
+<div class="peep_console clearfix">
+    <div class="peep_console_body clearfix">
+        
+            {foreach from=$items item="item"}
+                {$item}
+            {/foreach}
+        
+    </div>
+</div>

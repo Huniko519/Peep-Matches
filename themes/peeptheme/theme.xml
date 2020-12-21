@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme>
+    <name>Peeptheme</name>
+    <key>peeptheme</key>
+    <version>1.0</version>
+    <for>peepmatches software only</for>
+    <description>The Default Peepmatches theme</description>
+    <author>Peepdev Co.</author>
+    <authorEmail>addons@peepdev.com</authorEmail>
+    <authorUrl>http://www.peepdev.com/company</authorUrl>
+    <developerKey>peepdev1</developerKey>
+    <build>1</build>
+    <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright>
+    <license>Peepdev License</license>
+    <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+    <masterPages>
+       <landing_page>index-landing</landing_page>
+    </masterPages>
+</theme>

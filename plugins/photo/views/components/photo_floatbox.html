@@ -1,0 +1,72 @@
+<div class="peep_hidden">
+    <div id="peep-photo-view" class="peep_photoview_wrap clearfix peep_bg_color">
+        {if !empty($authError)}
+            <div id="peep-photo-view-error" style="padding: 45px 10px 65px">
+                <div class="peep_anno peep_nocontent">{$authError}</div>
+            </div>
+        {else}
+            <div class="peep_photoview_stage_wrap{if $layout == 'page'} peep_smallmargin{/if}">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" class="peep_photo_img peep_photo_view" />
+                <div class="peep_photoview_bottom_menu_wrap">
+                    <div class="peep_photoview_bottom_menu clearfix">
+                        <span class="peep_photo_album_icon"></span>
+                        <a  href="javascript://" class="peep_photoview_albumlink">
+                         '' : 
+                        </a>
+                        <div class="peep_photoview_fullscreen_toolbar_wrap">
+                           <div class="peep_user_list_picture">
+                                <div class="peep_avatar">
+                                    <a href="javascript://"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" style="max-width: 100%; display: none"></a>
+                                </div>
+                            </div>
+<div class="peep_user_list_data">
+<a href="javascript://" class="peep_photo_avatar_url" style="color:#fff;"></a>
+</div>
+                        </div>
+                        <a href="javascript://" class="peep_photoview_info_btn open peep_right"></a>
+                        <a href="javascript://" class="peep_photoview_fullscreen peep_right"></a>
+                    </div>
+                </div>
+                <div class="peep_photo_context_action" style="display: none"></div>
+                <a class="peep_photoview_arrow_left" href="javascript://"><i></i></a>
+                <a class="peep_photoview_arrow_right" href="javascript://"><i></i></a>
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" style="display: none" class="peep_photo_img slide" />
+            </div>
+            <div class="peep_photoview_info_wrap">
+                <div class="peep_photoview_info{$class}">
+                    <div class="peep_photo_scroll_cont">
+                        <div class="peep_photoview_user peep_stdmargin clearfix">
+                            <div class="peep_user_list_picture">
+                                <div class="peep_avatar">
+                                    <a href="javascript://"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" style="max-width: 100%; display: none"></a>
+                                </div>
+                            </div>
+                            <div class="peep_user_list_data">
+                                <a href="javascript://" class="peep_photo_avatar_url"></a>
+                                <div class="peep_small peep_timestamp"></div>
+                                <a href="javascript://" class="peep_small peep_photo_album_url">
+                                   <span class="peep_photo_album_icon"></span>
+                                    <span class="peep_photo_album_name"></span>
+                                </a>
+                            </div>
+                        </div>
+                       
+                        {add_content key="photo.content.betweenInfoAndDescription"}
+                        
+                        <div class="peep_photoview_description peep_small">
+                            <span id="photo-description"></span>
+                        </div>
+                        
+                        
+                        <div class="peep_photo_share"></div>
+                        
+                        {add_content key="photo.content.betweenRatesAndComments"}
+                        
+                        <div class="peep_feed_comments peep_small"></div>
+                    </div>
+                </div>
+                <div class="peep_feed_comments_input_sticky"></div>
+            </div>
+        {/if}
+    </div>
+</div>

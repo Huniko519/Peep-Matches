@@ -1,0 +1,32 @@
+<div id="emoticons-panel" class="emoticons_panel emoticons_tooltip_top_right" style="width: {$width}px">
+    {if !$isSingle}
+        <div class="emoticons_tooltip_body clearfix" style="padding: 0">
+            <div class="smile_tab_container_top">
+                {foreach $captions as $id => $caption}
+                    <a href="javascript://" class="emoticons_tab emoticons" data-category-id="{$id}">
+                     <img src="{$url}{$caption}" data-title="{$caption}" class="emoticons" />
+                    </a>
+                {/foreach}
+            </div>
+
+            {foreach $emoticons as $id => $smile}
+                <div class="clearfix smilyes_category" id="smilyes-category-{$id}" data-category-id="{$id}" style="display: none">
+<div class="emotions_cont">
+                    {foreach $smile as $s}
+                        <img src="{$url}{$s->name}" data-title="{$s->code}" data-code="{$s->code}" />
+                    {/foreach}
+</div> 
+                </div>
+            {/foreach}
+           
+        </div>
+    {else}
+        <div class="emoticons_tooltip_body" style="padding: 0">
+            <div class="clearfix smilyes_category" id="smilyes-category-0" data-category-id="0" style="display: none">
+                {foreach $emoticons as $smile}
+                    <img src="{$url}{$smile->name}" data-title="{$smile->code}" data-code="{$smile->code}" />
+                {/foreach}
+            </div>
+        </div>
+    {/if}
+</div>

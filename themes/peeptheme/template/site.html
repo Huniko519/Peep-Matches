@@ -1,0 +1,116 @@
+<div class="page_full">
+
+	<div class="page_fill">
+		
+		<div class="page_container">
+			<div class="canvas">
+<div class="home_share_btns">
+	{component class='SOCIALSHARING_CMP_ShareButtons'}
+</div>
+
+<div class="left_fixed_side"><div class="site_logo"><a href="{$siteUrl}">{$siteName}</a></div><button id="menubtnmobile">menu</button>
+</div>
+<div class="peep_menu_wrap">{$main_menu}</div>
+<div class="console_wrap">{component class='BASE_CMP_Console'}</div>
+				<div class="main_page bg_color clearfix">
+					<h1 class="peep_stdmargin">{$heading}</h1>
+					<div class="content">
+						{add_content key='base.add_page_top_content'}
+						{$content}
+						{add_content key='base.add_page_bottom_content'}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer canvas peep_center">
+			{$bottom_menu}
+			<div class="site_copyright peep_center">
+				{text key='base+copyright'}
+			</div>
+			
+		</div>
+{decorator name='floatbox'}
+
+
+{script}
+        {literal}
+
+$('.chat_close_bar').click(function(event) {
+   value = $('.page_container, .canvas').css('right') === '0' ? 45 : '0';
+      $('.page_container, .canvas').animate({
+          right: value
+      });
+});
+$('.chat_close_bar').click(function(event) {
+   value = $('.sideImOpen').css('height') === '0' ? 100 : '0';
+      $('.sideImOpen').animate({
+          height: value
+      });
+});
+
+
+
+$('.chat_open_bar').click(function(event) {
+   value = $('.page_container, .canvas').css('right') === '45' ? 0 : '45';
+      $('.page_container, .canvas').animate({
+         right: value
+      });
+});
+$('.chat_open_bar').click(function(event) {
+   value = $('.sideImOpen').css('height') === '100%' ? 0 : '100%';
+      $('.sideImOpen').animate({
+          height: value
+      });
+});
+
+$('.res_chat_open_bar').click(function(event) {
+   value = $('.sideImOpen').css('height') === '300' ? 0 : '300';
+      $('.sideImOpen').animate({
+          height: value
+      });
+});
+$('.res_chat_close_bar').click(function(event) {
+   value = $('.sideImOpen').css('height') === '0' ? 300 : '0';
+      $('.sideImOpen').animate({
+          height: value
+      });
+});
+$('.chat_close_bar').click(function(event) {
+   value = $('.custom_bot_panel a.chat_open_bar').css('bottom') === '30' ? -70 : '30';
+      $('.custom_bot_panel a.chat_open_bar').animate({
+          bottom: value
+      });
+});
+
+$('.chat_open_bar').click(function(event) {
+   value = $('.custom_bot_panel a.chat_open_bar').css('bottom') === '-70' ? 30 : '-70';
+      $('.custom_bot_panel a.chat_open_bar').animate({
+          bottom: value
+      });
+});
+
+ {/literal}
+    {/script}
+	
+
+<script type="text/javascript">
+
+$('#menubtnmobile').click(function(event) {
+    value = $('.peep_menu_wrap').css('left') === '-200px' ? 0 : '-200px';
+      $('.peep_menu_wrap').animate({
+          left: value
+      });
+});
+$(window).scroll(function() {
+if ($(this).scrollTop() > 1){  
+    $('.peep_console').addClass("sticky");
+  }
+  else{
+    $('.peep_console').removeClass("sticky");
+  }
+});
+
+</script>

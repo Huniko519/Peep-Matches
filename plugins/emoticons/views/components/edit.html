@@ -1,0 +1,19 @@
+{form name='smile-edit'}
+    <table id="emoticons-edit" class="peep_table_2">
+        <tr class="peep_alt1">
+            <td class="peep_td_label">{label name='smile-code'}</td>
+            <td class="peep_td_value">{input name='smile-code'}<br> {error name='smile-code'}</td>
+            <td class="peep_td_desc">{desc name='smile-code'}</td>
+        </tr>
+        <tr class="peep_alt2">
+            <td colspan="3" class="peep_center">
+                <img src="{$smileUrl}{$smileName}" title="{$smileCode}"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                {submit name='save'}
+            </td>
+        </tr>
+    </table>
+{/form}

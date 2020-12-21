@@ -1,0 +1,7 @@
+{foreach from=$history item='entry'}
+<tr data-lid="{$entry.id}">
+    <td class="peep_txtcenter">{format_date timestamp=$entry.logTimestamp}</td>
+    <td>{$entry.action}</td>
+    <td class="peep_txtcenter">{$entry.amount}</td>
+</tr>
+{/foreach}

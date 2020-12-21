@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+	<name>PayPal Payment Gateway</name>
+	<key>billingpaypal</key>
+	<description>Accept payments from users with PayPal payment provider</description>
+    <author>Peepdev Co.</author> <authorEmail>addons@peepdev.com</authorEmail> <authorUrl>http://www.peepdev.com/company</authorUrl> <developerKey>1</developerKey> <build>1</build> <copyright>(C) 2016 Peepdev Co. All rights reserved.</copyright> <license>Peepdev License</license> <licenseUrl>www.peepdev.com/licenses</licenseUrl>
+</plugin>

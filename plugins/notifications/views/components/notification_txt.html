@@ -1,0 +1,25 @@
+{strip}
+    {text key="notifications+email_txt_head" userName=$userName}
+    {$nl}
+    {$nl}
+	{foreach from=$items item=section key=time}
+        {$nl}
+        {$time|simple_date:$time:true}
+        {$nl}
+        {$nl}
+	    {foreach from=$section item=item}
+	        {$tab} {$item.string|strip_tags}: {$space}{$space} {$item.url} {$nl}
+	        {if $item.content}
+	           {$tab}{$tab} {$item.content|strip_tags}{$nl}{$nl}
+	        {/if}
+	    {/foreach}
+	{/foreach}
+	{text key="notifications+email_txt_bottom"}
+	{$nl}
+    {$nl}
+    {if $single}
+        {text key="notifications+unsubscribe_one_label"}:{$space} {$unsubscribeUrl}{$nl}
+    {/if}
+    {text key="notifications+settings_edit_label"}:{$space} {$settingsUrl}{$nl}
+    {text key="notifications+unsubscribe_all_label"}:{$space} {$unsubscribeAllUrl}
+{/strip}

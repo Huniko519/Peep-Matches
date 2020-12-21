@@ -1,0 +1,10 @@
+{block_decorator name="box" type="empty" addClass="peep_stdmargin peep_wide peep_automargin peep_center"}
+    {text key="base+delete_user_confirmation"}
+{/block_decorator}
+
+{block_decorator name="box" type="empty" addClass="peep_stdmargin peep_wide peep_automargin peep_center"}
+    <form name="deleteUser" method="post">
+        {decorator name="button" type="submit" buttonName="delete_user_button" class="peep_ic_delete peep_red" langLabel="base+delete_user_delete_button"}
+        {decorator name="button" type="submit" buttonName="cansel_button" langLabel="base+delete_user_cancel_button"}
+    </form>
+{/block_decorator}

@@ -1,0 +1,27 @@
+{$menu}
+
+<div class="peep_automargin peep_wide">
+{form name='form-config'}
+<table class="peep_table_1 peep_form">
+    <tr>
+        <th class="peep_name peep_txtleft" colspan="2">
+            <span class="peep_section_icon peep_ic_forum">{text key='profilelike+general_settings'}</span>
+        </th>
+		
+    </tr>
+    <tr class="peep_alt{cycle values='1,2'}">
+        <td class="peep_label" style="width: 50%;">{label name='counter1'}</td>
+        <td class="peep_value">
+            {input name='counter1' class='peep_settings_input'} <br />
+        </td>
+    </tr>
+	<tr class="peep_alt{cycle values='1,2'}">
+        <td class="peep_label" style="width: 50%;">{label name='counter2'}</td>
+        <td class="peep_value">
+            {input name='counter2' class='peep_settings_input'} <br />
+        </td>
+    </tr>
+    <tr><td colspan="2" class="peep_submit">{submit name='save'}</td></tr>
+</table>
+{/form}
+</div>

@@ -1,0 +1,19 @@
+<table class="peep_table_3 peep_automargin peep_smallmargin">
+	<tr class="peep_tr_first">
+		<td class="peep_label">{text key='stories+user_story_widget_published_posts'}</td>
+		<td class="peep_value"><a href="{url_for_route for="story-manage-posts"}" >{$count}</a></td>
+	</tr>
+	<tr>
+		<td class="peep_label">{text key='stories+user_story_widget_drafts'}</td>
+		<td class="peep_value"><a href="{url_for_route for="story-manage-drafts"}" >{$draftCount}</a></td>
+	</tr>
+	<tr class="peep_tr_last">
+		<td class="peep_label">{text key='stories+user_story_widget_published_incoming_comments'}</td>
+		<td class="peep_value"><a href="{url_for_route for="story-manage-comments"}" >{$commentCount}</a></td>
+	</tr>
+</table>
+
+<div class="peep_center peep_smallmargin">
+	{capture assign="btnUrl"}{url_for_route for="post-save-new"}{/capture}
+	{decorator name="button" onclick="window.location.href = '`$btnUrl`'" class="peep_ic_write" langLabel='stories+new_post' }
+</div>

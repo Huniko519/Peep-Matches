@@ -1,0 +1,47 @@
+.invite_block .mail_invite_icon {
+display:none;
+}
+
+.invite_block .contactimporter_provider_button{
+border:1px solid rgba(0,0,0,0.1);
+width:100%;
+}
+
+.invite_block .contactimporter_provider_button img{
+border-right:1px solid rgba(0,0,0,0.1);
+
+}
+
+.invite_block #invite_txt{
+color:#777;
+font-size:13px;
+margin-left:5px;
+}
+
+.invite_block a{
+text-decoration:none;
+}
+
+#mailing_tab{
+border:1px solid rgba(0,0,0,0.1);
+width:100%;
+margin:5px 3px;
+cursor:pointer;
+}
+
+#mailing_tab img{
+border-right:1px solid rgba(0,0,0,0.1);
+width:45px;
+}
+
+#mailing_cust{
+display:none; border:1px solid rgba(0,0,0,0.1); border-radius:3px; margin:10px 0; padding:5px;
+}
+
+.mailing_close_wrap{
+margin-top:10px; margin-bottom:10px; height:30px; width:100%;
+}
+
+#mailing_close{
+position:relative; border:1px solid rgba(0,0,0,0.2); background:rgba(0,0,0,0.1); border-radius:3px; width:60px; text-align:center; float:right; right:5px; padding:4px;  cursor:pointer;
+}

@@ -1,0 +1,68 @@
+{style}{literal}
+
+    .settings_file_upload .error
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .upload_container
+    {
+        display:block;
+    }
+
+    .padding_left{
+        padding-left:12px;
+    }
+{/literal}{/style}
+
+<div class="peep_automargin peep_wide">
+
+        {block_decorator name="box" type="empty" iconClass="peep_ic_add" langLabel="socialsharing+api_key_title"}
+            {block_decorator name="box" type="normal" addClass="peep_superwide peep_automargin"}
+                <p>{text key="socialsharing+api_key_description"}</p>
+            {/block_decorator}
+            {block_decorator name="box" type="normal" addClass="peep_stdmargin peep_small_wide peep_wide peep_automargin"}
+                    {form name="api_key_form"}
+                        
+                        <div class="peep_left" style="margin-right:5px;">{input name='api_key'}</div>
+                        <div class="peep_left" >{submit name='save_api_key' class='peep_ic_save' langLabel='socialsharing+save_api_key'}</div><br><div style="color:red;">{error name='api_key'}</div>
+                    {/form}
+            {/block_decorator}
+        {/block_decorator}
+
+	
+	<table id="socialsharing_settings" class="peep_table_2 peep_form peep_stdmargin peep_center">
+            
+            <tr class="peep_tr_first">
+                <th width="1" colspan="2">{text key='socialsharing+social_services'}</th>
+            </tr>
+
+            {foreach from=$order item=item}
+            <tr class="{cycle values='peep_alt1, peep_alt2'} sharing_item" item="{$item}">
+                <td class="peep_txtleft">
+                    {text key="socialsharing+`$item`"}
+                </td>
+                <td>
+                    <input type="checkbox" name="{$item}" {if !empty($values[$item]) && $values[$item]}checked="checked"{/if}>
+                </td>
+            </tr>
+            {/foreach}
+            {form name='upload'}
+	</table>
+        
+        {block_decorator name="box" type="empty" iconClass="peep_ic_add" langLabel="socialsharing+default_image_title"}
+            {block_decorator name="box" type="normal" addClass="peep_superwide peep_automargin peep_stdmargin"}
+                <p>{text key="socialsharing+default_image_description"}</p>
+            {/block_decorator}
+
+            {block_decorator name="box" type="normal" addClass="peep_stdmargin peep_small_wide peep_wide peep_automargin settings_file_upload"}
+                <div class="peep_center peep_std_margin"><img src="{$imageUrl}"></div>
+                {input name='image' class="peep_automargin upload_container"} {error name='image'}
+                </div>
+            {/block_decorator}
+
+            <div class="peep_right">{submit name='upload_image' class='peep_ic_save peep_positive'}</div>
+        {/block_decorator}
+	{/form}
+</div>

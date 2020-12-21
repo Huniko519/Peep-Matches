@@ -1,0 +1,43 @@
+
+{form name='cacheControlForm'}
+
+<table class="peep_table_1 peep_form peep_stdmargin">
+    <tr class="peep_tr_first">
+        <th class="peep_name peep_txtleft" colspan="3">
+            <span class="peep_section_icon peep_ic_gear_wheel">{text key='cachecleaner+cache_settings'}</span>
+        </th>
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='templateCache'}</td>
+        <td class="peep_value">
+            {input name='templateCache' class='peep_settings_input'} {error name='templateCache'}
+        </td>
+       
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='backendCache'}</td>
+        <td class="peep_value">
+            {input name='backendCache' class='peep_settings_input'} {error name='backendCache'}
+        </td>
+       
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='themeStatic'}</td>
+        <td class="peep_value">
+            {input name='themeStatic' class='peep_settings_input'} {error name='themeStatic'}
+        </td>
+        
+    </tr>
+    <tr class="peep_alt1">
+        <td class="peep_label">{label name='pluginStatic'}</td>
+        <td class="peep_value">
+            {input name='pluginStatic' class='peep_settings_input'} {error name='pluginStatic'}
+        </td>
+        
+    </tr>    
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_center">{submit name='clean' class='peep_ic_trash peep_positive'}</div></div>
+
+
+
+{/form}

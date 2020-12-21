@@ -1,0 +1,52 @@
+{style}
+{literal}
+tr.peep_privacy td.peep_label{
+    width:70%
+}
+.peep_content_menu li {
+   
+width:100%;
+
+}
+.peep_content_menu li a{
+border-bottom:1px solid #cdcdcd;
+padding:15px 0px 15px 0px;
+}
+{/literal}
+{/style}
+{block_decorator name="box" type="empty" addClass="peep_supernarrow peep_left peep_stdmargin" style="width:21%;"}
+{$contentMenu}
+{/block_decorator}
+
+{block_decorator name="box" type="empty" addClass="peep_superwide peep_automargin"}
+
+    
+    {if empty($actionList)}
+        {block_decorator name="box" type="empty" addClass="peep_center" style="padding:15px;"}
+             {text key="privacy+no_items"}
+        {/block_decorator}
+    {else}
+        {form name='privacyForm'}
+            <table class="peep_table_1 peep_form peep_smallmargin">
+                {foreach from=$actionList item='action' name="a"}
+                        <tr class="peep_privacy {cycle name='privacy_action' values='peep_alt1,peep_alt2'} {if $smarty.foreach.a.first}peep_tr_first{/if} {if $smarty.foreach.a.last}peep_tr_last{/if}">
+                            <td class="peep_label">
+                                {label name=$action}
+                            </td>
+                            <td class="peep_value">
+                                {input name=$action}
+                                <div style="height:1px;"></div>
+                                {error name=$action}
+                            </td>
+                            
+                        </tr>
+                {/foreach}
+
+            </table>                            
+			                         
+            <div class="clearfix peep_smallmargin">
+				<div class="peep_right">{submit name='privacySubmit'}</div>
+			</div>
+        {/form}
+    {/if}
+{/block_decorator}

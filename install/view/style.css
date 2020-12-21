@@ -1,0 +1,388 @@
+body
+{
+    background: transparent ;
+    font-size: 14px;
+    font-family: 'Arial',"Lucida Grande", Tahoma;
+    color: #2c2c2c;
+    margin: 0;
+}
+
+img
+{
+	vertical-align: middle;
+}
+
+ul li
+{
+	margin-bottom: 15px;
+}
+
+input[type=text]
+{
+    font-size: 15px;
+    font-family:Tahoma;
+    color: #00b6ff;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    width: 350px;
+    height:30px;
+    line-height:30px;
+    background: #e0ffec;
+}
+
+input[type=submit]
+{
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    background: #63d861;
+    width: 370px;
+    height: 47px;
+margin-left:-10px;
+border-radius:4px;
+}
+
+h1
+{
+background: transparent url('img/peepmatches_logo.png') no-repeat top left;
+    margin-top: 0;
+margin-left:20px;
+padding-left:0px;
+    color: #000;
+line-height:80px;
+height:80px;
+
+}
+
+p
+{
+	line-height: 1.4;
+}
+
+div.wrapper
+{
+    background: transparent url('img/installbg.jpg') ;
+-webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;  background-size: cover;
+background-repeat:no-repeat !important ;
+background-position:top center !important;
+    margin-top: 80px;
+    min-height: 100%;
+
+background-position:center center !important;
+}
+
+div.body_wrapper
+{
+    margin: 0 auto;
+    width: 560px;
+}
+
+div.body_top {
+    background: transparent url('x') no-repeat center bottom;
+    height: 80px;
+    position: fixed;
+width:100%;
+left:0px;
+top:0px;
+background:#fff;
+}
+
+div.logo_container {
+    float: right;
+	
+	left: -20px;
+	top: 0px;
+	height: 46px;
+line-height:46px;
+	width: 111px;
+    margin-top: 0px;
+}
+
+
+div.body_top h1
+{
+	margin-top: 0px;
+	left: 0px;
+	color: #494949;
+    font-family: 'Tahoma';
+    text-align: center;
+
+}
+
+div.body
+{
+    background: rgba( 255, 255, 255, 0.7);
+    padding: 0px 17px 17px 17px;
+    min-height: 300px;
+    border: solid 1px #e9eaee;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin: auto;
+}
+
+div.body_bottom
+{
+    background: transparent url('x') no-repeat center top;
+    height: 80px;
+
+}
+.footer_promo{
+ height: 80px;
+line-height:80px;
+width:100%;
+border-top:4px solid #69ad70;
+background:#fff;
+position:relative;
+margin-top:150px;
+padding-left:36px;
+margin-left:-18px;
+}
+.provider_copyright{
+font-size:14px;
+font-family: 'Tahoma';
+color:#494949;
+float:left;
+margin-left:-20px;
+}
+.copyright_logo{
+background: transparent url('img/peepdev_logo.png') no-repeat top center;
+width:140px;
+height:68px;
+top:0px;
+float:left;
+margin-left:30px;
+}
+.copyright_text{
+float:left;
+left:60px;
+
+}
+
+div.steps
+{
+    
+    padding-top: 10px;
+    color: #c8cacd;
+    text-align: left;
+    font-size: 18px;
+    line-height: 50px;
+    border-top: solid 1px #E9EAEB;
+    width: 200px;
+    height: 100%;
+    margin: auto;
+position:fixed;
+top:80px;
+left:0px;
+background-color:rgba( 73, 73, 73, 0.7);
+
+}
+
+div.steps span.activepointer
+{
+
+    height: 50px;
+    /*padding-top: 14px;*/
+    display: inline-block;
+}
+
+div.steps span.item
+{
+    margin: 0 20px 0 20px;
+   padding-right: 150px;
+    background: transparent url('img/step_notactive.png') no-repeat 150px center;
+}
+
+div.steps span.borderleft
+{
+}
+
+div.steps span.borderright
+{
+}
+
+div.steps span.active
+{
+    color: #d76243;
+    background-image: url('img/step_active.png');
+}
+
+table.form
+{
+    border-spacing: 8px;
+    width: 100%;
+    padding-top: 27px;
+}
+
+table.form td
+{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+table.form td.error {
+    background-color: #ff6e44;
+}
+
+td.label
+{
+    text-align: right;
+    width: 20%;
+}
+
+td.value
+{
+    text-align: center;
+    width: 358px;
+}
+
+td.description
+{
+    font-size: 12px;
+    color: #999;
+}
+
+.feedback_msg
+{
+	text-align: center;
+	margin: 0 40px 15px 40px;
+	padding: 10px 0;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+div.error
+{
+	background-color: #ff6e44;
+	color: #3a3a3a;
+}
+
+ul.directories {
+    margin: 0 20px 20px 20px;
+    font-size: 13px;
+}
+
+.directories .directory {
+    padding: 2px 0px;
+}
+
+textarea.config {
+	width: 100%;
+}
+
+table.plugin_table
+{
+	border-spacing: 8px;
+}
+
+.plugin_title
+{
+	color: #000;
+}
+
+.plugin_desc
+{
+	font-size: 13px;
+    color: #999;
+}
+
+.small
+{
+	font-size: 13px;
+}
+
+.red
+{
+	color: #f00;
+}
+
+.high
+{
+	color: #f63;
+}
+
+.feedback_error
+{
+	font-size: 13px;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.clearfix{
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+*html .clearfix {
+    height: 1%;
+}
+
+
+     ul {
+    	text-align: left;
+    }
+    .ver-btn{
+padding:12px 10px;
+background-color:#5cb85c;
+border-color:#5cb85c;
+color:#fff;
+font-weight:bold;
+margin-top:-2px;
+margin-left:-8px;
+border-radius:4px;
+cursor:pointer;
+}
+a{
+color:#fff;
+font-size:16px;
+font-weight:bold;
+text-decoration:none;
+}
+.install_go_btn{
+margin:10px auto;
+width:300px;
+height:40px;
+line-height:40px;
+background-color:#5cb85c;
+border-radius:4px;
+}
+.infos{
+text-align:left;
+}
+.infos div{
+background: url(img/ok_icon.png) no-repeat -5px center;
+padding-left:20px;
+
+}
+
+.invalid_error{
+color:#d80404;
+}
+
+.success_valid{
+color:#04d819;
+}
+    
+
+ 
+    </style>

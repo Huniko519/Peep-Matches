@@ -1,0 +1,18 @@
+{$menu}
+
+<p>{text key='cnews+admin_customization_legend'}</p>
+
+<div class="peep_wide peep_automargin">
+{form name="CNEWS_CustomizationForm"}
+<table class="peep_table_1 peep_form">
+    {foreach from=$types item="type" name="t"}
+            <tr class="{cycle values="peep_alt1,peep_alt2"} peep_te_first {if $smarty.foreach.t.last}peep_tr_last{/if}">
+                <td class="peep_label">{input name=$type.activity}</td>
+                <td class="peep_value">{$type.label}</td>
+            </tr>
+    {/foreach}
+
+</table>
+<div class="clearfix peep_stdmargin"><div class="peep_right">{submit name='save' class='peep_ic_save peep_positive'}</div><div class="peep_right"></div></div>
+{/form}
+</div>

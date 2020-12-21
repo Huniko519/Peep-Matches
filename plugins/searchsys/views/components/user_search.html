@@ -1,0 +1,114 @@
+<style>
+ul.peep_checkbox_group{
+width:180px !important;
+float:left;
+margin-top:2px;
+}
+ul.peep_checkbox_group li{
+width:45% !important;
+float:left;
+}
+ul.peep_checkbox_group li label{
+margin-top:5px;
+position:absolute;
+}
+ul.peep_checkbox_group li input{
+width:20px;
+height:20px;
+
+}
+ul.search_with_online_photo {
+margin-top:2px;
+width:auto;
+}
+ul.search_with_online_photo li{
+float:left;
+margin-left:5px;
+width:100px;
+}
+ul.search_with_online_photo li label{
+margin-top:5px;
+position:absolute;
+}
+ul.search_with_online_photo li input{
+width:20px;
+height:20px;
+}
+
+.peep_right span.peep_button{
+background-color:transparent;
+background-image:none;
+margin-top:2px;
+}
+
+</style>
+<div class="peep_search_users_sys clearfix">
+    {form name=SearchSystemForm}
+    <div class=" peep_form clearfix">
+        {if $showSection}
+        {capture assign='delim'}<tr class="peep_tr_delimiter"><td></td></tr>{/capture}
+        {if $displayAccountType}
+        <tr class="peep_alt1 peep_tr_first peep_tr_last">
+            <td>
+                <div><b>{label name='accountType'}</b></div>
+                <div>{input name='accountType'}</div>
+                {error name='accountType'}
+            </td>
+        </tr>
+        {$delim}
+        {/if}
+        {if !empty($questionList)}
+        {foreach from=$questionList key='section' item='questions' name='sect'}
+        {if !empty($section)}<tr class="peep_tr_first"><th>{text key="base+questions_section_`$section`_label"}</th></tr>{/if}
+        {foreach from=$questions item='question' name='question'}
+        <tr class="peep_alt1{if $smarty.foreach.question.last} peep_tr_last{/if}">
+            <td>
+                <div><b>{label name=$question.name}</b></div>
+                <div>{input name=$question.name}</div>
+                {error name=$question.name}
+            </td>
+        </tr>
+        {/foreach}
+        {if !$smarty.foreach.sect.last}{$delim}{/if}
+        {/foreach}
+        {/if}
+        {else}
+        {if $displayAccountType}
+        <tr class="peep_alt1 peep_tr_first">
+            <td>
+                <div><b>{label name='accountType'}</b></div>
+                <div>{input name='accountType'}</div>
+                {error name='accountType'}
+            </td>
+        </tr>
+        {/if}
+        {if !empty($questionList)}
+        {foreach from=$questionList key='section' item='questions' name='sect'}
+        {foreach from=$questions item='question' name='question'}
+        <div class="peep_automargin clearfix " style="float:left;">
+            
+          <div>{input name=$question.name}</div>
+                {error name=$question.name}      
+   
+    
+        </div>
+        {/foreach}
+        {/foreach}
+        {/if}
+        {/if}
+<ul class="search_with_online_photo clearfix" style="float:left;">
+           
+                <li>{if $onlineOnlyEnabled}<div>{input name='onlineOnly'} {label name='onlineOnly'}</div>{/if}</li>
+                <li>{if $withPhotoEnabled}<div>{input name='withPhoto'} {label name='withPhoto'}</div>{/if}</li>
+           
+        </ul>
+<div class="peep_right" >{submit name='SearchSystemFormSubmit'}</div>
+    </div>
+    
+    
+    {/form}
+</div>
+
+{if $showAdvanced}
+<div class="searchsys_more_options peep full"><a href="{$advancedUrl}">{text key='searchsys+advanced_search'}</a></div>
+{/if}

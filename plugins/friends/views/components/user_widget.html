@@ -1,0 +1,12 @@
+<div class="peep_lp_avatars">
+	{if !empty($userList)}
+		{$userList}
+		
+		{if !empty($toolbar)}
+			{decorator name='box_toolbar' itemList=$toolbar}
+		{/if}
+
+    {else}
+    	<center>{text key='friends+user_widget_empty'}</center>
+    {/if}	
+</div>

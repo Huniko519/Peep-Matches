@@ -1,0 +1,137 @@
+{if !empty($imgError)}
+    <div class="peep_nocontent">{$imgError}</div>
+{else}
+    <div id="set-as-album-cover" class="peep_box peep_wide peep_automargin peep_smallmargin clearfix peep_no_cap peep_break_word">
+        {form name="album-cover-maker"}
+            <div class="clearfix">
+                <div class="peep_left peep_superwide peep_center" style="width: 260px;">
+                    <h4>{text key='photo+cover_original'}</h4>
+                    <img width="220" class="peep_smallmargin crop_img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />
+                    <br/>
+                    {submit name="save"}
+                </div>
+                <div class="peep_avatar_preview peep_right peep_supernarrow peep_center" style="width: 120px;">
+                    <h4>{text key='photo+cover_preview'}</h4>
+                    <div style="width: 120px; height: 120px; overflow: hidden">
+                        <img class="crop_preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" style="width: 120px;" />
+                    </div>
+                </div>
+            </div>
+        {/form}
+    </div>
+
+    <script>
+        var albumCoverMaker = (function( $ )
+        {
+            return {
+                init: function()
+                {
+                    var _elements = {}, _methods = {};
+                    _elements.content = $(document.getElementById('set-as-album-cover'));
+                    _elements.coverImg = $('.crop_img', _elements.content);
+                    _elements.coverPreview = $('.crop_preview', _elements.content);
+
+                    _methods.complete = function()
+                    {
+                        _elements.coverPreview[0].src = '{$coverUrl}';
+                        _elements.coverImg[0].src = '{$coverUrl}';
+                        _elements.coverPreview.css({
+                            width: 120 + 'px',
+                            height: 'auto',
+                            marginLeft: 0,
+                            marginTop: 0
+                        });
+
+                        _elements.jcrop = $.Jcrop(_elements.coverImg, (function()
+                        {
+                            var photoWidth = _elements.coverImg.width(), photoHeight = _elements.coverImg.height(),
+                                minSize = Math.ceil(330 / (_elements.coverImg[0].naturalWidth / photoWidth));
+
+                            return {
+                                onChange: _methods.showPreview,
+                                onSelect: _methods.showPreview,
+                                aspectRatio: 1,
+                                minSize: [minSize, minSize],
+                                setSelect: _methods.getCropInitialSelection(photoWidth, photoHeight)
+                            };
+                        })());
+                    };
+
+                    _methods.showPreview = function( coords )
+                    {
+                        var rx = 120 / coords.w;
+                        var ry = 120 / coords.h;
+
+                        if ( rx === Infinity || ry === Infinity )
+                        {
+                            _elements.coverPreview.css({
+                                width: 120 + 'px',
+                                height: 'auto',
+                                marginLeft: 0,
+                                marginTop: 0
+                            });
+                        }
+                        else
+                        {
+                            _elements.coverPreview.css({
+                                width: Math.round(rx * _elements.coverImg.width()) + 'px',
+                                height: Math.round(ry * _elements.coverImg.height()) + 'px',
+                                marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+                                marginTop: '-' + Math.round(ry * coords.y) + 'px'
+                            });
+                        }
+                    };
+
+                    _methods.getCropInitialSelection = function( width, height ){
+                        var xC = width / 2, yC = height / 2;
+                        var halfSize = width < height ? width / 2 : height / 2;
+                        var padding = width < height ? width * 0.05 : height * 0.05;
+                        halfSize = halfSize - padding;
+
+                        var x1 = xC - halfSize, y1 = yC - halfSize;
+                        var x2 = xC + halfSize, y2 = yC + halfSize;
+
+                        return [x1, y1, x2, y2];
+                    };
+
+                    var image = new Image();
+                    image.onload = image.onerror = _methods.complete;
+                    image.src = '{$coverUrl}';
+
+                    window.peepForms['album-cover-maker'].bind('submit', function( data )
+                    {
+                        var coords = _elements.jcrop.tellSelect();
+
+                        if ( !coords.h || !coords.w )
+                        {
+                            PEEP.error(PEEP.getLanguageText('photo', 'no_photo_selected'));
+
+                            return false;
+                        }
+
+                        data.coords = coords;
+                        data.view_size = _elements.coverImg.width();
+                    });
+
+                    window.peepForms['album-cover-maker'].bind('success', function( data )
+                    {
+                        if ( data && data.result )
+                        {
+                            photoAlbum.setCoverUrl(data.url);
+                            window.albumCoverMakerFB.close();
+                        }
+                        else
+                        {
+                            alert(PEEP.getLanguageText('photo', 'no_photo_selected'));
+                        }
+                    });
+
+                    window.albumCoverMakerFB.bind('close', function()
+                    {
+                        _elements.jcrop.destroy();
+                    });
+                }
+            };
+        })(jQuery);
+    </script>
+{/if}

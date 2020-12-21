@@ -1,0 +1,46 @@
+<div class="clearfix">
+    <div class="peep_superwide" style="float:left;">
+        {foreach name=post_foreach from=$list item='post'}
+            {assign var='id' value=$post.id}
+
+                    {block_decorator name="box" type="empty" label=$post.title href=$post.href addClass="peep_stdmargin peep_stdpadding" toolbar=$tb[$id]}
+                        {$post.text}{if $post.truncated}... <a class="peep_lbutton" href="{$post.href}">{text key='stories+more'}</a>{/if}
+
+
+                    {if !empty($post.parts) && $post.parts|@count>1}
+                        <br />
+                        <a href="{$post.href}">{text key="stories+read_more"}</a>&nbsp;&raquo;
+                    {/if}
+                    {/block_decorator}
+        {foreachelse}
+            {text key='base+empty_list'}
+        {/foreach}
+
+        <div class="peep_stdmargin">{$paging}</div>
+
+    </div>
+
+    <div class="peep_supernarrow" style="float:right;">
+
+       {add_content key='socialsharing.get_sharing_buttons' entityType='user_story' entityId=$author->id}
+
+       {block_decorator name="box" langLabel="stories+story_archive_lbl_archives" iconClass="peep_ic_clock"}
+          <ul class="peep_regular">
+            <li><a href="{url_for_route for="user-story:[user=>`$username`]"}">{text key="base+all"}</a></li>
+            {foreach from=$archive key='year' item='months'}
+                {foreach from=$months item='month'}
+                    <li><a href="{url_for_route for="user-story:[user=>$username]"}?month={$month}-{$year}">{text key="base+month_`$month`"} {$year}</a> </li>
+                {/foreach}
+            {/foreach}
+          </ul>
+       {/block_decorator}
+       {if $isOwner}
+       <div style="" class="peep_box peep_stdmargin clearfix peep_no_cap peep_break_word">
+            <div class="peep_my_drafts_widget clearfix peep_center">
+                {decorator name="button" langLabel="stories+my_drafts" class="peep_ic_draft" onclick="location.href='$my_drafts_url'"}
+            </div>
+        </div>
+       {/if}
+       {add_content key='stories.user_story.content.after_archive'}
+    </div>
+</div>

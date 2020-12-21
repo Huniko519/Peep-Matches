@@ -1,0 +1,18 @@
+{form name="give-role"}
+<table class="peep_table_2 peep_form peep_stdmargin peep_center">
+<tr class="peep_tr_first">
+	<th></th>
+	<th>User Role</th>
+</th>
+{foreach from=$list item='role' name='role'}
+<tr class="{cycle values='peep_alt1, peep_alt2'} {if $smarty.foreach.role.last}peep_tr_last{/if}">
+	<td>{input name="roles[`$role->id`]"}</td>
+	<td>{label name="roles[`$role->id`]"}</td>
+</tr>
+{/foreach}
+</table>
+
+	<div class="clearfix peep_smallmargin"><div class="peep_right">
+		{submit name="submit"}
+	</div></div>	
+{/form}

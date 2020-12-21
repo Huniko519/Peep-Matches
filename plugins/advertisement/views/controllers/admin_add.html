@@ -1,0 +1,31 @@
+{$menu}
+<div class="peep_superwide peep_automargin peep_stdmargin">
+{form name='banner_add_form'}
+<table class="peep_table_1 peep_form">
+    <tr class="peep_tr_first {cycle values='peep_alt2,peep_alt1'}">
+		<td class="peep_label">{label name='title'}</td>
+		<td class="peep_value">{input name='title'}<br />{error name='title'}</td>
+		<td class="peep_desc"></td>
+	</tr>
+    <tr class="{cycle values='peep_alt2,peep_alt1'}">
+		<td class="peep_label">{label name='code'}</td>
+		<td class="peep_value">{input name='code'}<br />{error name='code'}</td>
+		<td class="peep_desc">{desc name='code'}</td>
+	</tr>
+    {if empty($locDisabled)}
+    <tr class="{cycle values='peep_alt2,peep_alt1'} peep_tr_last">
+		<td class="peep_label">{label name='select_country'}</td>
+		<td class="peep_value">{input name='select_country'}<br />{error name='select_country'}</td>
+		<td class="peep_desc">{desc name='select_country'}</td>
+	</tr>
+    {/if}
+</table>	
+<div class="clearfix peep_stdmargin">
+	<div class="peep_right">
+		 {submit name='submit'}
+	</div>
+</div>	
+
+
+{/form}
+</div>

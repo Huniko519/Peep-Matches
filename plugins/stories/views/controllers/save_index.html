@@ -1,0 +1,70 @@
+<div class="peep_storypost_compose clearfix">
+
+{if !$authMsg}
+    <div class="peep_superwide peep_left">
+    {form name="save"}
+        <input type="hidden" id="save_post_command" name="command" />
+        <table class="peep_table_1 peep_form peep_stdmargin">
+           <tr class="peep_alt1 peep_tr_first">               
+                <td>
+                    {label name="title"}<br />{input name='title'}
+                    <br />{error name="title"}
+                </td>
+            </tr>
+            <tr class="peep_alt1">                
+                <td>
+                    {label name="post"}<br />
+                    {input name='post'}
+                    <br />{error name="post"}
+                </td>
+</tr>
+            <tr class="peep_alt1 peep_tr_last">
+                <td>
+                    {label name="tf"} <br />
+                    {input name='tf'}
+                    <br />{error name="tf"}
+                </td>
+            </tr>
+        </table>
+        <div class="clearfix peep_stdmargin peep_submit peep_btn_delimiter">
+        	<div class="peep_right">{submit name="draft" class="peep_button peep_ic_save"} {submit name="publish" class="peep_button peep_green peep_positive"}</div>
+		</div>
+    {/form}
+    </div>
+
+    <div class="peep_supernarrow peep_right">
+    {block_decorator name="box" addClass="peep_stdmargin"  langLabel='stories+this_post'}
+
+        <table class="peep_table_3 peep_small">
+            <tr>
+                <td class="peep_label">{text key="stories+status"}</td>
+	            <td>
+	                {if $info.dto->getId()}
+	                    {if $info.dto->isDraft()}
+	                        {text key="stories+status_draft"}
+	                    {else}
+	                        {text key="stories+status_published"}
+	                    {/if}
+	                {else}
+	                    {text key="stories+status_draft"}
+	                {/if}
+	            </td>
+            </tr>
+            <tr>
+                <td class="peep_label">{text key="stories+last_saved"}</td>
+                <td>
+					{if $info.dto->getId()}
+						{format_date timestamp=$info.dto->getTimestamp()}
+					{else}
+						{text key="stories+not_yet"}
+					{/if}
+                </td>
+            </tr>
+        </table>
+
+    {/block_decorator}
+    </div>
+{else}
+    <div class="peep_anno peep_std_margin peep_nocontent">{$authMsg}</div>
+{/if}
+</div>

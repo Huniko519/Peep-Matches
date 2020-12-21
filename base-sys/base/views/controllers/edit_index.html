@@ -1,0 +1,90 @@
+{literal}
+<script language="javascript" type="text/javascript">
+    $(function(){
+        $(".unregister_profile_button").click(
+            function() { window.location = {/literal}"{$unregisterProfileUrl}"{literal} }
+        );
+   });
+</script>
+{/literal}
+
+{if !empty($changePassword) }
+    {block_decorator name="box" type="empty" addClass="peep_superwide peep_automargin" }
+        <div class="clearfix peep_stdmargin"><div class="peep_right">{$changePassword}</div></div>
+    {/block_decorator}
+{/if}
+
+{block_decorator name="box" type="empty" addClass="peep_superwide peep_automargin"}
+{if isset($editSynchronizeHook)}
+    {block_decorator name="box" addClass="peep_center" iconClass='peep_ic_update' langLabel='base+edit_remote_field_synchronize_title' style="overflow:hidden;"}
+       {foreach from=$editSynchronizeHook item='item'}
+          {$item}
+       {/foreach}
+    {/block_decorator}
+    {block_decorator name="box" type="empty" addClass="peep_center" style="padding:15px;"}
+        {text key="base+join_or"}
+    {/block_decorator}
+{/if}
+
+{form name=editForm}
+    <table class="peep_table_1 peep_form peep_stdmargin">
+        {if $displayAccountType}
+            <tr class="peep_alt1 peep_tr_first">
+                <td class="peep_label">
+                    {label name='accountType'}
+                </td>
+                <td class="peep_value">
+                    {input name='accountType'}
+                    <div style="height:1px;"></div>
+                    {error name='accountType'}
+                </td>
+                
+            </tr>
+        {/if}
+        <tr class="peep_tr_delimiter"><td></td></tr>
+        
+            {foreach from=$questionArray key='section' item='questions' name='question'}
+            
+            {foreach from=$questions item='question' name='question'}
+                {cycle assign='alt' name=$section values='peep_alt1,peep_alt2'}
+                <tr class=" {if $smarty.foreach.question.last}peep_tr_last{/if}">
+                    <td class="{$alt} peep_label">
+                        {label name=$question.name}
+                    </td>
+                    <td class="{$alt} peep_value">
+                        {input name=$question.name}
+                        <div style="height:1px;"></div>
+                        {error name=$question.name}
+                    </td>
+                    
+                </tr>
+            {/foreach}
+            {if !empty($section)}{if !$smarty.foreach.question.first}
+            <tr class="peep_tr_delimiter"><td></td></tr>
+            {/if}
+            {/if}
+        {/foreach}
+        <tr class="peep_tr_delimiter"><td></td></tr>
+        
+        <tr>
+            <td class="peep_alt1 peep_label">
+                {label name='avatar'}
+            </td>
+            <td class="peep_alt1 peep_value">
+                {input name='avatar'}
+                {error name='avatar'}
+            </td>
+           
+    </table>
+	<div class="clearfix peep_stdmargin{if !$isAdmin} peep_btn_delimiter{/if}">
+	   <div class="peep_right">
+		   {if !$isAdmin }
+				{decorator name="button" class="unregister_profile_button peep_ic_delete peep_red peep_negative" langLabel='base+delete_profile'}
+		   {/if}
+		   {submit name='editSubmit'}
+	   </div>
+	</div>
+
+
+{/form}
+{/block_decorator}

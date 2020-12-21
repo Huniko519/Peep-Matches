@@ -1,0 +1,66 @@
+<div class="peep_photo_upload_wrap" id="add-new-photo-container">
+    <div class="peep_hidden">
+        <iframe name="iframe_upload" id="iframe_upload" src="about:blank"></iframe>
+        <form id="upload-form" target="iframe_upload" enctype="multipart/form-data" method="post" action="{url_for_route for='photo.ajax_upload'}">
+            <input type="file" name="file" accept="image/jpeg,image/png,image/gif" multiple />
+        </form>
+        <div id="slot-prototype" class="peep_photo_preview_edit">
+            <div class="peep_photo_preview_action">
+                <div class="peep_photo_preview_image peep_photo_preview_loading">
+                    <div class="peep_photo_preview_image_filter"></div>
+                </div>
+                <div class="peep_photo_preview_x"></div>
+                <div class="peep_photo_preview_rotate"></div>
+            </div>
+            <div class="peep_photo_upload_description" style="min-height: 38px">
+                <textarea class="peep_hidden invitation"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="peep_photo_dragndrop">
+        <div id="drop-area" ondragover="return false;"></div>        
+        <span id="drop-area-btn">{text key="photo+dnd_not_support"}</span><br/>
+<span id="drop-area-label">{text key="photo+dnd_support"}</span><br/>
+<span id="accepted_types">{text key="photo+accepted_types"}</span>
+
+    </div>
+
+  
+     {form name="ajax-upload"}
+      
+<div class="peep_full clearfix" style="padding-bottom:40px;">  
+<div class="peep_full clearfix"></div>
+        <div id="photo-album-form" class="peep_photo_upload_bottom clearfix">
+            <div id="photo-album-list" >
+                <div class="peep_suggest_field peep_smallmargin">
+                    {input name='album'}
+                    {$albumNames}
+                    {error name='album-name'}
+                </div>
+                <div class="new-album peep_smallmargin" style="display: none">
+                    {input name="album-name" class='peep_smallmargin'}
+                    {input name="description"}
+                </div>
+                {foreach $extendInputs as $input}
+                    <div id="{$input}" style="margin-bottom: 8px;">
+                        <div class="peep_smallmargin">
+                            {input name=$input}{label name=$input}<br />{error name=$input}
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+
+            {add_content key="photo.onRenderAjaxUpload" albumId=$albumId userId=$userId}
+<div id="slot-area" class="peep_photo_preview_block_wrap clearfix"></div>
+  
+<div class="peep_photo_upload_submit peep_center">
+                <span class="peep_button">
+                    <span class=" peep_ic_submit peep_positive">
+                        {submit name="submit"}
+                    </span>
+                </span>
+            </div>
+          </div>
+    {/form}
+</div>

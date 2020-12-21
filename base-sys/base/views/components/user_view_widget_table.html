@@ -1,0 +1,32 @@
+{if $ownerMode || ($adminMode && !$superAdminProfile)}
+    {style}
+        {literal}
+
+            .peep_edit_profile_link
+            {
+                position: absolute;
+                right: 0px;
+                top: -28px;
+            }
+.peep_edit_profile_link a{
+color:#666;
+text-decoration:none;
+}
+        {/literal}
+    {/style}
+    
+{/if}
+
+<div class="user_profile_data" style="position:relative">
+     {if $ownerMode || ($adminMode && !$superAdminProfile) }
+         <div style="display: block;" id="edit-profile" class="peep_edit_profile_link">
+                <a  href="{$profileEditUrl}">{text key='base+edit_profile_link'}</a>
+         </div>
+     {/if}
+
+    {foreach  from=$sectionsHtml key='section' item='html'}
+        {$html}
+    {/foreach}
+ </div>
+
+{add_content key='socialsharing.get_sharing_buttons' title=$displayName image=$avatarUrl entityType='user' entityId=$userId }

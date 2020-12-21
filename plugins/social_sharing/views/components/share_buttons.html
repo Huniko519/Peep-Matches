@@ -1,0 +1,41 @@
+<div class="peep_small clearfix" style="display: inline-block;">
+   
+        <div class="addthis_toolbox addthis_default_style addthis_16x16_style {$class} ">
+            {foreach  from=$order key='key' item='item'}
+             {if $item === 'twitter'}
+        <a class="addthis_button_twitter peep_social_sharing_button" {if !empty($url)}tw:url="{$url}"{/if} {if !empty($title)}tw:text="{$title}"{elseif !empty($description)}tw:text="{$description}"{/if} ></a>
+        {/if}
+
+        {if  $item === 'facebook'}
+        <a class="addthis_button_facebook peep_social_sharing_button" fb:like:layout="button_count"></a>
+        {/if}
+
+        {if  $item === 'googlePlus'}
+        <a class="addthis_button_google_plusone_share peep_social_sharing_button" g:plusone:size="medium"></a>
+        {/if}
+
+        {if $item === 'pinterest'}
+        <a class="addthis_button_pinterest_share peep_social_sharing_button" {if !empty($imageUrl)}pi:pinit:media="{$imageUrl}" {/if} ></a>
+        {/if}
+{if  $item === 'linkedin'}
+             <a class="addthis_button_linkedin peep_social_sharing_button" ></a>
+            {/if}
+             {if  $item === 'digg'}
+             <a class="addthis_button_digg peep_social_sharing_button" ></a>
+             {/if}
+       
+       {if  $item === 'stumbleupon'}
+       <a class="addthis_button_stumbleupon peep_social_sharing_button" ></a>
+       {/if}
+
+       {if  $item === 'delicious'}
+       <a class="addthis_button_delicious peep_social_sharing_button" ></a>
+       {/if}
+            
+            {/foreach}
+        </div>
+</div>
+
+
+       
+    

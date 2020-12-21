@@ -1,0 +1,50 @@
+{style}
+{literal}
+.peep_active_plugins tr, .peep_inactive_plugins tr{
+    border-top:1px solid #ccc;
+}
+.peep_plugin_controls{
+    display:block;
+}
+.peep_plugin_update{
+    background:#ddddaa;
+}
+{/literal}
+{/style}
+{block_decorator name='box' type='empty' addClass='peep_stdmargin' iconClass='peep_ic_plugin' langLabel='admin+manage_plugins_active_box_cap_label'}
+   <table class="peep_superwide peep_active_plugins" style="margin:0 auto;">
+   	{foreach from=$plugins.active item='plugin'}
+        <tr class="peep_high1{if $plugin.update_url} peep_plugin_update{/if}" {literal}onmouseover="$('span.peep_plugin_controls', $(this)).css({display:'block'});" onmouseout="$('span.peep_plugin_controls', $(this)).css({display:'block'});"{/literal}>
+         <td style="padding: 10px 15px;">
+         	<b>{$plugin.title}</b>
+            <div class="peep_small">{$plugin.description}</div>
+         </td>
+         <td class="peep_small" style="text-align:right;width:235px;vertical-align:middle;">
+             <span class="peep_plugin_controls">
+                    {if $plugin.update_url}<a class="peep_lbutton peep_green" href="{$plugin.update_url}">{text key='admin+manage_plugins_update_button_label'}</a>{/if}
+                    {if $plugin.set_url}<a class="peep_lbutton" href="{$plugin.set_url}">{text key='admin+manage_plugins_settings_button_label'}</a>{/if}
+                    <a class="peep_lbutton peep_red" href="{$plugin.deact_url}">{text key='admin+manage_plugins_deactivate_button_label'}</a>
+                    {if $plugin.un_url}<a class="peep_lbutton peep_red" href="{$plugin.un_url}">{text key='admin+manage_plugins_uninstall_button_label'}</a>{/if}
+                </span>
+         </td>
+      </tr>
+      {/foreach}
+   </table>
+{/block_decorator}
+{block_decorator name='box' type='empty' addClass='peep_stdmargin' iconClass='peep_ic_trash' langLabel='admin+manage_plugins_inactive_box_cap_label'}
+   <table class="peep_superwide peep_inactive_plugins" style="margin:0 auto;">
+   	{foreach from=$plugins.inactive item='plugin'}
+      <tr class="peep_high2{if $plugin.update_url} peep_plugin_update{/if}" {literal}onmouseover="$('span.peep_plugin_controls', $(this)).css({display:'block'});" onmouseout="$('span.peep_plugin_controls', $(this)).css({display:'none'});"{/literal}>
+         <td style="padding: 10px 15px;">
+            <b>{$plugin.title}</b>
+            <div class="peep_small">{$plugin.description}</div>
+         </td>
+         <td class="peep_small" style="text-align:right;width:235px;vertical-align:middle;">
+             <span class="peep_plugin_controls">
+                <a class="peep_lbutton peep_green" href="{$plugin.active_url}">{text key='admin+manage_plugins_activate_button_label'}</a>
+             </span>
+         </td>
+      </tr>
+      {/foreach}
+   </table>
+{/block_decorator}

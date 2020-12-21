@@ -1,0 +1,50 @@
+{style}
+{literal}
+.contactimporter_provider_button
+{
+	margin: 3px;
+        display: inline-block;
+	cursor: pointer;
+}
+
+.contactimporter_provider_button img
+{
+    width: 45px;
+}
+{/literal}
+{/style}
+
+<div class="invite_page peep_superwide ">
+<div class="invite_page_header_wrap peep_center">
+<div class="invite_page_header"><img src="{$invico}" />{text key='contactimporter+invite_titles'}</div>
+</div>
+<div class="invite_page_btns ">
+<div class="invite_page_btns_txt ">
+{text key='contactimporter+invite_page_btns_txt'}
+</div>
+    {foreach from=$btns item="b"}
+        <a href="{$b.href}" onclick="{$b.onclick}" class="{$b.class} contactimporter_provider_button">
+            <img src="{$b.widgeticonUrl}" /><span id="invite_txt">{$b.langLabel}</span>
+        </a>
+    {/foreach}
+<div class="invite_page_btns_or_wrap peep_center">
+<span class="invite_page_btns_or ">
+{text key='base+or'}
+</span>
+</div>
+</div>
+<div style="">
+<div class="contactimporter_email_invite_cont">
+<div class="email_invite_txt1">
+{text key='contactimporter+email_invite_txt1'}
+</div>
+
+<div class="email_invite_txt2">
+{text key='contactimporter+email_invite_txt2'}
+</div>
+
+{$eicmp}
+</div>
+</div>
+</div>
+
